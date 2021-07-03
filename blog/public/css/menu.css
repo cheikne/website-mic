@@ -1,0 +1,115 @@
+
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+/*.w3-sidebar {
+  z-index: 3;
+  top: 100px;
+  bottom: 0;
+  height: inherit;
+}*/
+.w3-bar-block {
+  top: 65px;
+  bottom: 0;
+  height:100px;
+  background-color:#95afc0;
+}
+.w3-top{
+  height:40px;
+}
+#mySidebar{
+  background-color:#95afc0;
+  width: 40%;
+}
+#mySidebar h5:hover b{
+   transition: all 0s ease;
+   text-decoration: underline;
+   text-decoration-color: yellow;
+   cursor: pointer;
+}
+
+#partners{
+  text-decoration: none;  
+}
+#header{
+  text-decoration: none;  
+}
+/*#headerBar a:hover {
+  background-color: #ddd;
+  color: black;
+  height: auto;
+  box-shadow: inset 400px 0 0 #535c68;
+  transition: all 0.5s ease;
+  font-weight: bold;
+  font-size: 1em;
+}
+#champ_search{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 1px solid;
+  padding: 8px;
+  width: 200px;
+}
+.search-container{
+  float: right;
+}
+body {
+     position: relative;
+  font-family: "Lato", sans-serif;
+}
+.mySlides {
+  display: none;
+}
+  #descriptivePartner{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+  }
+#SubsMenu_{
+   box-shadow: 10px 10px 5px #aaaaaa;
+   box-shadow: inset 400px 0 0 white;
+}
+#fermerSubMenu{
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0px;
+}
+.colorPartner{
+  background-color: #e67e22;
+}
+ul.nav-pills {
+    top: 125px;
+    position: fixed;
+    width: 25%;
+  }
+  div.col-8 div {
+    height: 500px;
+  }
+.col-sm-9{
+  margin-top: 200px;
+}
+#myScrollspy{
+  background-color: #57606f;
+  color: white;
+  box-shadow:10px 10px 1px #aaaaaa; ;
+}
+#myScrollspy ul li a{
+  font-size: 1.2em;
+}
+#nav-item li:hover{
+  box-shadow: inset 400px 0 0 #1B1464;
+  transition: all 0.5s ease;
+}
+#nav-item : hover {
+   box-shadow: inset 400px 0 0 #1B1464;
+  border-bottom: 2px solid yellow;
+  transition: all 0.5s ease;
+}
+.partnersIndus{
+  background-color: #f9ca24;
+  padding: 15px;
+  position: relative;
+  width: 100%;
+}
+.partnersAcad{
+  background-color: #f9ca24;
+padding: 15px;
+}
