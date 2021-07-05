@@ -6,19 +6,18 @@
 //     });
 // });
 
-    function handle(){
-      var w = window.outerWidth;
-      var h = window.outerHeight;
-      var mySidebar = document.getElementById("mySidebar");
-      // alert("l'événement resize a été déclenché."+h+"  height  "+w);
-      if(w>900){
-        mySidebar.style.display = 'none';
-        console.log("la taillle de la fenetre");
-      }
-      if(w<993)
-        mySidebar.style.display = 'block';
-      // return true;
-    }    
+    // function handle(){
+    //   var w = window.outerWidth;
+    //   var h = window.outerHeight;
+    //   var mySidebar = document.getElementById("mySidebar");
+    //   // alert("l'événement resize a été déclenché."+h+"  height  "+w);
+    //   if(w>900){
+    //     mySidebar.style.display = 'none';
+    //     console.log("la taillle de la fenetre");
+    //   }
+    //   if(w<993)
+    //     mySidebar.style.display = 'block';
+    // }    
     // function handle2(evnt){
     //   var w = window.outerWidth;
     //   var h = window.outerHeight;
@@ -28,10 +27,10 @@
     //   }
     //   return true;
     // }
-    window.addEventListener("resize",function(){
-      handle();
+    // window.addEventListener("resize",function(){
+    //   handle();
       // console.log("la taillle de la fenetre");
-    });
+    // });
     // window.onresize = handle2;
 
 function SendToServer(url,callback,id) {
@@ -55,11 +54,11 @@ function DisplaySubsMenuBar() {
   if (mySidebar.style.display === 'block') {
     mySidebar.style.display = 'none';
     // overlayBg.style.display = "none";
-    mySidebar.style.width="20%";
+    // mySidebar.style.width="20%";
   } else {
     mySidebar.style.display = 'block';
     // overlayBg.style.display = "block";
-    mySidebar.style.width="60%";
+    // mySidebar.style.width="60%";
   }
 }
 
@@ -68,5 +67,5 @@ function HiddenSubsMenuBar() {
   // var overlayBg = document.getElementById("myOverlay");
   mySidebar.style.display = "none";
   // overlayBg.style.display = "none";
-  mySidebar.style.width="20%";
+  // mySidebar.style.width="20%";
 }

@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Route;
 // });
 // Route::get('/Client','App\Http\Controllers\Clientcontroller@sendData');
 Route::get('/Accueil', function () {
-    return view('projet-fin-etude.header',
-        ['cheminPage'=>'projet-fin-etude.index']);
+    return view('projet-fin-etude.index');
 });
 // Route::get('/', function () {
 //     return view('projet-fin-etude.accueil');
@@ -28,3 +27,7 @@ Route::get('/Accueil/Partenaire-Projet/{id}',
     'App\Http\Controllers\InstituitPartner@LoadDataInstituitPartnerOne');
 // Route::get('/Accueil/Partenaire-Projet/UCA', 
 //     'App\Http\Controllers\InstituitPartner@LoadDataInstituitPartnerOne');
+
+Route::get('/Accueil/Actualites',function(){
+    return view('projet-fin-etude.actualites');
+});

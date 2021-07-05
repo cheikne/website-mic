@@ -23,7 +23,7 @@
 </head>
 <body>
   <div class="w3-top">
-       @yield("header")
+      @include('projet-fin-etude.header')
   </div><br><br><br><br>
     <div class="bd-example">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -56,11 +56,11 @@
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+      <span class="carousel-control-prev-icon w3-black" aria-hidden="true"></span>
+      <span class="sr-only w3-black">Previous</span>
     </a>
     <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="carousel-control-next-icon w3-black" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
@@ -237,7 +237,7 @@
 <!-- /888888888888888888888888888888888888888888888888888 -->
 
   <hr style="border:3px solid blue;">
-  <footer>  @yield('footer')</footer>
+  <footer>  @include('projet-fin-etude.footer')</footer>
 </body>
 </html>
 

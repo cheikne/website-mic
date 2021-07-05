@@ -1,0 +1,23 @@
+$(document).ready(function(){
+  $("#displayPlusActu").click(function(){
+    $("#plusActualtes").slideToggle("slow");
+  });
+   $("#displayPlusActuReminex").click(function(){
+    $("#plusActualtesReminex").slideToggle("slow");
+  });
+   $("#displayPlusActuMascir").click(function(){
+    $("#plusActualtesMascir").slideToggle("slow");
+  });
+   $("#displayPlusActuUCA").click(function(){
+    $("#plusActualtesUCA").slideToggle("slow");
+  });
+   $("#displayPlusActuENIM").click(function(){
+    $("#plusActualtesENIM").slideToggle("slow");
+  });
+   $("#displayPlusActuENSIAS").click(function(){
+    $("#plusActualtesENSIAS").slideToggle("slow");
+  });
+   $("#displayPlusActuCNRST").click(function(){
+    $("#plusActualtesCNRST").slideToggle("slow");
+  });
+});
