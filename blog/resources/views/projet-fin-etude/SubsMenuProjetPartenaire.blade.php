@@ -16,25 +16,25 @@
 <script type="text/javascript" src="{{ asset('js\SubsMenuProjetPartenaire.js') }}"></script>
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="3">
   <div class="w3-top">
-       @yield("header")
+       @include('projet-fin-etude.header')
   </div>
-<div style="display: flex;">
+<!-- <div style="display: flex;"> -->
     <nav class="w3-bar-block w3-collapse w3-large  w3-animate-left" id="mySidebar">
       <a href="javascript:void(0)" onclick="HiddenSubsMenuBar()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
         <i class="fa fa-remove"></i>
       </a>
-      <h5 class="w3-bar-item"><b>Partenaires Industriels</b></h5>
+      <h5 class="w3-bar-item w3-button"><b>Partenaires Industriels</b></h5>
       <a class="w3-bar-item w3-button w3-hover-yellow " id="partners"  href="/Accueil/Partenaire-Projet/Managem">Industrie Managem</a>
       <a class="w3-bar-item w3-button w3-hover-yellow " id="partners" href="/Accueil/Partenaire-Projet/Reminex">Industrie Reminex</a>
       <a class="w3-bar-item w3-button w3-hover-yellow " id="partners"  href="/Accueil/Partenaire-Projet/Mascir">Industrie Macsir</a>
-      <h5 class="w3-bar-item"><b>Partenaires Academiques</b></h5>
+     <a class="w3-bar-item w3-button" id="partners"><h5><b>Partenaires Academiques</b></h5></a>
       <a class="w3-bar-item w3-button w3-hover-yellow " id="partners" href="/Accueil/Partenaire-Projet/UCA">Academie UCA</a>
       <a class="w3-bar-item w3-button w3-hover-yellow " id="partners"  href="/Accueil/Partenaire-Projet/ENIM">Academie ENIM</a> 
       <a class="w3-bar-item w3-button w3-hover-yellow " id="partners" href="/Accueil/Partenaire-Projet/ENSIAS">Academie ENSIAS</a> 
       <a class="w3-bar-item w3-button w3-hover-yellow " id="partners" href="/Accueil/Partenaire-Projet/CNRST">Centre CNRST</a> 
   </nav>
 <!-- <div class="w3-overlay w3-hide-large" onclick="HiddenSubsMenuBar()" style="cursor:pointer" title="close side menu" id="myOverlay"></div> -->
-<div class="w3-main" style="margin-left:40px;margin-top: 120px;">
+<div class="w3-main" style="margin-left:250px;">
        @yield('DescriptivePartners')
        <br><br>
 
@@ -43,35 +43,8 @@
       </div>
 
       <div class="w3-content" >
-
+        @yield('actualites')
       <div class="w3-row w3-margin">
-
-        <div class="w3-third">
-          <img src="http://www.managemgroup.com/sites/default/files/2021-06/tri-k%20%21.jpg" style="width:100%;min-height:320px">
-        </div>
-        <div class="w3-twothird w3-container">
-          <h3 class="w3-blue">2021-06-24</h3>
-          <h2>Démarrage de la mine de tri-k en guinée et production du premier lingot d’or</h2>
-          <p>
-            Le Groupe Managem a le plaisir d’annoncer que la mine d’or de Tri-K en Guinée, dans la région de Mandiana, a réalisé la première coulée le 23 juin 2021, suite à la finalisation des travaux de construction.
-            La mine de Tri-K consolide la présence du Groupe en République de Guinée et appuie sa détermination à se positionner parmi les plus importants producteurs d’or de taille intermédiaire en Afrique de l’Ouest. Cette concrétisation, témoin du savoir-faire, de l’expertise et résilience de nos équipes, renforce la position de Managem comme un acteur majeur de la dynamique économique locale avec plus de 800 emplois à terme, tout en créant de la valeur partagée et durable pour nos investisseurs et toutes nos parties prenantes.
-          </p>
-        </div>
-      </div>
-      <div class="w3-row w3-margin">
-        <div class="w3-twothird w3-container">
-          <h2 class="w3-right">Nouveau programme de mentorat scolaire : Parrainons nos jeunes étudiants</h2><br><br><br>
-          <p>
-            Dans le cadre de l’initiative MA3AN dédiée au développement du mécénat de compétences auprès de nos collaborateurs, et afin de continuer la dynamique de l’Excellence scolaire des enfants de nos collaborateurs ; Managem lance un programme de Mentorat scolaire au profit des enfants de nos collaborateurs
-            Ce programme de Mentorat sollicite les collaborateurs du Groupe pour accompagner et coacher nos enfants qui sont inscrits dans les mêmes écoles et universités d’où le collaborateur est diplômé.
-          </p>
-        </div>
-        <div class="w3-third">
-          <img src="http://www.managemgroup.com/sites/default/files/2021-06/mentoring.png" style="width:100%;min-height:200px">
-        </div>
-      </div>
-      <div class="w3-row w3-margin">
-
       <div class="w3-third">
         <img src="http://www.managemgroup.com/sites/default/files/2021-06/club%20des%20femmes.jpg" style="width:100%;min-height:200px">
       </div>
@@ -121,9 +94,9 @@
       </div>
     </div>
 </div>
-</div>
+<!-- </div> -->
     <div id="footer">
-      <footer style="z-index:10" id="myFooter" >@yield("footer")</footer>         
+      <footer style="z-index:10" id="myFooter" >@include('projet-fin-etude.footer')</footer>         
     </div>
 </body>
 </html>

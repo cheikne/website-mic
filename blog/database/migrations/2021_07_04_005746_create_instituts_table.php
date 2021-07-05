@@ -19,7 +19,6 @@ class CreateInstitutsTable extends Migration
             $table->longtext('description');
             $table->longtext('lien');
             $table->longtext('role');
-            $table->unsignedBigInteger('id_actu');
             $table->longtext('domaine_expertise');
         });
     }

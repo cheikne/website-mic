@@ -1,5 +1,5 @@
 
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+html,body,h1,h2,h3,h4,h6 {font-family: "Roboto", sans-serif;}
 /*.w3-sidebar {
   z-index: 3;
   top: 100px;
@@ -7,23 +7,23 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   height: inherit;
 }*/
 .w3-bar-block {
-  top: 65px;
   bottom: 0;
-  height:100px;
+  height:200px;
   background-color:#95afc0;
-}
-.w3-top{
-  height:40px;
 }
 #mySidebar{
+  top: 90px;
   background-color:#95afc0;
-  width: 40%;
+  width: 23%;
 }
 #mySidebar h5:hover b{
    transition: all 0s ease;
    text-decoration: underline;
+   text-underline: 2px;
    text-decoration-color: yellow;
    cursor: pointer;
+   border-bottom: 3px;
+
 }
 
 #partners{
