@@ -31,3 +31,6 @@ Route::get('/Accueil/Partenaire-Projet/{id}',
 Route::get('/Accueil/Actualites',function(){
     return view('projet-fin-etude.actualites');
 });
+Route::get('Accueil/Evenements',function(){
+    return view('projet-fin-etude.evenements');
+});

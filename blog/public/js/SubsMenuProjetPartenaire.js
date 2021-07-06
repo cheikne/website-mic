@@ -1,11 +1,10 @@
-// $(document).ready(function(){
-//      $(".partners").click(function(){
-      // var idCurrent=$(this).attr('id');
-      
-      
-//     });
-// });
 
+console.log("fhhfhfdgdggfhgfhfhfhfhhfff");
+$(document).ready(function(){
+     $(".hiddenImgPartners").click(function(){
+     document.getElementById("imgPartners").innerHTML=`<p></p>`;
+    });
+});
     // function handle(){
     //   var w = window.outerWidth;
     //   var h = window.outerHeight;

@@ -57,7 +57,7 @@
     </div>
     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon w3-black" aria-hidden="true"></span>
-      <span class="sr-only w3-black">Previous</span>
+      <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
       <span class="carousel-control-next-icon w3-black" aria-hidden="true"></span>
