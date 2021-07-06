@@ -37,13 +37,25 @@
   </nav>
 </div>
 <!-- <div class="w3-overlay w3-hide-large" onclick="HiddenSubsMenuBar()" style="cursor:pointer" title="close side menu" id="myOverlay"></div> -->
-<div class="w3-main" style="margin-left:250px" >
-       @yield('DescriptivePartners')
-       <br><br><br><br>
-       <div style="margin-left:300px;margin-top: 100px;background-color: rgba(0, 0, 0, 0.5); width: 100%;padding: 90px;">
-          <h1>7 partenaires</h1>
-          @include('projet-fin-etude.image3D');
+<div class="w3-main" style="margin-left:250px" >       
+  <br><br><br><br><br><br>
+    @yield('IconPartenaire')
+      <!--  <div class="w3-container imgPartenaire" style="margin-left:50px;">
+
+        <div class="w3-container">
+          <div class="container">
+            <h1 class="heading" data-target-resolver></h1>
+          </div><br>
+          <img src="{{asset('image/partenaire.png')}}" class="w3-border" alt="Norway" style="padding:4px;width:100%">
+          <h2>Lancement du Club des Femmes de Managem</h2>
+          <p>
+            Afin de promouvoir le leadership des femmes au sein de Managem et renforcer leur impact dans la transformation de notre Groupe, Managem a créé Le Club des Femmes, à l’occasion de la Journée Internationale de le Femme.
+            Ce Club, annoncé par M. Imad Toumi , PDG du Groupe, dans le cadre du lancement de notre feuille de route Diversité & Inclusion, est un espace privilégié qui permettra à nos Managemiennes de pleinement développer leurs talents et de réaliser leur potentiel. il a été agréé de créer un Club des Femmes, sous le sponsoring de Naoual Zine, Directrice Générale Reminex & Projets
+          </p>
         </div>
+        </div> -->
+      @yield('DescriptivePartners')
+      @yield('actualites')
 </div>
 </div><br><br><br><br><br>
 <div id="footer" style="z-index:1;" >
