@@ -21,3 +21,8 @@ $(document).ready(function(){
     $("#plusActualtesCNRST").slideToggle("slow");
   });
 });
+$(".hover").mouseleave(
+  function () {
+    $(this).removeClass("hover");
+  }
+);

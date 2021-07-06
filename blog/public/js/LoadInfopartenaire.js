@@ -88,3 +88,18 @@ console.log("hfhfhhhhhfhfhhfhff "+largeur);
 //   if(w >1125)
 //     document.getElementById("search").style.display="block";
 // });
+$(document).ready(function(){
+  $("#searchButton").click(function(){
+    var x = document.getElementById("searchInput");
+    if(x.style.display=="block")
+      x.style.display="none";
+    else
+      x.style.display="block";
+  });
+  $("#searchButton").focusout(function(){
+     $("#searchInput").focusout(function(){
+      var x = document.getElementById("searchInput");
+      x.style.display="none";
+  });
+  });
+});

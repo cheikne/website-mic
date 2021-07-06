@@ -1,5 +1,5 @@
 
-<div class="container-fluid " style="background-color:#1C2833;color: white; width: 100%">
+<div class="container-fluid " style="background-color:#1C2833;color: white; width: 100%;">
   <div class="col-md-2">
     <strong style="color: #fcba03;font-family: Times New Roman,Times,serif;">Managem</strong><br>
     <p class="contact">NOS PRODUITS</p>

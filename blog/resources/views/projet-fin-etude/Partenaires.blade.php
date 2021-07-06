@@ -1,7 +1,7 @@
 @extends($cheminPage)
 @section('DescriptivePartners')
 
-          <div class="w3-card-4" style="width:90%;margin-left: 7%;">
+          <div class="w3-card-4 w3-row w3-margin" style="width:90%;">
               <header class="w3-container w3-blue">
 
                 @if($detailInstituit->name=="Managem" || $detailInstituit->name=="Reminex" || $detailInstituit->name=="Mascir")
@@ -28,9 +28,12 @@
                   <br><br>
                 @endif
               </div>
+            </div><br><br>
+            <div class="w3-container">
+              <h1 style="text-align: center;">Les actualites de {{$detailInstituit->name}}</h1>
             </div>
-
 @endsection('DescriptivePartners')
+
 
 @section('actualites')
   @php ($check=1)
@@ -61,3 +64,6 @@
       @php ($check++)
     @endforeach
 @endsection('actualites')
+<script type="text/javascript">
+   document.getElementById("imgPartners").style.display="none";
+</script>
