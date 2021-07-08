@@ -23,7 +23,6 @@ class CreateThesesTable extends Migration
             $table->longtext('Problematique');
             $table->string('img');
             $table->longtext('Resume');
-            $table->timestamps($presition =0);
         });
     }
 
