@@ -20,12 +20,7 @@
     <div class="w3-top">
       @include('projet-fin-etude.header')
   </div><br><br><br><br><br><br>
-    <!-- <video autoplay muted loop id="myVideo">
-      <source src="https://www.youtube.com/watch?v=6nLG7e8jH6k">
-      Your browser does not support HTML5 video.
-    </video> -->
-    <!-- <div class="container myVideo"> -->
-      
+    <a class="w3-text-blue" href="#">{{$path}}</a>
   <div class="w3-content">
       <div class="w3-row w3-margin">
         <div class="w3-third">

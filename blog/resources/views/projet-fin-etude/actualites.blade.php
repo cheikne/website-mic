@@ -19,10 +19,10 @@
 <body>
 	<div class="w3-top">
        @include('projet-fin-etude.header')
-  </div>
-
+  </div><br><br><br><br><br>
+  <a class="w3-text-blue w3-pandding" href="#">{{$path}}</a>
   <div class="w3-content" >
-      <div class="w3-container" style="margin-top: 200px;">
+      <div class="w3-container">
 				<h1 >Actualites Managem</h1>
 			</div>
 			@include('projet-fin-etude.actualitePartners.actuManagem')
