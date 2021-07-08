@@ -19,7 +19,11 @@ class CreateThesesTable extends Migration
             $table->longtext('objectif');
             $table->longtext('valeur_ajoute');
             $table->string('nom_thesard');
-            $table->longtext('Encadrant');
+            $table->string('Encadrant');
+            $table->longtext('Problematique');
+            $table->string('img');
+            $table->longtext('Resume');
+            $table->timestamps($presition =0);
         });
     }
 

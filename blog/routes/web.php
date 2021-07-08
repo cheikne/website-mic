@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\controdesthese;
+use App\Models\recherche_scientifiques;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -34,3 +37,5 @@ Route::get('/Accueil/Actualites',function(){
 Route::get('Accueil/Evenements',function(){
     return view('projet-fin-etude.evenements');
 });
+Route::get('Accueil/Realisation',[controdesthese::class,"index"]);
+Route::get('Accueil/Recherche_scientifique','App\Http\Controllers\recherchescientifique@index');

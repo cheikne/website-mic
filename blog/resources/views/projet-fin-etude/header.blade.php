@@ -4,7 +4,7 @@
       <div>
         <a href="#" class="w3-bar-item w3-xxlarge w3-text-white" id="header">Logo</a>
       <div class="w3-right">
-        <a href="#" class="w3-bar-item w3-button w3-hide-small" id="header">Acces Partenaires</a>
+      <button onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button w3-hide-small w3-large">Acces Partenaires</button>
         <a href="#" class="w3-bar-item w3-button w3-hide-small" id="header">Anglais</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small" id="header">Contact</a>
       </div><br><br>
@@ -13,9 +13,9 @@
         <div style="margin-left:0px;z-index: -1;" class="w3-right">
           <a href="/Accueil" class="w3-bar-item w3-button w3-hide-small w3-hover-yellow" id="header">Accueil</a>
           <a href="/Accueil/Partenaire-Projet" class="w3-bar-item w3-button w3-hide-small w3-hover-yellow" id="header">Partenaire du Projet</a>
-          <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-yellow" id="header">Realisations</a>
+          <a href="/Accueil/Realisation" class="w3-bar-item w3-button w3-hide-small w3-hover-yellow" id="header">Realisations</a>
           <a href="/Accueil/Evenements" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-yellow" id="header">Evenements</a>
-          <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-yellow" id="header">Recherche Scientifique</a>
+          <a href="/Accueil/Recherche_scientifique" class="w3-bar-item w3-button w3-hide-small w3-hover-yellow" id="header">Recherche Scientifique</a>
           <a href="/Accueil/Actualites" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-yellow" id="header">Actualites</a>
         <div class="search-container w3-bar-item w3-hide-small w3-hide-medium">
             <!-- <input type="text" placeholder="Search.." name="search" style="color:black; width:200px" >
@@ -30,3 +30,4 @@
     </div>
   </div>
   </div>
+  @include('projet-fin-etude/login')

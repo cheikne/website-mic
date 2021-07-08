@@ -97,8 +97,8 @@
     color: #000;
   }
   .modal-header, h4, .close {
-    background-color: #333;
-    color: #fff !important;
+    background-color: rgb(139, 133, 133);
+    color: #fff important;
     text-align: center;
     font-size: 30px;
   }
