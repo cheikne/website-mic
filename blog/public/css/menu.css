@@ -7,17 +7,16 @@ html,body,h1,h2,h3,h4,h6 {font-family: "Roboto", sans-serif;}
   height: inherit;
 }*/
 .w3-bar-block {
-  /*bottom: 0;*/
   height:400px;
   background-color:#95afc0;
 }
 #mySidebar{
   top: 90px;
-  position: fixed;
+  /*position: fixed;*/
   /*position: sticky;*/
   /*z-index: -1;*/
   background-color:#95afc0;
-  /*width: 80%;*/
+  width: 100%;
 }
 #mySidebar h5:hover b{
    transition: all 0s ease;
@@ -28,7 +27,12 @@ html,body,h1,h2,h3,h4,h6 {font-family: "Roboto", sans-serif;}
    border-bottom: 3px;
 
 }
-
+#fonctionnalites{
+  text-decoration: none;
+  font-size: 15px;
+  font-family: serif;
+  font-weight: bold;
+}
 #partners{
   text-decoration: none;  
 }
@@ -36,38 +40,40 @@ html,body,h1,h2,h3,h4,h6 {font-family: "Roboto", sans-serif;}
   text-decoration: none;  
 }
 
-form.searchBar input[type=text] {
+form.searchBar  input[type=text] {
+  width: 130px;
   box-sizing: border-box;
-  border: 2px solid #ccc;
+  border: 1px solid white;
   border-radius: 4px;
   font-size: 16px;
-  background-color: white;
-  padding: 10px;
+
+padding: 10px;
   font-size: 17px;
-  border: 1px solid grey;
-  float: left;
+ float: left;
   width: 80%;
-  background: #f1f1f1;
-  z-index: 1000;
-  display: none;
-  color: black;
-  border: apx solid black;
+
+  background-color: white;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  /*float: right;*/
+  /*width: 100%;*/
 }
 
 form.searchBar button {
   float: left;
   width: 20%;
-  padding: 10px;
-  background:grey;
+  padding: 13px;
+  background: #2196F3;
   color: white;
   font-size: 17px;
-  /*border: 1px solid grey;*/
-  border: none;
+  border: 1px solid grey;
+  border-left: none;
   cursor: pointer;
-}
 
+}
 form.searchBar button:hover {
-  background: yellow;
+  background: #0b7dda;
 }
 
 form.searchBar::after {
@@ -75,15 +81,19 @@ form.searchBar::after {
   clear: both;
   display: table;
 }
+/*
+input[type=text]:focus {
+  width: 100%;
+}*/
 /**************************************************************************/
 .snip1374 {
   position: relative;
   overflow: hidden;
   margin: 0px;
-  /*min-width: 255px;*/
-  /*max-width: 315px;*/
-  /*max-height: 315px;*/
-  /*width: 100%;*/
+  min-width: 155px;
+  max-width: 215px;
+  max-height: 215px;
+  width: 100%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 .snip1374 img {

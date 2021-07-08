@@ -1,0 +1,30 @@
+{
+	"BarMenuFr":[
+			{"nameMenu":"Accueil"},
+			{"nameMenu":"Partenaires du Projet"},
+			{"nameMenu": "Realisations"},
+			{"nameMenu":"Evenements"},
+			{"nameMenu":"Recherche Scientifique"},
+			{"nameMenu":"Actualites"}
+			],
+	"BaenuEng":[
+			{"nameMenu":"Home"},{"nameMenu":"Project Partners"},{"nameMenu":"Events"},
+			{"nameMenu":"Research"},{"nameMenu":"Actualites"},{"nameMenu":"Contact"},
+			{"nameMenu":"Access Partners"},{"nameMenu":"Angalais"}
+	],
+
+	"SubsMenuPartenrs":[
+		{
+			"managem":"Industrie Managem","reminex":"Industrie Reminex","mascir":"Industrie Masscir",
+			"uca":"Academie UCA","ensias":"Academie ENSIAS","enim":"Academie ENIM","cnsrt":"Academie CNRST"
+		},
+		{
+			"managem":"Industry Managem","reminex":"Industry Reminex","mascir":"Industry Masscir",
+			"uca":"Academy UCA","ensias":"Academy ENSIAS","enim":"Academy ENIM","cnsrt":"Academy CNRST"
+		}
+	],
+	"fonctionnalite":[
+		{"contact":"Contact",
+			"accesPart":"Acces Partenaire","lang":"Francais"}
+	]
+}
