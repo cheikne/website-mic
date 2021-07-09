@@ -43,4 +43,8 @@ Route::get('/Accueil/Contact',function(){
         ->with('path','Accueil>Contact');
 });
 
+//Acces partenaire
+Route::get('Accueil/Acces-Partenaire',function(){
+    return view('projet-fin-etude.accesPartenaire.accesPartenaire');
+});
 ?>

@@ -1,69 +1,53 @@
 
-function LoadInfoPartenaire(id){
-  var url = "../../modele/each_Partner.php?id_partners="+id;
-  SendToServer(url,callback,id);
-  if(id=="Managem")
-    document.getElementById("role").innerHTML ="Le role de Managem dans le cadre du projet";
-  if(id=="UCA")
-    document.getElementById("role").innerHTML ="Le role de de UCA dans le cadre du projet";
+function DisplaySubsMenuBar() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+function DisplaySubsMenuBarPartenaire(){
+  // DisplaySubsMenuBar();
+  document.getElementById("subsMenuPartners").innerHTML=`
+    <button class="w3-bar-item w3-button w3-padding-large" onclick="displayDropdown('DisplaySubsMenuPartners')">Partenaire du Projet <i class="fa fa-caret-down"></i></button>`;
+  document.getElementById("DisplaySubsMenuPartners").innerHTML=`
+      <div class="w3-bar-block">
+        <h5 class="w3-bar-item w3-button"><b>Partenaires Industriels</b></h5>
+      <a class="w3-bar-item w3-button w3-padding-large hiddenImgPartners " id="partners"  href="/Accueil/Partenaire-Projet/Managem">Industrie Managem</a>
+      <a class="w3-bar-item w3-button w3-padding-large hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/Reminex">Industrie Reminex</a>
+      <a class="w3-bar-item w3-button w3-padding-large hiddenImgPartners " id="partners"  href="/Accueil/Partenaire-Projet/Mascir">Industrie Macsir</a>
+      <h5><b>Partenaires Academiques</b></h5>
+      <a class="w3-bar-item w3-button w3-padding-large hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/UCA">Academie UCA</a>
+      <a class="w3-bar-item w3-button w3-padding-large hiddenImgPartners " id="partners"  href="/Accueil/Partenaire-Projet/ENIM">Academie ENIM</a> 
+      <a class="w3-bar-item w3-button w3-padding-large hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/ENSIAS">Academie ENSIAS</a> 
+      <a class="w3-bar-item w3-button w3-padding-large hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/CNRST">Centre CNRST</a> 
+      </div>`;
+    // document.getElementById("navDemo").style.display="none";
+} 
+//Definition de la function DisplayDropdown
+
+function displayDropdown(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme";
+  } else { 
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-theme", "");
+  }
 }
 
-$(document).ready(function(){
-  // Initialize Tooltip
-  $('[data-toggle="tooltip"]').tooltip(); 
-  
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-});
+// $(document).ready(function(){
+//     $("#subsMenuPartners").click(function(){
+//     $("#DisplaySubsMenuPartners").slideToggle("slow");
+//     console.log("je suis fort");
+//   });
+// });
 
 
-function w3_open() {
-  var mySidebar = document.getElementById("mySidebar");
-  var overlayBg = document.getElementById("myOverlay");
-  if (mySidebar.style.display === 'block') {
-     // document.getElementById("clear").style.display="block";
-    // document.getElementById("fermerSubMenu").style.marginTop="30%";
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } 
-  else{
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
-    // document.getElementById("clear").style.display="none";
-    // document.getElementById("fermerSubMenu").style.marginTop="62%";
-}
-}
 
-// Close the sidebar with the close button
-function w3_close() {
-  var mySidebar = document.getElementById("mySidebar");
-  var overlayBg = document.getElementById("myOverlay");
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-   // document.getElementById("clear").style.display="block";
-     // document.getElementById("fermerSubMenu").style.marginTop="30%";
-}
 function DisplayMenuBar() {
   var x = document.getElementById("navDemo");
   if (x.className.indexOf("w3-show") == -1) {
@@ -103,12 +87,3 @@ $(document).ready(function(){
   });
   });
 });
-
-function DisplaySubsMenuBar() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}

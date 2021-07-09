@@ -22,11 +22,11 @@
   <script type="text/javascript" src="{{ asset('js\LoadInfopartenaire.js') }}"></script>
 </head>
 <body>
-  <div class="w3-top">
+  <div class="w3-top" style="z-index:1000;">
       @include('projet-fin-etude.header')
   </div><br><br><br><br><br><br>
     <div class="bd-example">
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="z-index:-1;">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators w3-right">
       <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active w3-black"></li>
       <li data-target="#carouselExampleCaptions" data-slide-to="1" class="w3-black"></li>
@@ -55,8 +55,8 @@
         </div>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon w3-black" aria-hidden="true"></span>
+    <a  class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span  class="carousel-control-prev-icon w3-black" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
@@ -80,7 +80,7 @@
      <img src="{{asset('image/partenaire.png')}}" alt="Notebook" style="width:100%">
   </div>
   <div class="w3-third" style="margin-top: 150px;">
-    <div class="w3-container w3-light-grey"style="width: 150%;">
+    <div class="w3-container-fluid w3-light-grey"style="width: 150%;">
       <h2 class="w3-blue" style="text-align:center;margin: 0;">Actualites</h2>
      <div class="w3-content w3-container-fluid">
       @for($i=0;$i<4;$i++)
@@ -113,8 +113,8 @@
     </div>
   </div>
     <div class="w3-third">
-      <div class="w3-container w3-light-grey">
-        <h2 class="w3-blue">Qu'est ce le MIC</h2>
+      <div class="w3-container-fluid w3-light-grey">
+        <h2 class="w3-blue" style="width: 100%;margin-left: 0;">Qu'est ce le MIC</h2>
         <p class="w3-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
   </div>

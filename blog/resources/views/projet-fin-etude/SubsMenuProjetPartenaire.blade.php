@@ -16,26 +16,23 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="{{ asset('js\LoadInfopartenaire.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js\SubsMenuProjetPartenaire.js') }}"></script>
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="3">
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="3" onload="DisplaySubsMenuBarPartenaire()">
   <div class="w3-top">
        @include('projet-fin-etude.header')
   </div>
 <div style="display: flex;">
-  <div style=" width: 110%;">
-    <nav class="w3-bar-block w3-collapse w3-large  w3-animate-left" id="mySidebar">
-      <a href="javascript:void(0)" onclick="HiddenSubsMenuBar()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
-        <i class="fa fa-remove"></i>
+  <div class="w3-container-fluid">
+    <nav class=" w3-bar-block w3-collapse w3-large  w3-animate-left" id="mySidebar">
       </a>
-      <h5 class="w3-bar-item w3-button"><b>Partenaires Industriels</b></h5>
-      <a class="w3-bar-item w3-button w3-hover-yellow hiddenImgPartners " id="partners"  href="/Accueil/Partenaire-Projet/Managem">Industrie Managem</a>
-      <a class="w3-bar-item w3-button w3-hover-yellow hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/Reminex">Industrie Reminex</a>
-      <a class="w3-bar-item w3-button w3-hover-yellow hiddenImgPartners " id="partners"  href="/Accueil/Partenaire-Projet/Mascir">Industrie Macsir</a>
-      <h5><b>Partenaires Academiques</b></h5>
-      <a class="w3-bar-item w3-button w3-hover-yellow hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/UCA">Academie UCA</a>
-      <a class="w3-bar-item w3-button w3-hover-yellow hiddenImgPartners " id="partners"  href="/Accueil/Partenaire-Projet/ENIM">Academie ENIM</a> 
-      <a class="w3-bar-item w3-button w3-hover-yellow hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/ENSIAS">Academie ENSIAS</a> 
-      <a class="w3-bar-item w3-button w3-hover-yellow hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/CNRST">Centre CNRST</a> 
+      <h5 class="w3-bar-item"><b>Partenaires Industriels</b></h5>
+      <a class="w3-bar-item w3-button w3-hover-light-grey hiddenImgPartners " id="partners"  href="/Accueil/Partenaire-Projet/Managem">Industrie Managem</a>
+      <a class="w3-bar-item w3-button w3-hover-light-grey hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/Reminex">Industrie Reminex</a>
+      <a class="w3-bar-item w3-button w3-hover-light-grey hiddenImgPartners " id="partners"  href="/Accueil/Partenaire-Projet/Mascir">Industrie Macsir</a>
+      <h5 class="w3-bar-item"><b>Partenaires Academiques</b></h5>
+      <a class="w3-bar-item w3-button w3-hover-light-grey hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/UCA">Academie UCA</a>
+      <a class="w3-bar-item w3-button w3-hover-light-grey hiddenImgPartners " id="partners"  href="/Accueil/Partenaire-Projet/ENIM">Academie ENIM</a> 
+      <a class="w3-bar-item w3-button w3-hover-light-grey hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/ENSIAS">Academie ENSIAS</a> 
+      <a class="w3-bar-item w3-button w3-hover-light-grey hiddenImgPartners " id="partners" href="/Accueil/Partenaire-Projet/CNRST">Centre CNRST</a> 
   </nav>
 </div>
 <!-- <div class="w3-overlay w3-hide-large" onclick="HiddenSubsMenuBar()" style="cursor:pointer" title="close side menu" id="myOverlay"></div> -->
@@ -44,10 +41,11 @@
   <a class="w3-text-blue" href="#">{{$path}}</a>
   @include($contentProjectPartners)
 </div>
-</div><br><br><br><br><br>
+</div>
 <div id="footer" >
   <footer id="myFooter" >@include('projet-fin-etude.footer')</footer>         
 </div>
 <script type="text/javascript" src="{{ asset('js\image3D.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js\SubsMenuProjetPartenaire.js') }}"></script>
 </body>
 </html>
