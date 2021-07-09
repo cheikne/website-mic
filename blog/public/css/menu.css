@@ -88,11 +88,18 @@ form.searchBar::after {
     border-radius: 3px 0 0 0;
     padding: .75rem 1rem;
 }
+#contentSearch{
+  margin-left: 100px;
+  margin-top: 5px;
+  float: left;
+
+}
 .chat-search-box .input-group .form-control {
     -webkit-border-radius: 2px 0 0 2px;
     -moz-border-radius: 2px 0 0 2px;
     border-radius: 2px 0 0 2px;
     border-right: 0;
+
 }
 
 .chat-search-box .input-group .form-control:focus {
