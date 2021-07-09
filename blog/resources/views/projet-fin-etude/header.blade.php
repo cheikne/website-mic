@@ -9,8 +9,7 @@
                 <button type="button" class="searchButton w3-grey"><i class="fa fa-search"></i></button>
             </form>
           </div> -->
-
-          <div class="chat-search-box">
+            <div class="chat-search-box" id="contentSearch">
             <div class="input-group">
                 <input class="form-control" placeholder="Search">
                 <div class="input-group-btn">
@@ -20,7 +19,6 @@
                 </div>
             </div>
           </div>
-
       <div class="w3-right">
         <a href="#" class="w3-bar-item w3-button w3-hide-small" id="fonctionnalites">Acces Partenaires</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small" id="fonctionnalites">Anglais</a>
