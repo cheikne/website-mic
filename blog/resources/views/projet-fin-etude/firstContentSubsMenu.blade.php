@@ -1,8 +1,9 @@
        <div class="w3-container imgPartenaire">
-
         <div class="w3-container">
-          <div class="container">
-            <h1 class="heading" data-target-resolver></h1>
+          <div class="container w3-light-grey" style="padding: 0;">
+              <div class="w3-padding-64 w3-margin-bottom w3-center">
+                <h1 class="heading" data-target-resolver></h1>
+              </div>
           </div><br>
           <img src="{{asset('image/partenaire.png')}}" class="w3-border" alt="Norway" style="padding:4px;width:100%">
           <h2>Lancement du Club des Femmes de Managem</h2>

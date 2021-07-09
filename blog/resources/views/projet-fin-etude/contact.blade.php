@@ -36,11 +36,11 @@
                 <strong>Email :</strong><label> porteur.projet@uca.ma</label>
             </div>
           </div><hr>
-          <h2 class="w3-right w3-blue-gray w3-card-4">Les Etablissements</h2>
+          <h2 class="w3-right w3-blue-gray ">Les Etablissements</h2>
         @for($i=0;$i<4;$i++)
           <div class="w3-row">
             <div class="w3-col s9 w3-container">
-              <h2 class="w3-card-4 w3-text-white" style="background-color:rgba(0, 0, 0, 0.5);padding: 10px;">FSSM de l' Universites Caddi Ayyad</h2>
+              <h2 class=" w3-text-white w3-light-blue">FSSM de l' Universites Caddi Ayyad</h2>
               <div style="display:flex;margin: 10px;">
                 <div>
                   <div>
@@ -69,12 +69,12 @@
             </div>
           </div><hr>
           @endfor
-          <h2 class="w3-right w3-blue-gray w3-card-4">Les Industries</h2>
+          <h2 class="w3-right w3-blue-gray ">Les Industries</h2>
           @for($i=0;$i<4;$i++)
             <div class="w3-row">
 
             <div class="w3-col s9 w3-container">
-              <h2 class="w3-card-4 w3-text-white" style="background-color:rgba(0, 0, 0, 0.5);padding: 10px;">Industrie Managem</h2>
+              <h2 class=" w3-text-white w3-light-blue">Industrie Managem</h2>
               <strong>Adresse du Siege</strong><br>
               <p>Twin Center, Tour A, Angle Boulevards Zerktouni et Al Massira Al Khadra
                 BP 5199, Casablanca. Maroc</p>

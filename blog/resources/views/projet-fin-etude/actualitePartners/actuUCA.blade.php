@@ -11,7 +11,7 @@
 	</div>
 </div>
 <div id="displayPlusActuUCA">Voir plus d'actualites sur UCA</div>
-<div id="plusActualtesUCA" style="display:none;background-color: #e5eecc;">
+<div class="w3-light-grey" id="plusActualtesUCA" style="display:none;">
   <div class="w3-row w3-margin">
     <div class="w3-twothird w3-container">
       <h2 class="w3-right">Manarola</h2><br><br><br>

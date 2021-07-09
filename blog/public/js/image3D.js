@@ -65,7 +65,7 @@ const resolver = {
  * Source: http://theportalwiki.com/wiki/GLaDOS_voice_lines#Chapter_9:_The_Part_Where_He_Kills_You
  */
 const strings = [
-  "7 Partenaires"
+  "Collaboration entre sept Partenaires"
 ];
 
 let counter = 0;
@@ -74,7 +74,7 @@ const options = {
   // Initial position
   offset: 0,
   // Timeout between each random character
-  timeout: 5,
+  timeout: 8,
   // Number of random characters to show
   iterations: 10,
   // Random characters to pick from

@@ -12,7 +12,7 @@
 	      	</div>
 	      </div>
 	      <div id="displayPlusActu">Voir plus d'actualites de managem</div>
-	      <div id="plusActualtes" style="display:none;background-color: #e5eecc;">
+	      <div class="w3-light-grey" id="plusActualtes" style="display:none;">
 		      <div class="w3-row w3-margin">
 		        <div class="w3-twothird w3-container">
 		          <h2 class="w3-right">Manarola</h2><br><br><br>

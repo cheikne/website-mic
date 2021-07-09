@@ -11,7 +11,7 @@
 	</div>
 </div>
 <div id="displayPlusActuENSIAS">Voir plus d'actualites sur ENSIAS</div>
-<div id="plusActualtesENSIAS" style="display:none;background-color: #e5eecc;">
+<div class="w3-light-grey" id="plusActualtesENSIAS" style="display:none;">
   <div class="w3-row w3-margin">
     <div class="w3-twothird w3-container">
       <h2 class="w3-right">Manarola</h2><br><br><br>
