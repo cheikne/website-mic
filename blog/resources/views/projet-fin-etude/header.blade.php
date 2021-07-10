@@ -9,18 +9,18 @@
                 <button type="button" class="searchButton w3-grey"><i class="fa fa-search"></i></button>
             </form>
           </div> -->
-            <div class="chat-search-box" id="contentSearch">
+            <div class="chat-search-box w3-hide-small" id="contentSearch">
             <div class="input-group">
                 <input class="form-control" placeholder="Search">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-info">
+                    <button type="button" class="btn btn-info w3-light-blue">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
             </div>
           </div>
       <div class="w3-right">
-        <a href="#" class="w3-bar-item w3-button w3-hide-small" id="fonctionnalites">Acces Partenaires</a>
+        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-large w3-bar-item w3-button w3-hide-small">Acces Partenaires</button>
         <a href="#" class="w3-bar-item w3-button w3-hide-small" id="fonctionnalites">Anglais</a>
         <a href="/Accueil/Contact" class="w3-bar-item w3-button w3-hide-small" id="fonctionnalites">Contact</a>
       </div><br><br>
@@ -32,9 +32,9 @@
           </a>
 
           <a href="/Accueil/Partenaire-Projet" class="w3-bar-item w3-button w3-hide-small w3-hover-light-grey {{$is_projetParteners?'actives':''}}" id="header">Partenaire du Projet</a>
-          <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-light-grey {{$is_realisation?'actives':''}}" id="header">Realisations</a>
+          <a href="/Accueil/Realisation" class="w3-bar-item w3-button w3-hide-small w3-hover-light-grey {{$is_realisation?'actives':''}}" id="header">Realisations</a>
           <a href="/Accueil/Evenements" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-light-grey {{$is_event?'actives':''}}" id="header">Evenements</a>
-          <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-light-grey {{$is_research?'actives':''}}" id="header">Recherche Scientifique</a>
+          <a href="/Accueil/Recherche-Scientifique" class="w3-bar-item w3-button w3-hide-small w3-hover-light-grey {{$is_research?'actives':''}}" id="header">Recherche Scientifique</a>
           <a href="/Accueil/Actualites" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-light-grey {{$is_actu?'actives':''}}" id="header">Actualites</a>
 
       </div>
@@ -54,6 +54,7 @@
             <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="DisplaySubsMenuBar()">Recherche Scientifique</a>
             <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="DisplaySubsMenuBar()">Actualites</a>
           </div>
+      @include('projet-fin-etude.login')
   <style type="text/css">
   .actives{
   background-color:     #87CEFA;

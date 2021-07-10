@@ -28,6 +28,8 @@ return array(
     'App\\Models\\instituts' => $baseDir . '/app/Models/instituts.php',
     'App\\Models\\recherche_scientifiques' => $baseDir . '/app/Models/recherche_scientifiques.php',
     'App\\Models\\theses' => $baseDir . '/app/Models/theses.php',
+    'App\\Models\\userInline' => $baseDir . '/app/Models/userInline.php',
+    'App\\Models\\userLogout' => $baseDir . '/app/Models/userLogout.php',
     'App\\Models\\user_partenaires' => $baseDir . '/app/Models/user_partenaires.php',
     'App\\Models\\visites' => $baseDir . '/app/Models/visites.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

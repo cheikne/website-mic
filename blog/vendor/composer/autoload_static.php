@@ -522,6 +522,8 @@ class ComposerStaticInit045b103ccec8f3a2ed36717df0a571fb
         'App\\Models\\instituts' => __DIR__ . '/../..' . '/app/Models/instituts.php',
         'App\\Models\\recherche_scientifiques' => __DIR__ . '/../..' . '/app/Models/recherche_scientifiques.php',
         'App\\Models\\theses' => __DIR__ . '/../..' . '/app/Models/theses.php',
+        'App\\Models\\userInline' => __DIR__ . '/../..' . '/app/Models/userInline.php',
+        'App\\Models\\userLogout' => __DIR__ . '/../..' . '/app/Models/userLogout.php',
         'App\\Models\\user_partenaires' => __DIR__ . '/../..' . '/app/Models/user_partenaires.php',
         'App\\Models\\visites' => __DIR__ . '/../..' . '/app/Models/visites.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
