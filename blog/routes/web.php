@@ -10,8 +10,8 @@ Route::get('/Accueil/Partenaire-Projet/{id}',
     'App\Http\Controllers\InstituitPartner@LoadDataInstituitPartnerOne');
 // Route::get('/Accueil/Partenaire-Projet/UCA', 
 //     'App\Http\Controllers\InstituitPartner@LoadDataInstituitPartnerOne');
-Route::get('Accueil/Realisation',[controdesthese::class,'LoadDataRealisation']);
-Route::get('Accueil/Recherche_scientifique','App\Http\Controllers\recherchescientifiques@LoadAllDataResearch');
+Route::get('Accueil/Realisation','App\Http\Controllers\controdesthese@LoadDataRealisation');
+Route::get('Accueil/Recherche-Scientifique','App\Http\Controllers\recherchescientifiques@LoadAllDataResearch');
 
 Route::get('/Accueil/Actualites',function(){
     return view('projet-fin-etude.actualites')
