@@ -4,7 +4,8 @@ function LoadDataOneThese(id){
             url :"recuperationdestheses",
             data :{id:id},
             success:function(result){
-                alert(result);
+                document.getElementById('demo').innerHTML='
+                ';
             }
     });
 }

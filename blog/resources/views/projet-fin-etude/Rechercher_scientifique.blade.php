@@ -44,21 +44,29 @@
       @include('projet-fin-etude.header')
 </div><br><br><br><br><br>   
     <div class="container-fluid">
-    <div style="width: 100%;text-align:center" >
-    <select class="form-select from-select-lg" aria-label="Default select example">
-      <option selected>Thèses</option>
-      <option herf="1">These 1</option>
-      <option herf="2">These 2</option>
-      <option herf="3">Thèse 3</option>
-      <option herf="3">Thèse 4</option>
-      <option herf="3">Thèse 5</option>
-      <option herf="3">Thèse 6</option>
-      <option herf="3">Thèse 7</option>
-   </select>
-   <div class="btn btn-btn">Filtre</div>
+    <div style="width: 20%;float:right" >
+
+    <div class="input-group">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Options</label>
+    </div>
+  <select class="custom-select" id="inputGroupSelect01">
+        <option selected>Choose...</option>
+        <option herf="1">These 1</option>
+          <option herf="2">These 2</option>
+          <option herf="3">Thèse 3</option>
+          <option herf="3">Thèse 4</option>
+          <option herf="3">Thèse 5</option>
+          <option herf="3">Thèse 6</option>
+          <option herf="3">Thèse 7</option>
+      </select>
+      <div class="btn btn-btn">Filtre</div>
+  </div>
+
+   
    </div>
     @foreach($depots as $depot)
-   
+  
     <div onclick="displayArticle({{$depot->id_rech}})"><h3 style="background-color:white;color:black;text-align:left;"><i class="fa fa-arrow-down"></i> recherche base sur l'analyseur en ligne</h3></div>
     <div id="{{$depot->id_rech}}" style="display: none;">
     <div class="flex col-md-12 col-xs-12 col-lg-12"><img src="{{asset('images/images2.png')}}" alt="">
@@ -68,9 +76,10 @@
    </div>
     </div>
     </div>
-    </div>
+    </div><br>
+  
     @endforeach
-    <br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <footer> @include('projet-fin-etude.footer')</footer> 
     <script>
          function displayArticle(id){  
