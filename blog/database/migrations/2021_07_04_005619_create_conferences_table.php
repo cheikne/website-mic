@@ -15,8 +15,10 @@ class CreateConferencesTable extends Migration
     {
         Schema::create('conferences', function (Blueprint $table) {
             $table->id('id_conference');
-            $table->longtext('lieu');
+            $table->string('lieu');
             $table->date('dte');
+            $table->string('urlImg');
+            $table->string('urlVideo');
             $table->unsignedBigInteger('id_these');
             $table->foreign('id_these')->references('id_these')->on('theses');
         });

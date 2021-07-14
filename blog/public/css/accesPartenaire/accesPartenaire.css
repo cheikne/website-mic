@@ -237,13 +237,17 @@ chat-search-box {
     position: relative;
     padding: 1rem 0;
     border-right: 1px solid #e6ecf3;
-    height: 100%;
+    /*height: 100%;*/
+    /*width: 13%;*/
     display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    display: inline-flex;
+    /*border: 2px solid red;*/
+    /*-ms-flex-direction: column;*/
+    flex-direction: row;
 }
+.users-container ul{
 
+}
 
 /************************************************
     ************************************************
@@ -253,6 +257,8 @@ chat-search-box {
 
 .users {
     padding: 0;
+    display: inline-flex;
+    width: 100%;
 }
 
 .users .person {

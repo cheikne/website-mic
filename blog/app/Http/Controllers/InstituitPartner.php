@@ -43,12 +43,42 @@ class InstituitPartner extends Controller
     public function getDataJson(){
         // $data = file_get_contents(asset('js/staticData.json'));
         // $menuBar = collect($data);
+        $table_actu = new actualites();
+        $data = $table_actu->orderByDesc('date')->limit(3)->get();
         return view('projet-fin-etude.index')
         ->with('is_projetParteners',false)
         ->with('is_home',true)
         ->with('is_event',false)
         ->with('is_actu',false)
         ->with('is_research',false)
+        ->with('actu',$data)
         ->with('is_realisation',false);
+    }
+
+     public function getActualites(){
+        $table_actu = new actualites();
+        $data = $table_actu->orderByDesc('date')->get();
+        return view('projet-fin-etude.actualites')
+            ->with('is_projetParteners',false)
+            ->with('is_home',false)
+            ->with('is_event',false)
+            ->with('is_actu',true)
+            ->with('is_research',false)
+            ->with('is_realisation',false)
+            ->with('actu',$data)
+            ->with('path','Accueil>Actualites');
+    }
+    public function getActualites2(){
+        $table_actu = new actualites();
+        $data = $table_actu->orderByDesc('date')->get('urlImg');
+         return view('projet-fin-etude.evenements')
+            ->with('is_projetParteners',false)
+            ->with('is_home',false)
+            ->with('is_event',true)
+            ->with('is_actu',false)
+            ->with('is_research',false)
+            ->with('is_realisation',false)
+            ->with('events',$data)
+            ->with('path','Accueil>Evenements');
     }
 }

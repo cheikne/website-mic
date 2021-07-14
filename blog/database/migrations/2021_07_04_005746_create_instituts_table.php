@@ -17,7 +17,7 @@ class CreateInstitutsTable extends Migration
            $table->id('id_inst');
            $table->string('name')->unique();
             $table->longtext('description');
-            $table->longtext('lien');
+            $table->string('lien');
             $table->longtext('role');
             $table->longtext('domaine_expertise');
         });

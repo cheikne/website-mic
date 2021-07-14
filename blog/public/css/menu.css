@@ -89,7 +89,7 @@ form.searchBar::after {
     padding: .75rem 1rem;
 }
 #contentSearch{
-  margin-left: 100px;
+  margin-left: 400px;
   margin-top: 5px;
   float: left;
 
@@ -130,9 +130,9 @@ form.searchBar::after {
   position: relative;
   overflow: hidden;
   margin: 0px;
-  min-width: 155px;
-  max-width: 215px;
-  max-height: 215px;
+  min-width: 60px;
+  max-width: 100px;
+  max-height: 100px;
   width: 100%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
@@ -148,4 +148,93 @@ form.searchBar::after {
 .snip1374.hover img {
   -webkit-transform: scale(1);
   transform: scale(1);
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+.Events {
+  font-family: 'Lato', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 255px;
+  max-width: 280px;
+  height: 170px;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  background-color: #000000;
+  line-height: 1.5em;
+}
+.Events *,
+.Events *:before,
+.Events *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+.Events img {
+  width: calc(120%);
+  backface-visibility: hidden;
+  /*vertical-align: top;*/
+}
+.Events figcaption {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translateY(-25%);
+  transform: translateY(-25%);
+  padding: 5px 40px;
+  opacity: 0;
+}
+.Events h3 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.Events p {
+  font-weight: 400;
+  margin: 0;
+  font-size: 0.9em;
+}
+.Events i {
+  position: absolute;
+  color: #fff;
+  font-size: 34.375px;
+  line-height: 55px;
+  width: 55px;
+  bottom: 0;
+  right: 0;
+  background-color: #c0392b;
+  -webkit-transform: translateX(55px);
+  transform: translateX(55px);
+}
+.Events a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.Events:hover img,
+.Events.hover img {
+  zoom: 1;
+  filter: alpha(opacity=30);
+  -webkit-opacity: 0.3;
+  opacity: 0.3;
+  -webkit-transform: translateX(-40px);
+  transform: translateX(-40px);
+}
+.Events:hover figcaption,
+.Events.hover figcaption {
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  opacity: 1;
+}
+.Events:hover i,
+.Events.hover i {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
 }

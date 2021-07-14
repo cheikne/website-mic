@@ -26,3 +26,16 @@ $(".hover").mouseleave(
     $(this).removeClass("hover");
   }
 );
+
+function displayActu(id,titre){
+  $(document).ready(function(){
+    var innerText = $("#"+id).text();
+    var titreActu = $("#"+titre).text();
+    $("#resume_actu").html(`
+      <h2 class="w3-text-blue">${titreActu}</h2>
+      <div class="w3-justify"  style="width:90%;">
+        <p>${innerText}</p>
+      </div>
+      `);
+  });
+}

@@ -17,6 +17,7 @@ class CreateUserPartenairesTable extends Migration
             $table->id('id_user');
             $table->string('name_user');
             $table->string('prenom_user');
+            $table->string('role');
             $table->string('email')->unique();
             $table->string('password')->unique();
         });

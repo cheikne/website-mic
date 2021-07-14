@@ -18,8 +18,9 @@ class CreateThesesTable extends Migration
             $table->string('titre_these');
             $table->longtext('objectif');
             $table->longtext('valeur_ajoute');
-            $table->string('nom_thesard');
-            $table->longtext('Encadrant');
+            $table->longtext('problematique');
+            $table->string('urlImg');
+            $table->longtext('resultats');
         });
     }
 
