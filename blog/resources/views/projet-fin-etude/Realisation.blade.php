@@ -24,16 +24,17 @@
   <body class="bg-gray-50">
   <div class="w3-top">
       @include('projet-fin-etude.header')
-  </div><br><br><br><br><br>       
+  </div><br><br><br><br><br>    
+  <div class="w3-content" style="max-width:80%;;">   
    @foreach($theses as $these)
-      <div class="w3-content" style="max-width:100%;">
-       <div class="w3-row w3-margin">
-       <a href="#">
-            <div class="w3-third snip1374">
-              <img src="{{asset($these->img) }}" style="width:90%;min-height:100px;padding:40px;">
+      
+       <div class="w3-row w3-margin" style="margin-left: 20%;">
+       <a href="/Accueil/Realisation/These" onclick="LoadDataOneThese({{$these->id_these}})">
+            <div class="w3-third snip1374 w3-center" style="padding:0px;">
+              <img src="{{asset($these->img) }}" style="width:500px;min-height:150px;padding:40px;">
             </div>
             <div class="w3-twothird w3-container text-center text-lg">
-              <h4><div class="bg-yellow-500 text-black">{{$these->titre_these}}</div></h4>
+              <h4><div class="bg-blue-500 text-black">{{$these->titre_these}}</div></h4>
              
               <p class="text-black">
               {{$these->objectif}}
@@ -48,8 +49,9 @@
             </div>
             </a>
        </div>
-       </div>
+       
   @endforeach
+  </div>
       <footer> @include('projet-fin-etude.footer')</footer> 
   </body>
 </html>
