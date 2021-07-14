@@ -22,18 +22,18 @@
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar" class="w3-blue-grey">
+        <nav id="sidebar" class="w3-blue-grey" style="height:50%;">
             <div class="sidebar-header w3-blue-grey">
                 <h3>Acces-Partenaire</h3>
             </div>
 
             <ul class="list-unstyled components w3-blue-grey">
-                <p>Dummy Heading</p>
+                <p>Modifier Ici</p>
                 <li class="active w3-blue-grey">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-blue-grey">Theses</a>
                     <ul class="collapse list-unstyled w3-blue-grey" id="homeSubmenu">
                         <li>
-                            <a href="#">These 1</a>
+                            <a href="/Accueil/Acces-Partenaire/These1">These 1</a>
                         </li>
                         <li>
                             <a href="#">These 2</a>
@@ -73,12 +73,6 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-                <li>
                     <a href="#actueAcadSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Actualites Academique</a>
                     <ul class="collapse list-unstyled" id="actueAcadSubmenu">
                         <li>
@@ -95,14 +89,27 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
-
-            <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                    <a href="#ResearchcadSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Rechechres Scientifiques</a>
+                    <ul class="collapse list-unstyled" id="ResearchcadSubmenu">
+                        <li>
+                            <a href="#">Publications</a>
+                        </li>
+                        <li>
+                            <a href="#">Brevet</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                    <a href="#EventscadSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Evenements</a>
+                    <ul class="collapse list-unstyled" id="EventscadSubmenu">
+                        <li>
+                            <a href="#">Visites</a>
+                        </li>
+                        <li>
+                            <a href="#">Conferences</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -135,7 +142,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto" style="margin:7px">
                             <li class="nav-item active">
-                                <i class='fas fa-comment' style='font-size:36px'></i>
+                                <a href="/Accueil/Acces-Partenaire/Chat-Conversation"><i class='fas fa-comment' style='font-size:36px'></i></a>
                             </li>
                             <li class="nav-item">
                                 <i class='fas fa-bell' style='font-size:36px'></i>
@@ -146,7 +153,7 @@
                         </ul>
                     </div>
                     <div class="col-xl-2 col-lg-4 col-md-4 col-sm-3 col-3 w3-right">
-                        <div class="users-container">
+                        <div class="users-container w3-right" style="width:100px;">
                             <ul class="users">
                                 <li class="person" data-chat="person1">
                                 <div class="user">
@@ -164,9 +171,11 @@
                 </div>
             </nav>
 
-             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
-                            <div class="users-container">
-                                <h2>Les personnes en ligne</h2>
+             <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3" style="border:2px solid red; width:100%"> -->
+                <!-- <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9"> -->
+                        <div class="users-container container">
+                        @for($i=0;$i<8;$i++)
+                                <!-- <h2>Les personnes en ligne</h2> -->
                                 <ul class="users">
                                     <li class="person" data-chat="person1">
                                         <div class="user">
@@ -178,7 +187,7 @@
                                             <span class="time">15/02/2019</span>
                                         </p>
                                     </li>
-                                    <li class="person" data-chat="person1">
+<!--                                     <li class="person" data-chat="person1">
                                         <div class="user">
                                             <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
                                             <span class="status offline"></span>
@@ -227,19 +236,16 @@
                                             <span class="name">Michael Jordan</span>
                                             <span class="time">05/02/2019</span>
                                         </p>
-                                    </li>
+                                    </li> -->
                                 </ul>
+                        @endfor
                             </div>
-                        </div>
-
-            <div class="line"></div>
-
+                        <!-- </div> -->
             <div class="line"></div>
 <div class="content" style="background:#DCDCDC;">
     <div class="container">
         <div class="row">
-        @for($i=0;$i<3;$i++)
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="card-box">
                     <h4 class="text-dark header-title">Personnes deconnectees recemments</h4>
                     <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p>
@@ -318,10 +324,91 @@
                     </ul>
             </div>
         </div>
-        @endfor
+        <div class="col-lg-6">
+                <div class="card-box">
+                    <h4 class="text-dark header-title">Les activites recentes</h4>
+                    <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p>
+                    <ul class="sortable-list taskList list-unstyled ui-sortable" id="upcoming">
+                        <li class="task-warning ui-sortable-handle" id="task1">
+                             <p>these1,thses3,</p>
+                            <div class="clearfix"></div>
+                            <div class="mt-3">
+                                <p class="float-right mb-0 mt-2">
+                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light"> a modifie il y a 12min</button>
+                                </p>
+                                <p class="mb-0">
+                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">kane cheickne</span></a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="task-success ui-sortable-handle" id="task2">
+                            <div class="checkbox checkbox-custom checkbox-single float-right">
+                                <input type="checkbox" aria-label="Single checkbox Two">
+                                <label></label>
+                            </div>Many desktop publishing packages and web page editors now use Lorem.
+                            <div class="clearfix"></div>
+                            <div class="mt-3">
+                                <p class="float-right mb-0 mt-2">
+                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
+                                </p>
+                                <p class="mb-0">
+                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Anna Sthesia</span></a>
+                                </p>
+                            </div>
+                        </li>
+                        <li id="task3" class="ui-sortable-handle">
+                            <div class="checkbox checkbox-custom checkbox-single float-right">
+                                <input type="checkbox" aria-label="Single checkbox Two">
+                                <label></label>
+                            </div>If you are going to use a passage of Lorem Ipsum..
+                            <div class="clearfix"></div>
+                            <div class="mt-3">
+                                <p class="float-right mb-0 mt-2">
+                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
+                                </p>
+                                <p class="mb-0">
+                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Gail Forcewind</span></a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="task-info ui-sortable-handle" id="task4">
+                            <div class="checkbox checkbox-custom checkbox-single float-right">
+                                <input type="checkbox" aria-label="Single checkbox Two">
+                                <label></label>
+                            </div>It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                            <div class="clearfix"></div>
+                            <div class="mt-3">
+                                <p class="float-right mb-0 mt-2">
+                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
+                                </p>
+                                <p class="mb-0">
+                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Maya Didas</span></a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="task-danger ui-sortable-handle" id="task5">
+                            <div class="checkbox checkbox-custom checkbox-single float-right">
+                                <input type="checkbox" aria-label="Single checkbox Two">
+                                <label></label>
+                            </div>There are many variations of passages of Lorem Ipsum available.
+                            <div class="clearfix"></div>
+                            <div class="mt-3">
+                                <p class="float-right mb-0 mt-2">
+                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
+                                </p>
+                                <p class="mb-0">
+                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Rick O'Shea</span></a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+            </div>
+        </div>
     </div>
 </div>
-            <div class="line"></div>
+</div>
+</div>
+</div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

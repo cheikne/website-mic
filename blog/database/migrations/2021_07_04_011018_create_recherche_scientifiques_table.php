@@ -16,7 +16,8 @@ class CreateRechercheScientifiquesTable extends Migration
         Schema::create('recherche_scientifiques', function (Blueprint $table) {
             $table->id('id_rech');
             $table->longtext('resume');
-            $table->longtext('lien');
+            $table->string('lien');
+            $table->string('filtre');
             $table->unsignedBigInteger('id_these');
             $table->foreign('id_these')->references('id_these')->on('theses');
         });

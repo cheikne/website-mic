@@ -18,6 +18,11 @@
         hiddenFooter.style.display = 'block';
         mySidebar.style.display = 'block';
       }
+      if(w<=900){
+        document.getElementById('contentSearch').style.display='none';
+      }else if(w>900){
+        document.getElementById('contentSearch').style.display='block';
+      }
     }    
     // function handle2(evnt){
     //   var w = window.outerWidth;
@@ -33,20 +38,6 @@
       console.log("la taillle de la fenetre");
     });
     // window.onresize = handle2;
-
-// function SendToServer(url,callback,id) {
-//   var xhttp = new XMLHttpRequest();
-//   xhttp.onreadystatechange = function() {
-//     if (this.readyState == 4 && this.status == 200) {
-//       callback(id,this.responseText);
-//     }
-//   };
-//   xhttp.open("GET", url, false);
-//   xhttp.send();
-// }
-// const callback = function(id,response){
-//    document.getElementById(id).innerHTML = response;
-// };
 
 
 // function DisplaySubsMenuBar() {

@@ -1,4 +1,5 @@
-  <div class="w3-bar w3-blue-grey w3-top w3-left-align w3-large" style="height: 110px;">
+  <script type="text/javascript" src="{{ asset('js\accesPartenaire\accesPartenaire.js') }}"></script>
+  <div class="w3-bar w3-blue-grey w3-top w3-left-align w3-large" style="height: 100px;position: relative;">
     <a class="w3-bar-item w3-button w3-right w3-hover-white w3-hide-medium w3-hide-large" href="javascript:void(0)" onclick="DisplaySubsMenuBar()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <div class="w3-display">
       <div>

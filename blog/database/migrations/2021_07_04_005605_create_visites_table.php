@@ -15,8 +15,11 @@ class CreateVisitesTable extends Migration
     {
         Schema::create('visites', function (Blueprint $table) {
             $table->id('id_visite');
+            $table->longtext('resumer');
             $table->string('lieu');
             $table->date('dte');
+            $table->string('urlImg');
+            $table->string('urlVideo');
         });
     }
 

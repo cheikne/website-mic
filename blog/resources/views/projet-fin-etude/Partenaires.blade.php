@@ -10,6 +10,8 @@
   </header>
   <div class="w3-container">
     <p>{{$detailInstituit->description}}</p>
+    <h1>Le Domaine expertise de  {{ $detailInstituit->name }}</h1>
+    <p>{{$detailInstituit->domaine_expertise}}</p>
     <h1>Le role de {{ $detailInstituit->name }} dans le cadre du projet</h1>
     <p>{{$detailInstituit->role}}</p>
     @if($detailInstituit->name=="UCA")
@@ -19,12 +21,9 @@
       <strong>Intitulé de la thèse 2:</strong><a href="#">: : Développement de jumeaux numériques pour l’amélioration des performances 
        opérationnelles des unités de production minières. Cas du procédé de traitement des minerais par 
        flottation.</a><br><br>
-     <strong>Site Officiel UCA :</strong><a href="https://www.uca.ma/">https://www.uca.ma/</a><br><br>
     @endif
-    @if($detailInstituit->name=="Managem")
-     <strong>Site Officiel Managem :</strong><a href="http://www.managemgroup.com/" style="color: blue;">http://www.managemgroup.com/</a>
+     <strong>Site Officiel de {{$detailInstituit->name}} :</strong><a href="{{$detailInstituit->site}}" style="color: blue;">{{$detailInstituit->lien}}</a>
       <br><br>
-    @endif
   </div>
 </div><br><br>
 <div class="w3-container">
@@ -41,7 +40,7 @@
           <div class="w3-twothird w3-container">
             <h3 class="w3-blue">{{$values->date}}</h3>
             <h2>{{$values->titre}}</h2>
-            <p>{{$values->context}} </p>
+            <p>{{$values->resumer}} </p>
           </div>
         </div>
       @else
@@ -58,6 +57,3 @@
       @endif
       @php ($check++)
     @endforeach
-<script type="text/javascript">
-   document.getElementById("imgPartners").style.display="none";
-</script>
