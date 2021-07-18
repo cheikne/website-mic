@@ -87,3 +87,21 @@ $(document).ready(function(){
   });
   });
 });
+
+function displayActuRecent(id_img,id_resum,id_current,id_edit_width){
+  // alert(id_img);
+  var x =document.getElementById(id_img);
+  if(x.style.display=="block"){
+      x.style.display="none";
+      document.getElementById(id_edit_width).style.width="100%";
+      document.getElementById(id_current).innerHTML="Decouvrir  -";
+    }
+    else{
+      document.getElementById(id_edit_width).style.width="80%";
+      x.style.display="block";
+      document.getElementById(id_current).innerHTML="Decouvrir  +";
+    }
+  $(document).ready(function(){
+    $("#"+id_resum).slideToggle("slow");
+  });
+}

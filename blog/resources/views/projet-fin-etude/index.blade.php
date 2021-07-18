@@ -21,7 +21,7 @@
       @include('projet-fin-etude.header')
   </div><br><br><br><br><br>
 <div class="w3-row-padding w3-content" style="max-width:1400px;margin-left: 0;">
-    <div class="w3-twothird">
+    <div class="w3-twothird" style="width: 700px;">
       <div class="bd-example">
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators ">
@@ -63,7 +63,7 @@
       </div>
     </div><br><br>
 
-  <nav class="col-sm-8 col-4" style="margin-top:0">
+  <nav class="col-sm-10 col-4">
    <ul class="nav nav-pills flex-row">
         <li class="nav-item">
           <a class="nav-link active" href="#section1">Context General</a>
@@ -89,27 +89,28 @@
 </div>
 
     <div class="w3-third w3-animate-right">
-    <div class="w3-container-fluid w3-light-grey"style="width: 110%;margin-top: 10px;">
+    <div class="w3-container-fluid w3-light-grey"style="width: 130%;margin-top: 10px;">
       <h2 class="w3-blue" style="text-align:center;margin: 0;">Actualites recentes</h2>
      <div class="w3-content w3-container-fluid" style="margin-top:4px">
        @php($i=0)
        @foreach($actu as $value)
         <div class="w3-row ">
 
-            <div class="w3-third">
+            <div class="w3-third" id="id_img{{$i}}" style="width: 20%;display: block;">
               <figure class="snip1374"><img src="{{$value->urlImg}}" style="width:100%;min-height:100px"></figure>
             </div>
-            <div class="w3-twothird w3-container">
-            <h3>{{$value->date}}</h3>
-            <h6>{{$value->titre}}</h6>
-            <p>
-             <a class="w3-text-blue" href="#">Decouvrir.......</a>
+            <div class="w3-twothird w3-container" id="{{$i}}">
+            <h7>{{$value->date}}</h7>
+            <h5 class="w3-text-blue-grey w3-hover-text-blue">{{$value->titre}}</h5>
+            <p class="w3-monospace w3-large">
+             <div class="w3-button w3-white w3-border w3-round-small" id="current{{$i}}" onclick="displayActuRecent('id_img{{$i}}','resume{{$i}}','current{{$i}}','{{$i}}')">Decouvrir  +</div>
+              <div id="resume{{$i}}" style="display:none">{{$value->resumer}}</div>
             </p>
           </div>
-           @if($i==2)
-            <a class="w3-text-blue" href="/Accueil/Actualites">Voir plus d'actulaites</a>
-          @endif
         </div>
+         @if($i==2)
+            <a class="w3-text-blue w3-right-align" href="/Accueil/Actualites">Voir plus d'actulaites</a>
+          @endif
         @php($i++)
         @endforeach
       </div>

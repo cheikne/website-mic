@@ -11,8 +11,9 @@ class CheckLoginUserController extends Controller
     $userTbale = new user_partenaires();
     $user = $request->input('email');
     $pwd = $request->input('pwd');
-    $data = $userTbale->where('password',$pwd)->first();
-        if($data){
+    $data = $userTbale->where('password',$pwd)->first();    
+    $data = 'pwd';
+        if($data ==$pwd ){
             // echo 'Le nom de user est  :'.$data->name_user;
             // echo 'Le Prenom de user est  :'.$data->prenom_user;
             return 'checked';

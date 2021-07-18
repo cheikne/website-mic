@@ -2,8 +2,16 @@
 <div class="w3-card-4 w3-row w3-margin">
   <header class="w3-container w3-blue">
 
-    @if($detailInstituit->name=="Managem" || $detailInstituit->name=="Reminex" || $detailInstituit->name=="Mascir")
-      <h1>Industrie {{$detailInstituit->name}}</h1>
+    @if($detailInstituit->name=="Managem")
+      <h1>Groupe {{$detailInstituit->name}}</h1>
+    @elseif($detailInstituit->name=="Reminex")
+      <h1>Centre  {{$detailInstituit->name}}</h1>
+    @elseif($detailInstituit->name=="Mascir")
+      <h1>Centre  {{$detailInstituit->name}}</h1>
+    @elseif($detailInstituit->name=="UCA")
+      <h1>Universites Caddi Ayyad</h1>
+    @elseif($detailInstituit->name=="ENIM")
+      <h1>Ecole Nationale d'Ingenerie Minerale</h1>
     @else
       <h1>Academie  {{$detailInstituit->name}}</h1>
     @endif

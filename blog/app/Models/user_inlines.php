@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class userInline extends Model
+class user_inlines extends Model
 {
     use HasFactory;
 }

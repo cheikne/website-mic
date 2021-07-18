@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Acces Partenaires</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -22,113 +22,110 @@
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar" class="w3-blue-grey" style="height:50%;">
-            <div class="sidebar-header w3-blue-grey">
-                <h3>Acces-Partenaire</h3>
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <div class="imgcontainer">
+                    <ul class="users">
+                        <li class="person" data-chat="person1">
+                            <div class="user">
+                                <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                <span class="status userCuurent"></span>
+                            </div>
+                            <p class="name-time">
+                                <span class="name">Utilisateur en ligne</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <div style="  background:#2E4053;">
+                <ul class="list-unstyled">
+                    <p>Acces Partenaire</p>
+                    <li>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Realisations</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu" style="background-color: grey;">
+                            <li>
+                                <a href="/Accueil/Acces-Partenaire/These1">Realisation 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Realisation 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Realisation 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pageIndust" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Actualites Industriel</a>
+                        <ul class="collapse list-unstyled" id="pageIndust">
+                            <li>
+                                <a href="#">Groupe Managem</a>
+                            </li>
+                            <li>
+                                <a href="#">Centre Reminex</a>
+                            </li>
+                            <li><a href="#">Fondation Mascir</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                         <a href="#pageAcadem" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Actualites Academique</a>
+                        <ul class="collapse list-unstyled" id="pageAcadem">
+                            <li>
+                                <a href="#">UCA</a>
+                            </li>
+                            <li>
+                                <a href="#">ENIM</a>
+                            </li>
+                            <li><a href="#">ENSIAS</a></li>
+                            <li><a href="#">CNRST</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pageEvents" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Evenements</a>
+                        <ul class="collapse list-unstyled" id="pageEvents">
+                            <li>
+                                <a href="#">Visites</a>
+                            </li>
+                            <li>
+                                <a href="#">Conferences</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pageresearch" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Recherche Scientifique</a>
+                        <ul class="collapse list-unstyled" id="pageresearch">
+                            <li>
+                                <a href="#">Publications</a>
+                            </li>
+                            <li>
+                                <a href="#">Brevets</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
 
-            <ul class="list-unstyled components w3-blue-grey">
-                <p>Modifier Ici</p>
-                <li class="active w3-blue-grey">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle w3-blue-grey">Theses</a>
-                    <ul class="collapse list-unstyled w3-blue-grey" id="homeSubmenu">
-                        <li>
-                            <a href="/Accueil/Acces-Partenaire/These1">These 1</a>
-                        </li>
-                        <li>
-                            <a href="#">These 2</a>
-                        </li>
-                        <li>
-                            <a href="#">These 3</a>
-                        </li>
-                        <li>
-                            <a href="#">These 4</a>
-                        </li>
-                        <li>
-                            <a href="#">These 5</a>
-                        </li>
-                        <li>
-                            <a href="#">These 6</a>
-                        </li>
-                        <li>
-                            <a href="#">These 7</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Publications</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Actualites Industries</a>
-                    <ul class="collapse list-unstyled w3-blue-grey" id="pageSubmenu">
-                        <li>
-                            <a href="#">Industrie Managem</a>
-                        </li>
-                        <li>
-                            <a href="#">Industrie Reminex</a>
-                        </li>
-                        <li>
-                            <a href="#">Industrie Mascir</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#actueAcadSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Actualites Academique</a>
-                    <ul class="collapse list-unstyled" id="actueAcadSubmenu">
-                        <li>
-                            <a href="#">Academie UCA</a>
-                        </li>
-                        <li>
-                            <a href="#">Academie ENIM</a>
-                        </li>
-                        <li>
-                            <a href="#">Academie CNRST</a>
-                        </li>
-                        <li>
-                            <a href="#">Academie ENSIAS</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#ResearchcadSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Rechechres Scientifiques</a>
-                    <ul class="collapse list-unstyled" id="ResearchcadSubmenu">
-                        <li>
-                            <a href="#">Publications</a>
-                        </li>
-                        <li>
-                            <a href="#">Brevet</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#EventscadSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Evenements</a>
-                    <ul class="collapse list-unstyled" id="EventscadSubmenu">
-                        <li>
-                            <a href="#">Visites</a>
-                        </li>
-                        <li>
-                            <a href="#">Conferences</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                <ul class="list-unstyled CTAs">
+                    <li>
+                        <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Autres Choses</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
         <!-- Page Content  -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info w3-light-blue">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
-                        <!-- <span>Toggle Sidebar</span> -->
+                        <span></span>
                     </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="chat-search-box" id="contentSearch">
+                    </button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                     <div class="chat-search-box" id="contentSearch">
                         <div class="input-group">
                             <input class="form-control" placeholder="Search">
                             <div class="input-group-btn">
@@ -140,274 +137,189 @@
                     </div>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto" style="margin:7px">
+                        <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a href="/Accueil/Acces-Partenaire/Chat-Conversation"><i class='fas fa-comment' style='font-size:36px'></i></a>
+                                <a class="nav-link" href="/Accueil/Acces-Partenaire/Chat-Conversation"><i class='fas fa-comment' style='font-size:36px'></i></a>
                             </li>
                             <li class="nav-item">
-                                <i class='fas fa-bell' style='font-size:36px'></i>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li> -->
+                                <a class="nav-link" href="#"><i class='fas fa-bell' style='font-size:36px'></i></a>
+                            </li>&nbsp;&nbsp;
+                            <li class="nav-item">
+                              <!-- <a class="nav-link" href="#">Deconnexion</a> -->
+                                <button type="button" class="btn btn-primary nav-link" data-toggle="modal" data-target="#myModal">
+                                     Deconnexion
+                            </button>
+                              <!-- <button type="button" class="btn btn-primary nav-link">Deconnexion</button> -->
+                            </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </ul>
-                    </div>
-                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-3 col-3 w3-right">
-                        <div class="users-container w3-right" style="width:100px;">
-                            <ul class="users">
-                                <li class="person" data-chat="person1">
-                                <div class="user">
-                                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                    <span class="status busy"></span>
-                                </div>
-                                <p class="name-time">
-                                    <span class="name">Steve Bangalter</span>
-                                    <span class="time">15/02/2019</span>
-                                </p>
-                            </li>
-                        </ul>
-                        </div>
                     </div>
                 </div>
             </nav>
-
-             <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3" style="border:2px solid red; width:100%"> -->
-                <!-- <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9"> -->
-                        <div class="users-container container">
-                        @for($i=0;$i<8;$i++)
+            <div class="container" style="background:#DCDCDC;">
+                <!-- <h2>Collapsible Sidebar Using Bootstrap 4</h2> -->
+                <div class="container">
+                  <div class="users-container container">
                                 <!-- <h2>Les personnes en ligne</h2> -->
-                                <ul class="users">
-                                    <li class="person" data-chat="person1">
+                                <ul class="users d-flex flex-wrap">
+                        @foreach($dataUser as $value)
+                                    <li class="person" data-chat="person1" id="personeEnLigne">
                                         <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <span class="status busy"></span>
+                                            <img src="{{$value->UrlImg}}" alt="Retail Admin">
+                                            <span class="status online"></span>
                                         </div>
                                         <p class="name-time">
-                                            <span class="name">Steve Bangalter</span>
-                                            <span class="time">15/02/2019</span>
+                                            <span class="name">{{$value->name_user}}  {{$value->prenom_user}}</span>
                                         </p>
                                     </li>
-<!--                                     <li class="person" data-chat="person1">
-                                        <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
-                                            <span class="status offline"></span>
-                                        </div>
-                                        <p class="name-time">
-                                            <span class="name">Steve Bangalter</span>
-                                            <span class="time">15/02/2019</span>
-                                        </p>
-                                    </li>
-                                    <li class="person active-user" data-chat="person2">
-                                        <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar2.png" alt="Retail Admin">
-                                            <span class="status away"></span>
-                                        </div>
-                                        <p class="name-time">
-                                            <span class="name">Peter Gregor</span>
-                                            <span class="time">12/02/2019</span>
-                                        </p>
-                                    </li>
-                                    <li class="person" data-chat="person3">
-                                        <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <span class="status busy"></span>
-                                        </div>
-                                        <p class="name-time">
-                                            <span class="name">Jessica Larson</span>
-                                            <span class="time">11/02/2019</span>
-                                        </p>
-                                    </li>
-                                    <li class="person" data-chat="person4">
-                                        <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
-                                            <span class="status offline"></span>
-                                        </div>
-                                        <p class="name-time">
-                                            <span class="name">Lisa Guerrero</span>
-                                            <span class="time">08/02/2019</span>
-                                        </p>
-                                    </li>
-                                    <li class="person" data-chat="person5">
-                                        <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar5.png" alt="Retail Admin">
-                                            <span class="status away"></span>
-                                        </div>
-                                        <p class="name-time">
-                                            <span class="name">Michael Jordan</span>
-                                            <span class="time">05/02/2019</span>
-                                        </p>
-                                    </li> -->
+                        @endforeach
                                 </ul>
-                        @endfor
+                    </div>
+                   </div> 
+                <!-- <div class="line"></div> -->
+                 <div class="content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-box">
+                                    <h4 class="text-dark header-title">Personne deconnectee recemment</h4>
+                                    <!-- <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p> -->
+                                      <ul class="sortable-list taskList list-unstyled ui-sortable" id="upcoming">
+                                    <li class="task-warning ui-sortable-handle" id="task1">
+                                        <div class="clearfix"></div>
+                                        <div class="mt-3">
+                                            <p class="float-right mb-0 mt-2">
+                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">En ligne 14:00</button>
+                                            </p>
+                                            <p class="mb-0">
+                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Utilisateur</span></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="task-success ui-sortable-handle" id="task2">
+                                        <div class="clearfix"></div>
+                                        <div class="mt-3">
+                                            <p class="float-right mb-0 mt-2">
+                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">En ligne 14:00</button>
+                                            </p>
+                                            <p class="mb-0">
+                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Utilisateur</span></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li id="task3" class="ui-sortable-handle">
+                                        <div class="clearfix"></div>
+                                        <div class="mt-3">
+                                            <p class="float-right mb-0 mt-2">
+                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">En ligne 14:00</button>
+                                            </p>
+                                            <p class="mb-0">
+                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Utilisateur</span></a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul><br>
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                </ul><br>
+                                </div>
                             </div>
-                        <!-- </div> -->
-            <div class="line"></div>
-<div class="content" style="background:#DCDCDC;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card-box">
-                    <h4 class="text-dark header-title">Personnes deconnectees recemments</h4>
-                    <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p>
-                    <ul class="sortable-list taskList list-unstyled ui-sortable" id="upcoming">
-                        <li class="task-warning ui-sortable-handle" id="task1">
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">En ligne il y a 12min</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">kane cheickne</span></a>
-                                </p>
+                                <!-- Les activites Recentes  -->
+                             <div class="col-lg-6">
+                                <div class="card-box">
+                                    <h4 class="text-dark header-title">Activites recentes</h4>
+                                    <!-- <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p> -->
+                                      <ul class="sortable-list taskList list-unstyled ui-sortable" id="upcoming">
+                                    <li class="task-warning ui-sortable-handle" id="task1">
+                                        <div class="clearfix"></div>
+                                        <div class="mt-3">
+                                            <p class="float-right mb-0 mt-2">
+                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">A Modifie</button>
+                                            </p>
+                                            <p class="mb-0">
+                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Utilisateur</span></a>
+                                            </p><br>
+                                            <div class="d-flex flex-wrap align-content-start bg-light">
+                                                <div class="p-2 border">These1</div><br>
+                                                <div class="p-2 border">These1</div><br>
+                                                <div class="p-2 border">These1</div>
+                                                <div class="p-2 border">These1</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="task-success ui-sortable-handle" id="task2">
+                                        <div class="clearfix"></div>
+                                        <div class="mt-3">
+                                            <p class="float-right mb-0 mt-2">
+                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">A Modifie</button>
+                                            </p>
+                                            <p class="mb-0">
+                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Utilisateur</span></a>
+                                            </p><br>
+                                             <div class="d-flex flex-wrap align-content-start bg-light">
+                                                <div class="p-2 border">These1</div><br>
+                                                <div class="p-2 border">These1</div><br>
+                                                <div class="p-2 border">These1</div>
+                                                <div class="p-2 border">These1</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                   <!--  <li id="task3" class="ui-sortable-handle">
+                                        <div class="clearfix"></div>
+                                        <div class="mt-3">
+                                            <p class="float-right mb-0 mt-2">
+                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">A Modifier</button>
+                                            </p>
+                                            <p class="mb-0">
+                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Gail Forcewind</span></a>
+                                            </p><br>
+                                             <div class="d-flex flex-wrap align-content-start bg-light">
+                                                <div class="p-2 border">These1</div><br>
+                                                <div class="p-2 border">These1</div><br>
+                                                <div class="p-2 border">These1</div>
+                                                <div class="p-2 border">These1</div>
+                                            </div>
+                                        </div>
+                                    </li> -->
+                                </ul><br>
+                                <ul class="pagination" style="float:center;">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                </ul>
+                                </div>
                             </div>
-                        </li>
-                        <li class="task-success ui-sortable-handle" id="task2">
-                            <div class="checkbox checkbox-custom checkbox-single float-right">
-                                <input type="checkbox" aria-label="Single checkbox Two">
-                                <label></label>
-                            </div>Many desktop publishing packages and web page editors now use Lorem.
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Anna Sthesia</span></a>
-                                </p>
-                            </div>
-                        </li>
-                        <li id="task3" class="ui-sortable-handle">
-                            <div class="checkbox checkbox-custom checkbox-single float-right">
-                                <input type="checkbox" aria-label="Single checkbox Two">
-                                <label></label>
-                            </div>If you are going to use a passage of Lorem Ipsum..
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Gail Forcewind</span></a>
-                                </p>
-                            </div>
-                        </li>
-                        <li class="task-info ui-sortable-handle" id="task4">
-                            <div class="checkbox checkbox-custom checkbox-single float-right">
-                                <input type="checkbox" aria-label="Single checkbox Two">
-                                <label></label>
-                            </div>It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Maya Didas</span></a>
-                                </p>
-                            </div>
-                        </li>
-                        <li class="task-danger ui-sortable-handle" id="task5">
-                            <div class="checkbox checkbox-custom checkbox-single float-right">
-                                <input type="checkbox" aria-label="Single checkbox Two">
-                                <label></label>
-                            </div>There are many variations of passages of Lorem Ipsum available.
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Rick O'Shea</span></a>
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-            </div>
-        </div>
-        <div class="col-lg-6">
-                <div class="card-box">
-                    <h4 class="text-dark header-title">Les activites recentes</h4>
-                    <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p>
-                    <ul class="sortable-list taskList list-unstyled ui-sortable" id="upcoming">
-                        <li class="task-warning ui-sortable-handle" id="task1">
-                             <p>these1,thses3,</p>
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light"> a modifie il y a 12min</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">kane cheickne</span></a>
-                                </p>
-                            </div>
-                        </li>
-                        <li class="task-success ui-sortable-handle" id="task2">
-                            <div class="checkbox checkbox-custom checkbox-single float-right">
-                                <input type="checkbox" aria-label="Single checkbox Two">
-                                <label></label>
-                            </div>Many desktop publishing packages and web page editors now use Lorem.
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Anna Sthesia</span></a>
-                                </p>
-                            </div>
-                        </li>
-                        <li id="task3" class="ui-sortable-handle">
-                            <div class="checkbox checkbox-custom checkbox-single float-right">
-                                <input type="checkbox" aria-label="Single checkbox Two">
-                                <label></label>
-                            </div>If you are going to use a passage of Lorem Ipsum..
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Gail Forcewind</span></a>
-                                </p>
-                            </div>
-                        </li>
-                        <li class="task-info ui-sortable-handle" id="task4">
-                            <div class="checkbox checkbox-custom checkbox-single float-right">
-                                <input type="checkbox" aria-label="Single checkbox Two">
-                                <label></label>
-                            </div>It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Maya Didas</span></a>
-                                </p>
-                            </div>
-                        </li>
-                        <li class="task-danger ui-sortable-handle" id="task5">
-                            <div class="checkbox checkbox-custom checkbox-single float-right">
-                                <input type="checkbox" aria-label="Single checkbox Two">
-                                <label></label>
-                            </div>There are many variations of passages of Lorem Ipsum available.
-                            <div class="clearfix"></div>
-                            <div class="mt-3">
-                                <p class="float-right mb-0 mt-2">
-                                    <button type="button" class="btn btn-success btn-sm waves-effect waves-light">View</button>
-                                </p>
-                                <p class="mb-0">
-                                    <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Rick O'Shea</span></a>
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
+
+    <div class="container">
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h4 class="modal-title">Etes vous sur</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          De vouloir vous deconnecter ?
+        </div>
+        
+        <div class="modal-footer">
+      <button type="button" class="btn btn-success" data-dismiss="modal">Annuler</button>
+         <button type="button" class="btn btn-success" data-dismiss="modal"><a href="/Accueil">Continuer</a></button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
 </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
