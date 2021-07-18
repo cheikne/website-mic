@@ -20,6 +20,7 @@ class CreateUserPartenairesTable extends Migration
             $table->string('role');
             $table->string('email')->unique();
             $table->string('password')->unique();
+            $table->string('urlImg');
         });
     }
 

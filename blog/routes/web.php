@@ -27,15 +27,13 @@ Route::get('/Accueil/Contact',function(){
 });
 
 //Acces partenaire
-Route::get('Accueil/Acces-Partenaire',function(){
-    return view('projet-fin-etude.accesPartenaire.accesPartenaire');
-});
+Route::get('Accueil/Acces-Partenaire','\App\Http\Controllers\OnlineController@onlineUser');
 Route::view('/Accueil/Acces-Partenaire/Chat-Conversation','projet-fin-etude.accesPartenaire.chatConversation');
 Route::get('/Accueil/Acces-Partenaire/{id}','App\Http\Controllers\EditThesesController@AffichierTheseModifie');
-Route::get('{path}/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
-// Route::get('/Accueil/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
+Route::get('/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
+Route::get('/{path}/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
 // Route::get('/Accueil/Partenaire-Projet/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
 Route::get('modificationThese','App\Http\Controllers\EditThesesController@modificationThese');
 Route::get('recherchedestheses','App\Http\Controllers\These@recherchedestheses');
-Route::view('/Accueil/Realisation/These','projet-fin-etude.These');
+Route::view('/Accueil/Realisation/These','projet-fin-etude.these');
 ?>

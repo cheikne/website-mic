@@ -18,7 +18,7 @@
     <div class="page-title">
         <div class="row gutters">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <h5 class="title">Chat App</h5>
+                <h5 class="title">Chat de Conversation</h5>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"> </div>
         </div>
@@ -56,8 +56,8 @@
                                             <span class="status busy"></span>
                                         </div>
                                         <p class="name-time">
-                                            <span class="name">Steve Bangalter</span>
-                                            <span class="time">15/02/2019</span>
+                                            <span class="name">Utilsateur</span>
+                                            <!-- <span class="time">15/02/2019</span> -->
                                         </p>
                                     </li>
                                     <li class="person" data-chat="person1">
@@ -66,8 +66,8 @@
                                             <span class="status offline"></span>
                                         </div>
                                         <p class="name-time">
-                                            <span class="name">Steve Bangalter</span>
-                                            <span class="time">15/02/2019</span>
+                                            <span class="name">Utilsateur</span>
+                                            <!-- <span class="time">15/02/2019</span> -->
                                         </p>
                                     </li>
                                     <li class="person active-user" data-chat="person2">
@@ -76,8 +76,8 @@
                                             <span class="status away"></span>
                                         </div>
                                         <p class="name-time">
-                                            <span class="name">Peter Gregor</span>
-                                            <span class="time">12/02/2019</span>
+                                            <span class="name">Utilisateur</span>
+                                            <!-- <span class="time">12/02/2019</span> -->
                                         </p>
                                     </li>
                                     <li class="person" data-chat="person3">
@@ -86,8 +86,8 @@
                                             <span class="status busy"></span>
                                         </div>
                                         <p class="name-time">
-                                            <span class="name">Jessica Larson</span>
-                                            <span class="time">11/02/2019</span>
+                                            <span class="name">Utilisateur</span>
+                                            <!-- <span class="time">11/02/2019</span> -->
                                         </p>
                                     </li>
                                     <li class="person" data-chat="person4">
@@ -96,8 +96,8 @@
                                             <span class="status offline"></span>
                                         </div>
                                         <p class="name-time">
-                                            <span class="name">Lisa Guerrero</span>
-                                            <span class="time">08/02/2019</span>
+                                            <span class="name">Utilisateur</span>
+                                            <!-- <span class="time">08/02/2019</span> -->
                                         </p>
                                     </li>
                                     <li class="person" data-chat="person5">
@@ -106,8 +106,8 @@
                                             <span class="status away"></span>
                                         </div>
                                         <p class="name-time">
-                                            <span class="name">Michael Jordan</span>
-                                            <span class="time">05/02/2019</span>
+                                            <span class="name">Utilisateur</span>
+                                            <!-- <span class="time">05/02/2019</span> -->
                                         </p>
                                     </li>
                                 </ul>
@@ -115,22 +115,22 @@
                         </div>
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
                             <div class="selected-user">
-                                <span>To: <span class="name">Emily Russell</span></span>
+                                <span>A: <span class="name">Utilisateur</span></span>
                             </div>
                             <div class="chat-container">
                                 <ul class="chat-box chatContainerScroll">
                                     <li class="chat-left">
                                         <div class="chat-avatar">
                                             <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <div class="chat-name">Russell</div>
+                                            <div class="chat-name">Utilisateur</div>
                                         </div>
-                                        <div class="chat-text">Hello, I'm Russell.
+                                        <div class="chat-text">Hello, I'm Utilisateur.
                                             <br>How can I help you today?</div>
                                         <div class="chat-hour">08:55 <span class="fa fa-check-circle"></span></div>
                                     </li>
                                     <li class="chat-right">
                                         <div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
-                                        <div class="chat-text">Hi, Russell
+                                        <div class="chat-text">Hi, Utilisateur
                                             <br> I need more information about Developer Plan.</div>
                                         <div class="chat-avatar">
                                             <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
@@ -140,7 +140,7 @@
                                     <li class="chat-left">
                                         <div class="chat-avatar">
                                             <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <div class="chat-name">Russell</div>
+                                            <div class="chat-name">Utilisateur</div>
                                         </div>
                                         <div class="chat-text">Are we meeting today?
                                             <br>Project has been already finished and I have results to show you.</div>
@@ -158,7 +158,7 @@
                                     <li class="chat-left">
                                         <div class="chat-avatar">
                                             <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <div class="chat-name">Russell</div>
+                                            <div class="chat-name">Utilisateur</div>
                                         </div>
                                         <div class="chat-text">The rest of the team is not here yet.
                                             <br>Maybe in an hour or so?</div>
@@ -175,7 +175,7 @@
                                     <li class="chat-left">
                                         <div class="chat-avatar">
                                             <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <div class="chat-name">Russell</div>
+                                            <div class="chat-name">Utilisateur</div>
                                         </div>
                                         <div class="chat-text">Actually everything was fine.
                                             <br>I'm very excited to show this to our team.</div>

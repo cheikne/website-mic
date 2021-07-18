@@ -1,3 +1,7 @@
+/*
+    DEMO STYLE
+*/
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Poppins', sans-serif;
@@ -55,7 +59,6 @@ a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
     color: #fff;
     transition: all 0.3s;
 }
@@ -66,7 +69,7 @@ a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: rgb(128, 128, 128);
 }
 
 #sidebar ul.components {
@@ -92,8 +95,8 @@ a:focus {
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+    color: black;
+    background: lightblue;
 }
 
 a[data-toggle="collapse"] {
@@ -111,7 +114,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background:#1B2631;
 }
 
 ul.CTAs {
@@ -172,9 +175,6 @@ chat-search-box {
     padding: .75rem 1rem;
 }
 #contentSearch{
-  margin-left: 40px;
-  margin-top: 5px;
-  float: left;
   width: 60%;
 
 }
@@ -257,7 +257,7 @@ chat-search-box {
 
 .users {
     padding: 0;
-    display: inline-flex;
+    display: inline-block;
     width: 100%;
 }
 
@@ -268,8 +268,10 @@ chat-search-box {
     cursor: pointer;
     border-bottom: 1px solid #f0f4f8;
 }
-
-.users .person:hover {
+#personeEnLigne{
+    width: 25%;
+}
+#personeEnLigne:hover {
     background-color: #ffffff;
     /* Fallback Color */
     background-image: -webkit-gradient(linear, left top, left bottom, from(#e9eff5), to(#ffffff));
@@ -301,14 +303,10 @@ chat-search-box {
     background-image: linear-gradient(right, #f7f9fb, #ffffff);
 }
 
-.users .person:last-child {
-    border-bottom: 0;
-}
-
 .users .person .user {
     display: inline-block;
     position: relative;
-    margin-right: 10px;
+    /*margin-right: 10px;*/
 }
 
 .users .person .user img {
@@ -330,7 +328,9 @@ chat-search-box {
     top: 0;
     right: 0;
 }
-
+li{
+    list-style: none;
+}
 .users .person .user .status.online {
     background: #9ec94a;
 }
@@ -339,8 +339,8 @@ chat-search-box {
     background: #c4d2e2;
 }
 
-.users .person .user .status.away {
-    background: #f9be52;
+.users .person .user .status.userCuurent {
+    background: blue;
 }
 
 .users .person .user .status.busy {
@@ -365,12 +365,12 @@ chat-search-box {
         width: 30px;
         height: 30px;
     }
-    .users .person p.name-time {
+ /*   .users .person p.name-time {
         display: none;
     }
     .users .person p.name-time .time {
         display: none;
-    }
+    }*/
 }
 
 /*Les  Personnes recemment connectees*/
@@ -411,4 +411,9 @@ chat-search-box {
 }
 .text-muted {
     color: #98a6ad!important;
+}
+.imgcontainer {
+    width: 100%;
+  text-align: center;
+  margin: 24px 0 12px 0;
 }
