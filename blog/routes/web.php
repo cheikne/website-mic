@@ -46,6 +46,9 @@ Route::get('/Accueil/Contact',function(){
 Route::get('Accueil/Acces-Partenaire','\App\Http\Controllers\OnlineController@onlineUser');
 Route::view('/Accueil/Acces-Partenaire/Chat-Conversation','projet-fin-etude.accesPartenaire.chatConversation');
 Route::get('/Accueil/Acces-Partenaire/{id}','App\Http\Controllers\EditThesesController@AffichierTheseModifie');
+Route::get('/Actualite/edit','App\Http\Controllers\UpdateSupInserActualite@modifieSupInsert')
+// Route::get('/Accueil/Acces-Partenaire/{id}','App\Http\Controllers\EditThesesController@getIdthese');
+
 Route::get('/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
 Route::get('/{path}/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
 // Route::get('/Accueil/Partenaire-Projet/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
