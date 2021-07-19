@@ -14,7 +14,7 @@ class OnlineController extends Controller
         $tableUser = new User();
         // $tableonline = new online_users();
         // $dataOneline = $tableonline->where('bool',0)->get('id_user');
-        $dataUser = $tableUser->join('online_users','users.id','=','online_users.id_user')->where('bool',0)->get();
+        $dataUser = $tableUser->join('online_users','users.id','=','online_users.id_user')->where('bool',1)->get();
         return view('projet-fin-etude.accesPartenaire.accesPartenaire')
             ->with('dataUser',$dataUser);
     }

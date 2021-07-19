@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\OnlineUser;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -50,6 +51,14 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+        $tableUser =new User();
+        $new_user = $tableUser->where('email',$request->email)->first();
+        $online_user = new OnlineUser();
+            $online_user->heure = '12:00';
+            $online_user->bool = 1;
+            $online_user->id_user = $new_user->id;
+        $online_user->save();
 
         Auth::login($user);
 

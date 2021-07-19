@@ -19,6 +19,19 @@ class EditThesesController extends Controller
             $data = $tableThese->where('id_these',4)->first();
         return view('projet-fin-etude.accesPartenaire.editThese',['response'=>$data]);
     }
+
+    // public function getIdthese($id){
+    //     if($id=='These1')
+    //         $data = 1;
+    //     else if($id=='These2')
+    //         $data =2;
+    //     else if($id=='These3')
+    //         $data = 3;
+    //     else if($id=='These4')
+    //         $data = 4;
+    //     return view('projet-fin-etude.accesPartenaire.editThese',['data'=> $data]);
+    // }
+
     public function modificationThese(Request $req){
         $tableThese = new theses();
         $edit = $req->input('edit');

@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\includes;
 use App\Models\OnlineUser;
 
 class AuthenticatedSessionController extends Controller
@@ -29,14 +30,20 @@ class AuthenticatedSessionController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request)
-    {   $varx = new User();
-        $vary =new OnlineUser();
-        $user = $varx->where('email',$request->email)->first();
-        echo "djdjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj".$request->email;
-        $vary->where('id_user',$user->id)->update(['bool' => 1]);
+    {  
         $request->authenticate();
 
         $request->session()->regenerate();
+
+         $table_user = new User();
+        $table_userOnline =new OnlineUser();
+        $tablethese = new includes();
+        $user = $table_user->where('email',$request->email)->first();
+        // echo "djdjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj".$request->email;
+        $table_userOnline->where('id_user',$user->id)->update(['bool' => 1]);
+        $id_these = $tablethese->where('id_user',$user->id)->first();
+
+        // return view('projet-fin-etude.accesPartenaire.ac');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
