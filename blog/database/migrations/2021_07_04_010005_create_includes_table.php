@@ -18,7 +18,7 @@ class CreateIncludesTable extends Migration
             $table->unsignedBigInteger('id_these');
             $table->foreign('id_these')->references('id_these')->on('theses');
             $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id_user')->on('user_partenaires');
+            $table->foreign('id_user')->references('id')->on('users');
             
         });
     }

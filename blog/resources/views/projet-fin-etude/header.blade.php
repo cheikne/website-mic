@@ -21,7 +21,7 @@
             </div>
           </div>
       <div class="w3-right">
-        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-large w3-bar-item w3-button w3-hide-small">Acces Partenaires</button>
+        <a href="/" class="w3-button w3-large w3-bar-item w3-button w3-hide-small"  id="fonctionnalites">Acces Partenaires</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small" id="fonctionnalites">Anglais</a>
         <a href="/Accueil/Contact" class="w3-bar-item w3-button w3-hide-small" id="fonctionnalites">Contact</a>
       </div><br><br>

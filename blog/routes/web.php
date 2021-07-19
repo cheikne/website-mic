@@ -1,6 +1,22 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+/////////////////////////////////////////////////////////////////////
 Route::get('/Accueil','App\Http\Controllers\InstituitPartner@getDataJson');
 
 Route::get('/Accueil/Partenaire-Projet', 
@@ -36,4 +52,13 @@ Route::get('/{path}/CheckLoginUser','App\Http\Controllers\CheckLoginUserControll
 Route::get('modificationThese','App\Http\Controllers\EditThesesController@modificationThese');
 Route::get('recherchedestheses','App\Http\Controllers\These@recherchedestheses');
 Route::view('/Accueil/Realisation/These','projet-fin-etude.these');
-?>
+///////////////////////////////////////////////////////////////////
+// Route::get('/Accueil/Acces-Partenaire', function () {
+//     return view('projet-fin-etude.accesPartenaire.accesPartenaire');
+// })->middleware(['auth'])->name('accesPartenaire');
+
+Route::get('dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+// Route::get('Accueil/Acces-Partenaire','\App\Http\Controllers\OnlineController@onlineUser');
+require __DIR__.'/auth.php';

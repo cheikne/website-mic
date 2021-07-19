@@ -14,7 +14,7 @@ class CreateUserPartenairesTable extends Migration
     public function up()
     {
         Schema::create('user_partenaires', function (Blueprint $table) {
-            $table->id('id_user');
+            $table->id('id');
             $table->string('name_user');
             $table->string('prenom_user');
             $table->string('role');

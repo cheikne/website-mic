@@ -21,5 +21,6 @@ class CheckLoginUserController extends Controller
             echo "User Inconnue";
         }
     }
+    // return view('projet-fin-etude.accesPartenaire.accesPartenaire');
 }
 ?>
