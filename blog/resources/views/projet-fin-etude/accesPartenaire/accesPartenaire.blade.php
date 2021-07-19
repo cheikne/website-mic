@@ -164,11 +164,11 @@
                         @foreach($dataUser as $value)
                                     <li class="person" data-chat="person1" id="personeEnLigne">
                                         <div class="user">
-                                            <img src="{{$value->UrlImg}}" alt="Retail Admin">
+                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
                                             <span class="status online"></span>
                                         </div>
                                         <p class="name-time">
-                                            <span class="name">{{$value->name_user}}  {{$value->prenom_user}}</span>
+                                            <span class="name">{{$value->name}}</span>
                                         </p>
                                     </li>
                         @endforeach

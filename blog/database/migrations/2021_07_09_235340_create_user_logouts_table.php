@@ -18,7 +18,7 @@ class CreateUserLogoutsTable extends Migration
             $table->time('heure')->nullable();
             $table->unsignedBigInteger('bool');
             $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id_user')->on('user_partenaires');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
