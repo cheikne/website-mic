@@ -52,7 +52,11 @@ Route::get('/Actualite/edit','App\Http\Controllers\UpdateSupInserActualite@modif
 Route::get('/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
 Route::get('/{path}/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
 // Route::get('/Accueil/Partenaire-Projet/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
-Route::get('modificationThese','App\Http\Controllers\EditThesesController@modificationThese');
+// Route::get('modificationThese','App\Http\Controllers\EditThesesController@modificationThese');
+
+Route::get('updateTableLog','App\Http\Controllers\updateTableLogController@updateTableLog');
+
+
 Route::get('recherchedestheses','App\Http\Controllers\These@recherchedestheses');
 Route::view('/Accueil/Realisation/These','projet-fin-etude.these');
 ///////////////////////////////////////////////////////////////////

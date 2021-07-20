@@ -1,4 +1,4 @@
-function ModificationThese(event,edit,id,id_button){
+function ModificationThese(event,edit,id_button){
 	// event.preventDefault();
 	$(document).ready(function(){
 		const innerText = $("#"+edit).text();
@@ -34,9 +34,46 @@ function ModificationThese(event,edit,id,id_button){
 	// })
 	// document.getElementById(edit).innerHTML=`<h1>je suis fort blablabla</h1>`;
 }
-$(document).ready(function(){
-	$("#valeur_ajoute").focusout(()=>{
-		const innerText = $("#valeur_ajoute").text();
-		$("#valeur_ajoute").text(innerText);
-	});
+// $(document).ready(function(){
+// 	$("#valeur_ajoute").focusout(()=>{
+// 		const innerText = $("#valeur_ajoute").text();
+// 		$("#valeur_ajoute").text(innerText);
+// 	});
+// });
+
+// function LoadDataContentThese(id){
+// 	$(document).ready(function(){
+// 		   $.ajax({
+//             type:"get",
+//             url:"modificationThese",
+//             data:{
+//             	id:id
+//             },
+//             success:function(result){
+//                 document.getElementById('contentThese').innerHTML=`${{  result }}`;
+          
+//             }
+//        });
+// 	});
+// }
+
+function LogoutUser(id_user){
+	alert("fjjjjjjjjjjjjjjjjjjjjjjj"+id_user);
+	var date = new Date();
+ 	var minu = date.getMinutes();
+    var heure = date.getHours();
+    var time  = heure+":"+minu;
+	$(document).ready(function(){
+	   $.ajax({
+        type:"get",
+        url:"updateTableLog",
+        data:{
+        	id:id_user,
+        	time:time
+        }
+   ,success : function(){
+   	alert("aaaaaaaaaaaaaaaaaaaaaaa");
+   }});
 });
+
+}

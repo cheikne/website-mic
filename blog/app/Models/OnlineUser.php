@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class OnlineUser extends Model
 {
+        protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'profil',
+        'institut',
+    ];
     use HasFactory;
 }

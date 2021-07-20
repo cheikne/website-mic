@@ -10,13 +10,15 @@
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"> -->
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/accesPartenaire/accesPartenaire.css')}}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{asset('js/accesPartenaire/editTheses.js')}}"></script>
 </head>
 
 <body>
@@ -32,7 +34,7 @@
                                 <span class="status userCuurent"></span>
                             </div>
                             <p class="name-time">
-                                <span class="name">Utilisateur en ligne</span>
+                                <span class="name">{{ Auth::user()->name }}</span>
                             </p>
                         </li>
                     </ul>
@@ -48,22 +50,22 @@
                                 <a href="/Accueil/Acces-Partenaire/These1">Realisation 1</a>
                             </li>
                             <li>
-                                <a href="#">Realisation 2</a>
+                                <a href="/Accueil/Acces-Partenaire/These2">Realisation 2</a>
                             </li>
                             <li>
-                                <a href="#">Realisation 3</a>
+                                <a href="/Accueil/Acces-Partenaire/These3">Realisation 3</a>
                             </li>
                              <li>
-                                <a href="#">Realisation 4</a>
+                                <a href="/Accueil/Acces-Partenaire/These4">Realisation 4</a>
                             </li>
                              <li>
-                                <a href="#">Realisation 5</a>
+                                <a href="/Accueil/Acces-Partenaire/These5">Realisation 5</a>
                             </li>
                              <li>
-                                <a href="#">Realisation 6</a>
+                                <a href="/Accueil/Acces-Partenaire/These6">Realisation 6</a>
                             </li>
                              <li>
-                                <a href="#">Realisation 7</a>
+                                <a href="/Accueil/Acces-Partenaire/These7">Realisation 7</a>
                             </li>
                         </ul>
                     </li>
@@ -155,13 +157,29 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class='fas fa-bell' style='font-size:36px'></i></a>
-                            </li>&nbsp;&nbsp;
+                            </li>
                             <li class="nav-item">
                               <!-- <a class="nav-link" href="#">Deconnexion</a> -->
-                                <button type="button" class="btn btn-primary nav-link" data-toggle="modal" data-target="#myModal">
+                              <!--   <button type="button" class="btn btn-primary nav-link" data-toggle="modal" data-target="#myModal">
                                      Deconnexion
-                            </button>
-                              <!-- <button type="button" class="btn btn-primary nav-link">Deconnexion</button> -->
+                            </button> -->
+                            @auth
+                            
+                                 <div class="hidden sm:flex sm:items-center sm:ml-6  nav-link">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <div>
+                                                <x-dropdown-link :href="route('logout')"
+                                                        onclick="event.preventDefault();
+                                                                    this.closest('form').submit();
+                                                                    LogoutUser({{Auth::user()->id}});">
+                                                   <button type="button" class="btn btn-primary"> {{ __('Deconnexion') }}</button>
+                                                </x-dropdown-link>
+                                            </div>
+                                            </form>
+                                </div>
+
+                            @endauth
                             </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </ul>
                     </div>
