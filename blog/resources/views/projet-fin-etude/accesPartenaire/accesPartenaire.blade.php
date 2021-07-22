@@ -10,7 +10,6 @@
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"> -->
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/accesPartenaire/accesPartenaire.css')}}">
@@ -18,7 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{asset('js/accesPartenaire/editTheses.js')}}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -73,7 +73,7 @@
                         <a href="#pageIndust" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Actualites Industriel</a>
                         <ul class="collapse list-unstyled" id="pageIndust">
                             <li>
-                                <a href="#">Groupe Managem</a>
+                                <a href="/Accueil/Acces-Partenaire/Actualites-Industriels">Groupe Managem</a>
                             </li>
                             <li>
                                 <a href="#">Centre Reminex</a>
@@ -190,19 +190,7 @@
                 <div class="container">
                   <div class="users-container container">
                                 <!-- <h2>Les personnes en ligne</h2> -->
-                                <ul class="users d-flex flex-wrap">
-                        @foreach($dataUser as $value)
-                                    <li class="person" data-chat="person1" id="personeEnLigne">
-                                        <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <span class="status online"></span>
-                                        </div>
-                                        <p class="name-time">
-                                            <span class="name">{{$value->name}}</span>
-                                        </p>
-                                    </li>
-                        @endforeach
-                                </ul>
+                                <ul class="users d-flex flex-wrap" id="userOnline"></ul>
                     </div>
                    </div> 
                 <!-- <div class="line"></div> -->
@@ -213,72 +201,18 @@
                                 <div class="card-box">
                                     <h4 class="text-dark header-title">Personne deconnectee recemment</h4>
                                     <!-- <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p> -->
-                                      <ul class="sortable-list taskList list-unstyled ui-sortable" id="upcoming">
-                                    <li class="task-warning ui-sortable-handle" id="task1">
-                                        <div class="clearfix"></div>
-                                        <div class="mt-3">
-                                            <p class="float-right mb-0 mt-2">
-                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">En ligne 14:00</button>
-                                            </p>
-                                            <p class="mb-0">
-                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Utilisateur</span></a>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="task-success ui-sortable-handle" id="task2">
-                                        <div class="clearfix"></div>
-                                        <div class="mt-3">
-                                            <p class="float-right mb-0 mt-2">
-                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">En ligne 14:00</button>
-                                            </p>
-                                            <p class="mb-0">
-                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Utilisateur</span></a>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li id="task3" class="ui-sortable-handle">
-                                        <div class="clearfix"></div>
-                                        <div class="mt-3">
-                                            <p class="float-right mb-0 mt-2">
-                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">En ligne 14:00</button>
-                                            </p>
-                                            <p class="mb-0">
-                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Utilisateur</span></a>
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul><br>
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                </ul><br>
-                                </div>
+                                     <div id="user_logout"></div>
+                                    </div>
                             </div>
                                 <!-- Les activites Recentes  -->
                              <div class="col-lg-6">
                                 <div class="card-box">
                                     <h4 class="text-dark header-title">Activites recentes</h4>
                                     <!-- <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p> -->
-                                      <ul class="sortable-list taskList list-unstyled ui-sortable" id="upcoming">
-                                    <li class="task-warning ui-sortable-handle" id="task1">
-                                        <div class="clearfix"></div>
-                                        <div class="mt-3">
-                                            <p class="float-right mb-0 mt-2">
-                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">A Modifie</button>
-                                            </p>
-                                            <p class="mb-0">
-                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Utilisateur</span></a>
-                                            </p><br>
-                                            <div class="d-flex flex-wrap align-content-start bg-light">
-                                                <div class="p-2 border">These1</div><br>
-                                                <div class="p-2 border">These1</div><br>
-                                                <div class="p-2 border">These1</div>
-                                                <div class="p-2 border">These1</div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="task-success ui-sortable-handle" id="task2">
+                                    <div id="activite"></div>
+                                    
+                                    
+                                   <!--  <li class="task-success ui-sortable-handle" id="task2">
                                         <div class="clearfix"></div>
                                         <div class="mt-3">
                                             <p class="float-right mb-0 mt-2">
@@ -293,31 +227,13 @@
                                                 <div class="p-2 border">These1</div>
                                                 <div class="p-2 border">These1</div>
                                             </div>
-                                        </div>
-                                    </li>
-                                   <!--  <li id="task3" class="ui-sortable-handle">
-                                        <div class="clearfix"></div>
-                                        <div class="mt-3">
-                                            <p class="float-right mb-0 mt-2">
-                                                <button type="button" class="btn btn-success btn-sm waves-effect waves-light">A Modifier</button>
-                                            </p>
-                                            <p class="mb-0">
-                                                <a href="" class="text-muted"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="task-user" class="thumb-sm rounded-circle mr-2"> <span class="font-bold font-secondary">Gail Forcewind</span></a>
-                                            </p><br>
-                                             <div class="d-flex flex-wrap align-content-start bg-light">
-                                                <div class="p-2 border">These1</div><br>
-                                                <div class="p-2 border">These1</div><br>
-                                                <div class="p-2 border">These1</div>
-                                                <div class="p-2 border">These1</div>
-                                            </div>
-                                        </div>
+                                        </div> 
                                     </li> -->
-                                </ul><br>
-                                <ul class="pagination" style="float:center;">
+                               <!--  <ul class="pagination" style="float:center;">
                                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                </ul>
+                                </ul> -->
                                 </div>
                             </div>
                         </div>
@@ -353,7 +269,6 @@
 </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->

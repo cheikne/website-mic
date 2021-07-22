@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\includes;
 use App\Models\OnlineUser;
-
+use App\Models\user_deconnecter;
+use \Carbon\Carbon;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -35,13 +36,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-         $table_user = new User();
+        $table_user = new User();
         $table_userOnline =new OnlineUser();
         $tablethese = new includes();
         $user = $table_user->where('email',$request->email)->first();
         // echo "djdjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj".$request->email;
         $table_userOnline->where('id_user',$user->id)->update(['bool' => 1]);
         $id_these = $tablethese->where('id_user',$user->id)->first();
+        $heure = Carbon :: now ();
+        user_deconnecter::where('id_user',$user->id)->update(['bool' => 0,'heure' => $heure]);
 
         // return view('projet-fin-etude.accesPartenaire.ac');
         return redirect()->intended(RouteServiceProvider::HOME);
