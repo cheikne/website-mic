@@ -47,7 +47,7 @@ function LogoutUser(id_user){
     SendToServer(url,callback,false);
 }
 
-// setInterval(UserOnline, 5000);
+setInterval(UserOnline, 5000);
 //Pour les users qui sont en ligne
 function UserOnline(){
     var url = "/Accueil/AllUserOnline";
@@ -57,11 +57,13 @@ function UserOnline(){
 
 }
 //Pour les users qui se sont deconnectes recemment
-// setInterval(UserLogout, 6000);
+setInterval(UserLogout, 15000);
+var is_recharge="oui";
 function UserLogout(){
-    var url ="/Accueil/UserLogoutRecent";
+     var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge;
     SendToServer(url,callback,'user_logout');
-    console.log('La fonctions setInterval a chaque cinq secondes');
+    is_recharge='non';
+    // console.log('La fonctions setInterval a chaque cinq secondes');
 }
 
 
@@ -100,6 +102,16 @@ function paginationActivite(id,page,nbreId){
     document.getElementById("pag"+id).style.display="block";
 }
 
+//Recharger les personnes les nouvelles personnes qui se sont recemment deconnecter
+function RechargerUserLogout(){
+    is_recharge='oui';
+     var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge;
+    SendToServer(url,callback,'user_logout');
+    is_recharge='non';
+}
+function HideButtonCharge() {
+    document.getElementById('is_recharge').style.display="none";
+}
 // Requete Ajax
 function  SendToServer(url,callback,id) {
   var xhttp = new XMLHttpRequest();
@@ -111,10 +123,19 @@ function  SendToServer(url,callback,id) {
   xhttp.open("get", url, true);
   xhttp.send();
 }
+const hideButtonCharge="";
 const callback = function(response,id){
     if(id){
+        if(response =='estConfirme'){
+            document.getElementById('is_recharge').style.display="block";
+            document.getElementById('is_recharge').style.color="#E0FFFF";
+            hideButtonCharge = setTimeout(HideButtonCharge,1000);
+        }else if(response=='rien_a_charger'){
+            console.log(response);
+        }else{
          document.getElementById(id).innerHTML=response;
          // console.log(response);
+        }
      }
      else
         alert(response);
