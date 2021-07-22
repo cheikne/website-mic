@@ -199,8 +199,8 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="card-box">
-                                    <h4 class="text-dark header-title">Personne deconnectee recemment</h4>
-                                    <!-- <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p> -->
+                                    <h4 class="text-dark header-title">Personne deconnectee recemment </h4>
+                                    <p class="text-muted m-b-30 font-13" id="is_recharge" style="display:none;">quelqu'un vient de se deconnecter  <button type="button" class="btn btn-primary" onclick="RechargerUserLogout()">Charger</button></p>
                                      <div id="user_logout"></div>
                                     </div>
                             </div>
