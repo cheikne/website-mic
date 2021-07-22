@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\user_deconnecter;
 use App\Models\OnlineUser;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -51,7 +52,7 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
+        //Enregistrement de new user dans la table OnlineUser
         $tableUser =new User();
         $new_user = $tableUser->where('email',$request->email)->first();
         $online_user = new OnlineUser();
@@ -60,6 +61,12 @@ class RegisteredUserController extends Controller
             $online_user->id_user = $new_user->id;
         $online_user->save();
 
+        //Enregistrement de new user dans la table UserDeconnecter
+        $tableLogout = new user_deconnecter();
+        $tableLogout->heure = '12:00';
+        $tableLogout->bool = 0;
+        $tableLogout->id_user = $new_user->id;
+        $tableLogout->save();
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
