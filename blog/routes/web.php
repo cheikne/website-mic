@@ -54,6 +54,7 @@ Route::get('/Accueil/Acces-Partenaire/These6','App\Http\Controllers\EditThesesCo
 Route::get('/Accueil/Acces-Partenaire/These7','App\Http\Controllers\EditThesesController@AffichierThese7Modifie');
 Route::get('/Actualite/edit','App\Http\Controllers\UpdateSupInserActualite@modifieSupInsert');
 Route::view('/Accueil/Acces-Partenaire/Actualites-Industriels','projet-fin-etude.accesPartenaire.editActualites');
+Route::view('/Accueil/Acces-Partenaire/Evenements','projet-fin-etude.accesPartenaire.editEvents');
 // Route::get('/Accueil/Acces-Partenaire/{id}','App\Http\Controllers\EditThesesController@getIdthese');
 
 Route::get('/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
@@ -68,6 +69,10 @@ Route::get('/Accueil/Acces-Partenaire/updateThese','App\Http\Controllers\EditThe
 Route::get('/Accueil/Acces-Partenaire/getActiviteRecente','App\Http\Controllers\activiteController@getActiviteRecente');
 Route::get('/Accueil/Acces-Partenaire/DeleteTheseInTableActivite','App\Http\Controllers\EditThesesController@DeleteTheseInTableActivite');
 Route::get('/Accueil/Acces-Partenaire/UpdateTheseInTableActivite','App\Http\Controllers\EditThesesController@UpdateTheseInTableActivite');
+Route::get('/Accueil/Acces-Partenaire/insertNewEvent','App\Http\Controllers\CrudEventController@insertNewEvent');
+Route::get('/Accueil/Acces-Partenaire/getOneEvents','App\Http\Controllers\CrudEventController@getOneEvents');
+Route::get('/Accueil/Acces-Partenaire/UpdateOneEvents','App\Http\Controllers\CrudEventController@UpdateOneEvents');
+Route::get('/Accueil/Acces-Partenaire/displayAllEvents','App\Http\Controllers\CrudEventController@displayAllEvents');
 
 
 Route::get('recherchedestheses','App\Http\Controllers\These@recherchedestheses');

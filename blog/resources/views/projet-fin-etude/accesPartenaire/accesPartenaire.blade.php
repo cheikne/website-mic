@@ -32,7 +32,7 @@
                             <div class="user">
                                 <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
                                 <span class="status userCuurent"></span>
-                            </div>
+                            </div><br>
                             <p class="name-time">
                                 <span class="name">{{ Auth::user()->name }}</span>
                             </p>
@@ -46,27 +46,52 @@
                     <li>
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Realisations</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu" style="background-color: grey;">
-                            <li>
-                                <a href="/Accueil/Acces-Partenaire/These1">Realisation 1</a>
-                            </li>
-                            <li>
-                                <a href="/Accueil/Acces-Partenaire/These2">Realisation 2</a>
-                            </li>
-                            <li>
-                                <a href="/Accueil/Acces-Partenaire/These3">Realisation 3</a>
-                            </li>
-                             <li>
-                                <a href="/Accueil/Acces-Partenaire/These4">Realisation 4</a>
-                            </li>
-                             <li>
-                                <a href="/Accueil/Acces-Partenaire/These5">Realisation 5</a>
-                            </li>
-                             <li>
-                                <a href="/Accueil/Acces-Partenaire/These6">Realisation 6</a>
-                            </li>
-                             <li>
-                                <a href="/Accueil/Acces-Partenaire/These7">Realisation 7</a>
-                            </li>
+                            @if(Auth::user()->profil =='admin')
+                                <li>
+                                    <a href="/Accueil/Acces-Partenaire/These1">Realisation 1 (+)</a>
+                                </li>
+                                <li>
+                                    <a href="/Accueil/Acces-Partenaire/These2">Realisation 2 (+)</a>
+                                </li>
+                                <li>
+                                    <a href="/Accueil/Acces-Partenaire/These3">Realisation 3 (+)</a>
+                                </li>
+                                 <li>
+                                    <a href="/Accueil/Acces-Partenaire/These4">Realisation 4 (+)</a>
+                                </li>
+                                 <li>
+                                    <a href="/Accueil/Acces-Partenaire/These5">Realisation 5 (+)</a>
+                                </li>
+                                 <li>
+                                    <a href="/Accueil/Acces-Partenaire/These6">Realisation 6 (+)</a>
+                                </li>
+                                 <li>
+                                    <a href="/Accueil/Acces-Partenaire/These7">Realisation 7 (+)</a>
+                                </li>
+                            @else
+                                 <li>
+                                    <a href="/Accueil/Acces-Partenaire/These1">{{$these1}}</a>
+                                </li>
+                                <li>
+                                    <a href="/Accueil/Acces-Partenaire/These2">{{$these2}}</a>
+                                </li>
+                                <li>
+                                    <a href="/Accueil/Acces-Partenaire/These3">{{$these3}}</a>
+                                </li>
+                                 <li>
+                                    <a href="/Accueil/Acces-Partenaire/These4">{{$these4}}</a>
+                                </li>
+                                 <li>
+                                    <a href="/Accueil/Acces-Partenaire/These5">{{$these5}}</a>
+                                </li>
+                                 <li>
+                                    <a href="/Accueil/Acces-Partenaire/These6">{{$these6}}</a>
+                                </li>
+                                 <li>
+                                    <a href="/Accueil/Acces-Partenaire/These7">{{$these7}}</a>
+                                </li>
+                            @endif
+
                         </ul>
                     </li>
                     <li>
@@ -95,15 +120,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#pageEvents" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Evenements</a>
-                        <ul class="collapse list-unstyled" id="pageEvents">
-                            <li>
-                                <a href="#">Visites</a>
-                            </li>
-                            <li>
-                                <a href="#">Conferences</a>
-                            </li>
-                        </ul>
+                        <a href="/Accueil/Acces-Partenaire/Evenements">Evenements</a>
                     </li>
                     <li>
                         <a href="#pageresearch" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Recherche Scientifique</a>
