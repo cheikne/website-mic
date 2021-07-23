@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\activite_recentes;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 class activiteController extends Controller
 {
     public function getActiviteRecente(){
         $i=1;$j=1;$compteNbrli=1;$pagination=1;$k=1;$compteNbrPaginat=0;$check=true;
+        $privilege = Auth::user()->profil;
         $user = User::get();
         echo "<ul class='sortable-list taskList list-unstyled ui-sortable' id='upcoming'>";
         foreach($user as $response){
@@ -39,8 +40,12 @@ class activiteController extends Controller
 
             }
             if($j ==0) {
-                echo "
-                <div class='p-2 border'><a href='{$textEditer->url}'>{$textEditer->titre}</a></div><br>";
+                if($privilege == 'admin')
+                    echo "
+                    <div class='p-2 border'><a href='{$textEditer->url}'>{$textEditer->titre}</a></div><br>";
+                else
+                    echo "
+                    <div class='p-2 border'><button style='border:none;' disabled>{$textEditer->titre}</button></div><br>";
                 $i=0;
 
             }
@@ -57,6 +62,7 @@ class activiteController extends Controller
             if($pagination==2){
                 echo "</div>";
                 $k++;
+                $compteNbrli=0;
             }
             ++$pagination;
             if($pagination==3){
@@ -67,13 +73,14 @@ class activiteController extends Controller
     }
 
          if($compteNbrPaginat-1 !=2){
-            if($compteNbrPaginat==1){
-                 echo "<br><br><br><br><br><br>";
-            }
+            // if($compteNbrPaginat==1){
+            //      echo "<br><br><br><br><br><br>";
+            // }
+            if($compteNbrli ==1)
+             echo "<br><br><br><br><br><br><br>";
             echo "</div>";
         }else if($compteNbrPaginat-1==2){
             $k--;
-            echo "<br><br><br>";
         }
         echo "</ul><br>";
         if($k>1){
@@ -84,7 +91,5 @@ class activiteController extends Controller
             }
             echo "</ul><br>";
         }
-        if($compteNbrli ==1)
-            echo "<br><br><br><br><br><br>";
     }
 }
