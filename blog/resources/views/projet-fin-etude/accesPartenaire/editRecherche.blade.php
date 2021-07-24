@@ -6,7 +6,7 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="{{asset('js/accesPartenaire/editActualite.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/accesPartenaire/editEvenement.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/accesPartenaire/accesPartenaire.css')}}">
 <style>
 body {font-family: "Roboto", sans-serif}
@@ -83,10 +83,10 @@ input[type=Search]:{
   </div>
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
   <button class="w3-bar-item w3-button w3-blue" >Acces-Partenaire</button>
-  <button class="w3-bar-item w3-button" id="event" onclick="editActualite(this.id)">Modifier Actualité</button>
-  <button class="w3-bar-item w3-button" onclick="addNewActualite()">Ajouter Actualité</button>
-  <button class="w3-bar-item w3-button" id="delete" onclick="displaydeleteOneActualite(this.id)">Supprimer Actualité</button>
-  <button class="w3-bar-item w3-button" onclick="displayAllActualite()">Afficher tout</button>
+  <button class="w3-bar-item w3-button" id="event" onclick="editRecherche(this.id)">Modifier Evenenement</button>
+  <button class="w3-bar-item w3-button" onclick="addNewRecherche()">Ajouter Evenenement</button>
+  <button class="w3-bar-item w3-button" id="delete" onclick="displaydeleteOneRecherche(this.id)">Supprimer Evenenement</button>
+  <button class="w3-bar-item w3-button" onclick="displayAllRecherche()">Afficher tout</button>
 </nav>
 
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
@@ -95,23 +95,23 @@ input[type=Search]:{
 
 <div id="myTop" class="w3-container w3-top w3-theme w3-large w3-blue">
   <p><i class="fa fa-bars w3-button w3-blue w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-  <span id="myIntro" class="w3-hide">Actualité</span></p>
+  <span id="myIntro" class="w3-hide">Evenenement:Visites et Conferences</span></p>
 </div>
 
 <header class="w3-container w3-theme w3-blue" style="padding:64px 32px;">
-  <h1 class="w3-xxxlarge">Actualité</h1>
+  <h1 class="w3-xxxlarge">Evenenement:Visites et Conferences</h1>
 </header>
 <div class="w3-container" style="padding:32px">
   <div id="ContentEvent">
     <div class="chat-search-box w3-right" id="contentSearch">
-        <label>Entrer la date de l'actualité</label>
+        <label>Entrer la date de de l'evenement</label>
         <div class="input-group">
             <input type="Search"  id='dte_serach' class="form-control" placeholder="aaaa-mm-jjj">
             <div class="input-group-btn">
-               <button type="button" class="btn btn-info w3-light-blue" id= "actu" onclick="getOneActualite(this.id)">
+               <button type="button" class="btn btn-info w3-light-blue" id= "event" onclick="getOneRecherche(this.id)">
                     <i class="fa fa-search"></i>
                 </button>
-            </div> 
+            </div>
         </div>
     </div><br><br><br><br><br>
     <div id="resultat"></div>

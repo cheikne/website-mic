@@ -1,5 +1,5 @@
 
-function addNewActualite(){
+function addNewRecherche(){
     document.getElementById('ContentEvent').innerHTML=`
        <form>
         <fieldset>
@@ -30,7 +30,7 @@ function addNewActualite(){
     `;
   }
   
-  function editActualite(events){
+  function editRecherche(events){
     // alert(events);
     document.getElementById('ContentEvent').innerHTML=`
        <div class="chat-search-box w3-right" id="contentSearch">
@@ -48,14 +48,14 @@ function addNewActualite(){
     `;
   
   }
-  function displaydeleteOneActualite(delet){
+  function displaydeleteOneRecherche(delet){
      document.getElementById('ContentEvent').innerHTML=`
        <div class="chat-search-box w3-right" id="contentSearch">
-          <label>Entrer la date de l'actualité à supprimer</label>
+          <label>Entrer la date de de l'evenement a supprimer</label>
           <div class="input-group">
               <input type="Search" class="form-control" id='delete_serach' placeholder="aaaa-mm-jjj" required>
               <div class="input-group-btn">
-                  <button type="button" class="btn btn-info w3-light-blue" onclick="getOneActualite('${delet}')">
+                  <button type="button" class="btn btn-info w3-light-blue" onclick="getOneActualites('${delet}')">
                       <i class="fa fa-search"></i>
                   </button>
               </div>
@@ -65,8 +65,8 @@ function addNewActualite(){
     `;
   }
   
-  function DeleteOneActualite(id,check){
-    var url = "/Accueil/Acces-Partenaire/DeleteOneActu?id="+id;
+  function DeleteOneRecherche(id,check){
+    var url = "/Accueil/Acces-Partenaire/DeleteOneReche?id="+id;
     if(check==-2){
       document.getElementById('success').innerHTML="Sppression avec Success";
       SendToServer(url,callback,false);
@@ -89,39 +89,39 @@ function addNewActualite(){
     var dte = document.getElementById('dte').value;
     var titre = document.getElementById('titre').value;
     var resumer = document.getElementById('resumer').value;
-    var url = "/Accueil/Acces-Partenaire/insertNewActu?dte="+date+"&resumer="+resumer+"&titre="+titre;
+    var url = "/Accueil/Acces-Partenaire/insertNewRech?dte="+date+"&resumer="+resumer+"&titre="+titre;
     SendToServer(url,callback,false);
   }
   
-  function getOneActualite(check){
+  function getOneRecherche(check){
     var dte_serach="";
   
-    if(check =='actu'){
+    if(check =='event'){
       dte_serach = document.getElementById('dte_serach').value;
         // alert(check);
-      var url = "/Accueil/Acces-Partenaire/getOneActu?dte="+dte_serach+"&check="+check;
+      var url = "/Accueil/Acces-Partenaire/getOneRech?dte="+dte_serach+"&check="+check;
       SendToServer(url,callback2,'resultat');
     }
     else{
       dte_serach = document.getElementById('delete_serach').value;
         // alert(check);
-      var url = "/Accueil/Acces-Partenaire/getOneActu?dte="+dte_serach+"&check="+check;
+      var url = "/Accueil/Acces-Partenaire/getOneRech?dte="+dte_serach+"&check="+check;
       SendToServer(url,callback2,'resultat_delete');
     }
   }
   
-  function UpdateActualite(id){
+  function UpdateRecherche(id){
     alert(id);
      var titreT = document.getElementById('titreT').value;
      var resumerT = document.getElementById('resumerT').value;
      var dteT = document.getElementById('dteT').value;
-    var url = "/Accueil/Acces-Partenaire/UpdateOneActu?id="+id+"&titreT="+titreT+"&resumerT="+resumerT+"&dte="+dteT;
+    var url = "/Accueil/Acces-Partenaire/UpdateOneRech?id="+id+"&titreT="+titreT+"&resumerT="+resumerT+"&dte="+dteT;
     SendToServer(url,callback,false);
     document.getElementById('success').innerHTML="Mise en Jours faite avec Success";
   }
   
-  function displayAllActualite(){
-     var url = "/Accueil/Acces-Partenaire/displayAllActu";
+  function displayAllRecherche(){
+     var url = "/Accueil/Acces-Partenaire/displayAllRech";
       SendToServer(url,callback,"ContentEvent");
   }
   
