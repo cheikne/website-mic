@@ -53,11 +53,11 @@ class CrudEventController extends Controller
                     </div>
 
                 </div>";
-               echo "<button class='btn btn-primary w3-right' onclick='UpdateEvent({$response->id_actu})'>Enregistrer</button>
+               echo "<button class='btn btn-primary w3-right' onclick='UpdateEvent({$response->id_actu},0)'>Enregistrer</button>
             ";
             }
         echo "</div>";
-        echo "<div id='success' class='w3-text-light-green'></div>";
+        echo "<div id='success' style='padding:10px;font-size:1.2em;' class='w3-text-light-green'></div>";
 
     }
     public function UpdateOneEvents(Request $req){
@@ -76,6 +76,7 @@ class CrudEventController extends Controller
         foreach($event as $response){
             echo "
                 <div class='w3-row w3-margin' id='{$response->id_actu}'>
+                    <div id='success' style='padding:10px;font-size:1.2em;' class='w3-text-light-green'></div>
                     <div class='w3-third'>
                       <img src='{$response->urlImg}' style='width:100%;min-height:400px'>
                     </div>
@@ -85,12 +86,12 @@ class CrudEventController extends Controller
                       <p>{$response->resumer}</p>
                     </div>
                     <div class='w3-twothird w3-container' style='display:none;' id='{$a}'>
-                    <input type='date' id='dteT' value='{$response->date}'>&nbsp;&nbsp;<label>Date</label>
+                    <input type='date' id='dteT{$response->id_actu}' value='{$response->date}'>&nbsp;&nbsp;<label>Date</label>
                     <p>Titre</p>
-                      <textarea  class='form-control' rows='4' id='titreT'>{$response->titre}</textarea ><br>
+                      <textarea  class='form-control' rows='4' id='titreT{$response->id_actu}'>{$response->titre}</textarea ><br>
                       <p>Resumer</p>
-                      <textarea  class='form-control' rows='14' id='resumerT'>{$response->resumer}</textarea>
-                        <button class='btn btn-primary w3-right' onclick='UpdateEvent({$response->id_actu})'>Modifier</button>
+                      <textarea  class='form-control' rows='14' id='resumerT{$response->id_actu}'>{$response->resumer}</textarea>
+                        <button class='btn btn-primary w3-right' onclick='UpdateEvent({$response->id_actu},{$a})'>Modifier</button>
                     </div>
                     <div class='w3-right' id='a{$response->id_actu}'>
                         <button class='btn btn-primary' id='a{$response->id_actu}' onclick='DisplayChampedit(this.id,{$a},{$b})'>Modifier</button>

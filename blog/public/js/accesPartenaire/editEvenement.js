@@ -110,14 +110,23 @@ function getOneEvents(check){
   }
 }
 
-function UpdateEvent(id){
-  alert(id);
-   var titreT = document.getElementById('titreT').value;
-   var resumerT = document.getElementById('resumerT').value;
-   var dteT = document.getElementById('dteT').value;
-  var url = "/Accueil/Acces-Partenaire/UpdateOneEvents?id="+id+"&titreT="+titreT+"&resumerT="+resumerT+"&dte="+dteT;
-  SendToServer(url,callback,false);
-  document.getElementById('success').innerHTML="Mise en Jours faite avec Success";
+function UpdateEvent(id,check){
+  // alert(id);
+  if(check==0){
+     var titreT = document.getElementById('titreT').value;
+     var resumerT = document.getElementById('resumerT').value;
+     var dteT = document.getElementById('dteT').value;
+    var url = "/Accueil/Acces-Partenaire/UpdateOneEvents?id="+id+"&titreT="+titreT+"&resumerT="+resumerT+"&dte="+dteT;
+    SendToServer(url,callback,false);
+    document.getElementById('success').innerHTML="Mise en Jours faite avec Success";
+  }else{
+      var titreT = document.getElementById('titreT'+id).value;
+     var resumerT = document.getElementById('resumerT'+id).value;
+     var dteT = document.getElementById('dteT'+id).value;
+    var url = "/Accueil/Acces-Partenaire/UpdateOneEvents?id="+id+"&titreT="+titreT+"&resumerT="+resumerT+"&dte="+dteT;
+    SendToServer(url,callback,false);
+    document.getElementById('success').innerHTML="Mise en Jours faite avec Success";
+  }
 }
 
 function displayAllEvents(){
@@ -142,8 +151,8 @@ var hideButtonCharge="";
 const callback = function(response,id){
   if(id)
     document.getElementById(id).innerHTML=response;
-  else
-    alert(response);
+  // else
+  //   alert(response);
 };
 const callback2 = function(response,id){
   if(response =="aucun_donnee"){

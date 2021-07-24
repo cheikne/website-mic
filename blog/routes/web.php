@@ -91,8 +91,8 @@ Route::view('/Accueil/Realisation/These','projet-fin-etude.these');
 //     return view('projet-fin-etude.accesPartenaire.accesPartenaire');
 // })->middleware(['auth'])->name('accesPartenaire');
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-// Route::get('Accueil/Acces-Partenaire','\App\Http\Controllers\OnlineController@onlineUser');
+// Route::get('dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+// // Route::get('Accueil/Acces-Partenaire','\App\Http\Controllers\OnlineController@onlineUser');
 require __DIR__.'/auth.php';
