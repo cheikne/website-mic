@@ -43,7 +43,7 @@ Route::get('/Accueil/Contact',function(){
 });
 
 //Acces partenaire
-Route::get('Accueil/Acces-Partenaire','\App\Http\Controllers\OnlineController@onlineUser');
+Route::get('Accueil/Acces-Partenaire','\App\Http\Controllers\OnlineController@onlineUser')->middleware(['auth'])->name('dashboard');
 Route::view('/Accueil/Acces-Partenaire/Chat-Conversation','projet-fin-etude.accesPartenaire.chatConversation');
 Route::get('/Accueil/Acces-Partenaire/These1','App\Http\Controllers\EditThesesController@AffichierThese1Modifie');
 Route::get('/Accueil/Acces-Partenaire/These2','App\Http\Controllers\EditThesesController@AffichierThese2Modifie');
@@ -74,6 +74,14 @@ Route::get('/Accueil/Acces-Partenaire/getOneEvents','App\Http\Controllers\CrudEv
 Route::get('/Accueil/Acces-Partenaire/UpdateOneEvents','App\Http\Controllers\CrudEventController@UpdateOneEvents');
 Route::get('/Accueil/Acces-Partenaire/displayAllEvents','App\Http\Controllers\CrudEventController@displayAllEvents');
 Route::get('/Accueil/Acces-Partenaire/DeleteOneEvents','App\Http\Controllers\CrudEventController@DeleteOneEvents');
+
+
+////////////////////////////////////Partie Actalite////////////////////
+Route::get('/Accueil/Acces-Partenaire/insertNewActu','App\Http\Controllers\EditActualiteController@insertNewActu');
+Route::get('/Accueil/Acces-Partenaire/getOneActu','App\Http\Controllers\EditActualiteController@getOneActu');
+Route::get('/Accueil/Acces-Partenaire/UpdateOneActu','App\Http\Controllers\EditActualiteController@UpdateOneActu');
+Route::get('/Accueil/Acces-Partenaire/displayAllActu','App\Http\Controllers\EditActualiteController@displayAllActu');
+////////////////////////////////////Partie Actalite////////////////////
 
 
 Route::get('recherchedestheses','App\Http\Controllers\These@recherchedestheses');
