@@ -14,21 +14,21 @@
 </head>
 <body>
 @php($profil = Auth::user()->profil)
-@php($userCurrent=0)
-@if($lien != 'admin')
+<?php $userCurrent="";?>
+@if($lien != "admin")
   @foreach($lien as $value)
     @if($value->id_user == Auth::user()->id)
-      @php($userCurrent='bon')
+      <?php $userCurrent="bon";?>
 
       @break
     @endif
   @endforeach
-  @if($userCurrent=='0')
-    @php($userCurrent='pasbon')
+  @if($userCurrent=="")
+    <?php $userCurrent="pasbon";?>
   @endif
 @endif
 
-  @if($lien =='admin' || $userCurrent =='bon')
+  @if($profil =="admin" || $userCurrent =="bon")
     <div class="w3-light-grey w3-padding-64 w3-margin-bottom w3-center" >
   <h1 class="w3-jumbo">{{$response->titre_these}}</h1>
 </div>
@@ -37,7 +37,7 @@
   <div class="w3-twothird">
     <img src="{{asset('image/lancemntprojet.jpeg')}}" alt="Notebook" style="width:100%">
     <h2>Valeur ajoutée</h2>
-    <div class="w3-justify container">
+    <div class="w3-justify container" id="editv1" style="background-color: {{ $couleur->clor_va }}">
       <div id="valeur_ajoutee">{{$response->valeur_ajoute}}</div>
       <button class="btn btn-primary" id="editv" onclick="ModificationThese('editv','valeur_ajoutee','RecordingVA')">Modifier</button>
     <div style="display: flex;">
@@ -46,7 +46,7 @@
       <p></p>
       </div>
    </div>
-   <div class="w3-justify container">
+   <div class="w3-justify container " id="editr1" style="background-color: {{$couleur->clor_res}};">
    <h2>Resulatat</h2>
       <div id ="resultats">{{$response->resultats}}</div>
       <button class="btn btn-primary" id="editr" onclick="ModificationThese('editr','resultats','RecordingRes')">Modifier</button>
@@ -57,8 +57,8 @@
     </div>
   </div>
   <div class="w3-third">
- <!-- <div class='w3-light-grey'> -->
-    <div class="w3-container ">
+ <div>
+    <div class="w3-container" id="editp1" style="background-color: {{$couleur->clor_pro}};">
       <h2>Problematique de la these</h2>
        <div class="w3-justify container" id="Problematique">{{$response->problematique}}</div>
     </div>
@@ -66,10 +66,10 @@
      <div style="display: flex;">
       <button class="btn btn-primary" style="display:none;" id="RecordingProb"  onclick="CancelUpdate('editp',this.id,'Problematique')">Annuler</button>
       &nbsp;&nbsp; <button class="btn btn-primary" style="display:none;" id="RecordingProb1" onclick="UpdateThese(this.id,'Problematique','RecordingProb','editp',{{$response->id_these}},{{ Auth::user()->id}})">Enregistrer</button>
-   <!-- </div> -->
+   </div>
      </div>
     <br>
-    <div class="w3-container w3-light-grey w3-justify">
+    <div class="w3-container  w3-justify" id="edito" style="background-color:{{$couleur->clor_obj}}">
     <div>
       <h2>Obectifs</h2>
       <div class="w3-justify container"  id="objectif">{{$response->objectif}}</div>
@@ -82,7 +82,7 @@
     </div>
     <br>
     
-    <div class="w3-container w3-light-grey w3-justify">
+    <div class="w3-container w3-justify" style="background-color: {{$couleur->clor_nameT}}">
       <h2>Nom des Thsard</h2>
       <div class="w3-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati.</div>
     </div>
@@ -98,7 +98,7 @@
         <img src="{{asset('image/lancemntprojet.jpeg')}}" alt="not found" style="width:90%;height: 200px;">
         <h2>Valeur ajoutee</h2>
         <div id="valeur_ajoutee" class="w3-light-grey" style="width:90%;">{{$response->valeur_ajoute}}</div>
-        <button class="btn btn-primary" onclick="ModificationThese(event,'valeur_ajoutee',{{$response->id_these}},'RecordingVA')"disabled>edit</button>
+        <button class="btn btn-primary" onclick="ModificationThese(event,'valeur_ajoutee',{{$response->id_these}},'RecordingVA')"disabled>Modifier</button>
         <button class="btn btn-primary" style="display:none;" id="RecordingVA">Enregistrer</button>
         <div class="w3-justify">
 
@@ -106,7 +106,7 @@
         <h2>Resultats</h2>
         <div class="w3-justify" style="width:90%;">
           <div id ="Resultats" class="w3-light-grey">{{$response->resultats}}</div>
-          <button class="btn btn-primary" onclick="ModificationThese(event,'resultats',{{$response->id_these}},'RecordingRes')" disabled>edit</button>
+          <button class="btn btn-primary" onclick="ModificationThese(event,'resultats',{{$response->id_these}},'RecordingRes')" disabled>Modifier</button>
           <button class="btn btn-primary" style="display:none;" id="RecordingRes">Enregistrer</button>
         </div>
       </div>
@@ -114,14 +114,14 @@
         <div class="w3-container w3-light-grey" style="width: 150%;margin-top: 10px;">
           <h2>Problematique de la these</h2>
           <p class="w3-justify" id="Problematique">{{$response->problematique}}</p>
-          <button class="btn btn-primary" onclick="ModificationThese(event,'Problematique',{{$response->id_these}},'RecordingProb')" disabled>edit</button>
+          <button class="btn btn-primary" onclick="ModificationThese(event,'Problematique',{{$response->id_these}},'RecordingProb')" disabled>Modifier</button>
           <button class="btn btn-primary" style="display:none;" id="RecordingProb">Enregistrer</button>
         </div>
         <br>
         <div class="w3-container w3-light-grey w3-justify" style="width: 150%;margin-top: 10px;">
           <h2>Obectifs</h2>
           <p class="w3-justify" id="objectif">{{$response->objectif}}</p>
-          <button class="btn btn-primary" onclick="ModificationThese(event,'objectif',{{$response->id_these}},'RecordingObj')" disabled>edit</button>
+          <button class="btn btn-primary" onclick="ModificationThese(event,'objectif',{{$response->id_these}},'RecordingObj')" disabled>Modifier</button>
           <button class="btn btn-primary" style="display:none;" id="RecordingObj">Enregistrer</button>
         </div>
         <br>

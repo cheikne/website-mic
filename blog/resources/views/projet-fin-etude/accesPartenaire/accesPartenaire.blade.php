@@ -101,7 +101,7 @@
                         <a href="/Accueil/Acces-Partenaire/Evenements">Evenements</a>
                     </li>
                     <li>
-                        <a href="#pageresearch">Recherche Scientifique</a>
+                        <a href="/Accueil/Acces-Partenaire/Recherche">Recherche Scientifique</a>
                     </li>
                 </ul>
 
