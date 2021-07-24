@@ -53,7 +53,7 @@ Route::get('/Accueil/Acces-Partenaire/These5','App\Http\Controllers\EditThesesCo
 Route::get('/Accueil/Acces-Partenaire/These6','App\Http\Controllers\EditThesesController@AffichierThese6Modifie');
 Route::get('/Accueil/Acces-Partenaire/These7','App\Http\Controllers\EditThesesController@AffichierThese7Modifie');
 Route::get('/Actualite/edit','App\Http\Controllers\UpdateSupInserActualite@modifieSupInsert');
-Route::view('/Accueil/Acces-Partenaire/Actualites-Industriels','projet-fin-etude.accesPartenaire.editActualites');
+Route::view('/Accueil/Acces-Partenaire/Actualites','projet-fin-etude.accesPartenaire.editActualites');
 Route::view('/Accueil/Acces-Partenaire/Evenements','projet-fin-etude.accesPartenaire.editEvents');
 // Route::get('/Accueil/Acces-Partenaire/{id}','App\Http\Controllers\EditThesesController@getIdthese');
 
@@ -82,6 +82,12 @@ Route::get('/Accueil/Acces-Partenaire/getOneActu','App\Http\Controllers\EditActu
 Route::get('/Accueil/Acces-Partenaire/UpdateOneActu','App\Http\Controllers\EditActualiteController@UpdateOneActu');
 Route::get('/Accueil/Acces-Partenaire/displayAllActu','App\Http\Controllers\EditActualiteController@displayAllActu');
 ////////////////////////////////////Partie Actalite////////////////////
+////////////////////////////////////Partie Recherche Scientfique////////////////////
+Route::get('/Accueil/Acces-Partenaire/insertNewRech','App\Http\Controllers\EditRecheController@insertNewRech');
+Route::get('/Accueil/Acces-Partenaire/getOneRech','App\Http\Controllers\EditRecheController@getOneRech');
+Route::get('/Accueil/Acces-Partenaire/UpdateOneRech','App\Http\Controllers\EditRecheController@UpdateOneRech');
+Route::get('/Accueil/Acces-Partenaire/displayAllRech','App\Http\Controllers\EditRecheController@displayAllRech');
+////////////////////////////////////Partie Recherche Scientfique////////////////////
 
 
 Route::get('recherchedestheses','App\Http\Controllers\These@recherchedestheses');
