@@ -7,79 +7,94 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\theses;
 use App\Models\includes;
 use App\Models\activite_recentes;
+use App\Models\BackgroundColors;
 
 class EditThesesController extends Controller
 {
     public function AffichierThese1Modifie(){
         $tableThese = new theses();
         $id_user = Auth::user()->id;
+        $couleur = BackgroundColors::where('id',1)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',1)->first();
         $lien = $tablesInclude->where('id_these',1)->get('id_user');
 
         return view('projet-fin-etude.accesPartenaire.editThese')
         ->with('response',$data)
-        ->with('lien',$lien);
+        ->with('lien',$lien)
+        ->with('couleur',$couleur);
     }
     public function AffichierThese2Modifie(){
         $tableThese = new theses();
         $id_user = Auth::user()->id;
+        $couleur = BackgroundColors::where('id',1)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',2)->first();
         $lien = $tablesInclude->where('id_these',2)->get('id_user');
         return view('projet-fin-etude.accesPartenaire.editThese')
         ->with('response',$data)
-        ->with('lien',$lien);
+        ->with('lien',$lien)
+        ->with('couleur',$couleur);
     }
     public function AffichierThese3Modifie(){
          $tableThese = new theses();
         $id_user = Auth::user()->id;
+        $couleur = BackgroundColors::where('id',1)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',3)->first();
         $lien = $tablesInclude->where('id_these',3)->get('id_user');
         return view('projet-fin-etude.accesPartenaire.editThese')
         ->with('response',$data)
-        ->with('lien',$lien);
+        ->with('lien',$lien)
+        ->with('couleur',$couleur);
     }
     public function AffichierThese4Modifie(){
          $tableThese = new theses();
         $id_user = Auth::user()->id;
+        $couleur = BackgroundColors::where('id',1)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',4)->first();
         $lien = $tablesInclude->where('id_these',4)->get('id_user');
         return view('projet-fin-etude.accesPartenaire.editThese')
         ->with('response',$data)
-        ->with('lien',$lien);
+        ->with('lien',$lien)
+        ->with('couleur',$couleur);
     }
     public function AffichierThese5Modifie(){
          $tableThese = new theses();
         $id_user = Auth::user()->id;
+        $couleur = BackgroundColors::where('id',1)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',5)->first();
         $lien = $tablesInclude->where('id_these',5)->get('id_user');
         return view('projet-fin-etude.accesPartenaire.editThese')
         ->with('response',$data)
-        ->with('lien',$lien);
+        ->with('lien',$lien)
+         ->with('couleur',$couleur);
     }
     public function AffichierThese6Modifie(){
          $tableThese = new theses();
         $id_user = Auth::user()->id;
+        $couleur = BackgroundColors::where('id',1)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',6)->first();
         $lien = $tablesInclude->where('id_these',6)->get('id_user');
         return view('projet-fin-etude.accesPartenaire.editThese')
         ->with('response',$data)
-        ->with('lien',$lien);
+        ->with('lien',$lien)
+         ->with('couleur',$couleur);
     }
     public function AffichierThese7Modifie(){
          $tableThese = new theses();
+        $couleur = BackgroundColors::where('id',1)->first();
         $id_user = Auth::user()->id;
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',7)->first();
         $lien = $tablesInclude->where('id_these',7)->get('id_user');
         return view('projet-fin-etude.accesPartenaire.editThese')
         ->with('response',$data)
-        ->with('lien',$lien);
+        ->with('lien',$lien)
+        ->with('couleur',$couleur);
     }
 
 
@@ -117,16 +132,25 @@ class EditThesesController extends Controller
     }
 
     public function updateThese(Request $req){
+        $color = '#E0FFFF';
         $attribut = $req->input('attribut');
         $text = $req->input('text');
-        if($attribut=='resultats')
+        if($attribut=='resultats'){
          theses::where('id_these',$req->input('id'))->update(['resultats' => $text]);
-        else if($attribut=='objectif')
+         BackgroundColors::where('id',1)->update(['clor_res' => $color]);
+        }
+        else if($attribut=='objectif'){
          theses::where('id_these',$req->input('id'))->update(['objectif' => $text]);
-        else if($attribut=='valeur_ajoutee')
+          BackgroundColors::where('id',1)->update(['clor_obj'=>  $color]);
+        }
+        else if($attribut=='valeur_ajoutee'){
          theses::where('id_these',$req->input('id'))->update(['valeur_ajoute' => $text]);
-        else if($attribut=='Problematique')
+          BackgroundColors::where('id',1)->update(['clor_va'=>  $color]);
+        }
+        else if($attribut=='Problematique'){
          theses::where('id_these',$req->input('id'))->update(['problematique' => $text]);
+          BackgroundColors::where('id',1)->update(['clor_pro'=>  $color]);
+        }
         //Insertions des modifications de users dans la table activitee recente
         if($req->input('is_insert') =='oui'){
             $tableActivit = new activite_recentes();
@@ -140,9 +164,11 @@ class EditThesesController extends Controller
         return $req->input('attribut');
     }
     public function DeleteTheseInTableActivite(Request $req){
+        $color = 'lightgrey';
         $id_user = $req->input('id');
         $heure = $req->input('heure');
         activite_recentes::where('id_user',$id_user)->where('heure',$heure)->delete();
+        BackgroundColors::where('id',1)->update(['clor_res' => $color,'clor_obj' => $color,'clor_va' => $color,'clor_pro' => $color]);
 
     }
     public function UpdateTheseInTableActivite(Request $req){

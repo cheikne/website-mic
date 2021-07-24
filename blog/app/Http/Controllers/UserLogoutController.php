@@ -166,7 +166,7 @@ class UserLogoutController extends Controller
                  if($compteNbrli ==2)
                 echo "<br><br><br><br><br><br>";
                 if($compteNbrli==1)
-                echo "<br><br><br><br><br><br><br><br><br><br><br><br><br>";
+                echo "<br><br><br><br><br><br><br><br><br><br><br>";
                 echo "</div>";
             }else if($compteNbrPaginat-1==3){
                 $j--;

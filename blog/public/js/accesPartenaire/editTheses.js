@@ -48,7 +48,7 @@ function UpdateThese(id,content,annuler,id_edit,id_these,id_user){
 		const innerText = document.getElementById(content+"1").value;
 		// alert(innerText);
 		document.getElementById(content).innerHTML=innerText;
-		document.getElementById(content).style.backgroundColor="#E0FFFF";
+		document.getElementById(id_edit+"1").style.backgroundColor="#E0FFFF";
 		document.getElementById(id_edit).style.display="block";
 		document.getElementById(id).style.display="none";
 		document.getElementById(annuler).style.display="none";
@@ -77,7 +77,6 @@ function UpdateThese(id,content,annuler,id_edit,id_these,id_user){
 		}
 		id_th = id_these;
 		ancien_heure = heure;
-
 	});
 }
 
@@ -86,6 +85,7 @@ function UpdateThese(id,content,annuler,id_edit,id_these,id_user){
 function DeleteTheseInTableActivite(id,heure){
 	var url = "/Accueil/Acces-Partenaire/DeleteTheseInTableActivite?id="+id+"&heure="+heure;
 	SendToServer(url,callback,false);
+	alert("ffffffffffffffffffffff"+id);
 }
 function UpdateTheseInTableActivite(id,ancien_heure,new_heure){
 	var url = "/Accueil/Acces-Partenaire/UpdateTheseInTableActivite?id="+id+"&ancien_heure="+ancien_heure+"&new_heure="+new_heure;

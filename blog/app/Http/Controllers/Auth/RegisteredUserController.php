@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\user_deconnecter;
 use App\Models\OnlineUser;
+use App\Models\includes;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -67,6 +68,17 @@ class RegisteredUserController extends Controller
         $tableLogout->bool = 0;
         $tableLogout->id_user = $new_user->id;
         $tableLogout->save();
+
+        //Enregistrer user dna sla table include
+        if(!empty($request->these)){
+            $data = explode(',',$request->these);
+            for($i=0;$i<count($data);$i++){
+                $tablesInclude = new includes();
+                $tablesInclude->id_user =  $new_user->id;
+                $tablesInclude->id_these =  $data[$i];
+                $tablesInclude->save();
+            }
+        }
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
