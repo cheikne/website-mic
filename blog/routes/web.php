@@ -73,6 +73,7 @@ Route::get('/Accueil/Acces-Partenaire/insertNewEvent','App\Http\Controllers\Crud
 Route::get('/Accueil/Acces-Partenaire/getOneEvents','App\Http\Controllers\CrudEventController@getOneEvents');
 Route::get('/Accueil/Acces-Partenaire/UpdateOneEvents','App\Http\Controllers\CrudEventController@UpdateOneEvents');
 Route::get('/Accueil/Acces-Partenaire/displayAllEvents','App\Http\Controllers\CrudEventController@displayAllEvents');
+Route::get('/Accueil/Acces-Partenaire/DeleteOneEvents','App\Http\Controllers\CrudEventController@DeleteOneEvents');
 
 
 Route::get('recherchedestheses','App\Http\Controllers\These@recherchedestheses');

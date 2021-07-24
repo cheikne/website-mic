@@ -83,9 +83,9 @@ input[type=Search]:{
   </div>
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
   <button class="w3-bar-item w3-button w3-blue" >Acces-Partenaire</button>
-  <button class="w3-bar-item w3-button"  onclick="editEvents()">Modifier Evenenement</button>
+  <button class="w3-bar-item w3-button" id="event" onclick="editEvents(this.id)">Modifier Evenenement</button>
   <button class="w3-bar-item w3-button" onclick="addNewEvents()">Ajouter Evenenement</button>
-  <button class="w3-bar-item w3-button" onclick="deleteOneEvent()">Supprimer Evenenement</button>
+  <button class="w3-bar-item w3-button" id="delete" onclick="displaydeleteOneEvent(this.id)">Supprimer Evenenement</button>
   <button class="w3-bar-item w3-button" onclick="displayAllEvents()">Afficher tout</button>
 </nav>
 
@@ -108,15 +108,16 @@ input[type=Search]:{
         <div class="input-group">
             <input type="Search"  id='dte_serach' class="form-control" placeholder="aaaa-mm-jjj">
             <div class="input-group-btn">
-               <button type="button" class="btn btn-info w3-light-blue" onclick='getOneEvents()'>
+               <button type="button" class="btn btn-info w3-light-blue" id= "event" onclick="getOneEvents(this.id)">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
         </div>
     </div><br><br><br><br><br>
-    <div id='resultat'></div>
+    <div id="resultat"></div>
   </div>
 
+  <div class="w3-text-red" style="display: none;padding: 10px;font-size:2em;" id="aucun_donnee">Aucun donnees trouves avec cette date</div>
   </div>
 
 </div> 

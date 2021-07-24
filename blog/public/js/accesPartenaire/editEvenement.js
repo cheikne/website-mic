@@ -30,14 +30,15 @@ function addNewEvents(){
   `;
 }
 
-function editEvents(){
+function editEvents(events){
+  // alert(events);
   document.getElementById('ContentEvent').innerHTML=`
      <div class="chat-search-box w3-right" id="contentSearch">
         <label>Entrer la date de de l'evenement</label>
         <div class="input-group">
             <input type="Search" class="form-control" id='dte_serach' placeholder="aaaa-mm-jjj" required>
             <div class="input-group-btn">
-                <button type="button" class="btn btn-info w3-light-blue" onclick='getOneEvents()'>
+                <button type="button" class="btn btn-info w3-light-blue" onclick="getOneEvents('${events}')">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
@@ -47,8 +48,43 @@ function editEvents(){
   `;
 
 }
+function displaydeleteOneEvent(delet){
+   document.getElementById('ContentEvent').innerHTML=`
+     <div class="chat-search-box w3-right" id="contentSearch">
+        <label>Entrer la date de de l'evenement a supprimer</label>
+        <div class="input-group">
+            <input type="Search" class="form-control" id='delete_serach' placeholder="aaaa-mm-jjj" required>
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-info w3-light-blue" onclick="getOneEvents('${delet}')">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div><br><br><br><br><br>
+    <div id='resultat_delete'></div>
+  `;
+}
 
+function DeleteOneEvents(id,check){
+  var url = "/Accueil/Acces-Partenaire/DeleteOneEvents?id="+id;
+  if(check==-2){
+    document.getElementById('success').innerHTML="Sppression avec Success";
+    SendToServer(url,callback,false);
+    document.getElementById('hide_actu').style.display="none";
+  }else if(check==-1){
+    SendToServer(url,callback,false);
+    document.getElementById(id).style.display="none";
+  }else
+  alert(check);
+}
 
+function DisplayChampedit(id,id_hiden,id_disp){
+  alert(id_disp);
+  document.getElementById(id_disp).style.display="none";
+  document.getElementById(id_hiden).style.display="block";
+  document.getElementById(id).style.display="none";
+  
+}
 function InsererNewEvent(){
   var dte = document.getElementById('dte').value;
   var titre = document.getElementById('titre').value;
@@ -57,10 +93,21 @@ function InsererNewEvent(){
   SendToServer(url,callback,false);
 }
 
-function getOneEvents(){
-  var dte_serach = document.getElementById('dte_serach').value;
-  var url = "/Accueil/Acces-Partenaire/getOneEvents?dte="+dte_serach;
-  SendToServer(url,callback,'resultat');
+function getOneEvents(check){
+  var dte_serach="";
+
+  if(check =='event'){
+    dte_serach = document.getElementById('dte_serach').value;
+      // alert(check);
+    var url = "/Accueil/Acces-Partenaire/getOneEvents?dte="+dte_serach+"&check="+check;
+    SendToServer(url,callback2,'resultat');
+  }
+  else{
+    dte_serach = document.getElementById('delete_serach').value;
+      // alert(check);
+    var url = "/Accueil/Acces-Partenaire/getOneEvents?dte="+dte_serach+"&check="+check;
+    SendToServer(url,callback2,'resultat_delete');
+  }
 }
 
 function UpdateEvent(id){
@@ -70,15 +117,13 @@ function UpdateEvent(id){
    var dteT = document.getElementById('dteT').value;
   var url = "/Accueil/Acces-Partenaire/UpdateOneEvents?id="+id+"&titreT="+titreT+"&resumerT="+resumerT+"&dte="+dteT;
   SendToServer(url,callback,false);
+  document.getElementById('success').innerHTML="Mise en Jours faite avec Success";
 }
 
 function displayAllEvents(){
    var url = "/Accueil/Acces-Partenaire/displayAllEvents";
     SendToServer(url,callback,"ContentEvent");
 }
-
-
-
 
 
 
@@ -99,6 +144,17 @@ const callback = function(response,id){
     document.getElementById(id).innerHTML=response;
   else
     alert(response);
+};
+const callback2 = function(response,id){
+  if(response =="aucun_donnee"){
+    document.getElementById('aucun_donnee').style.display="block";
+  }else{
+  if(id)
+    document.getElementById('aucun_donnee').style.display="none";
+    document.getElementById(id).innerHTML=response;
+  // else
+  //   alert(response);
+  }
 };
 
 

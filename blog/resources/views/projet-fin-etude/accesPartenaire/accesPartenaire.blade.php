@@ -95,43 +95,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#pageIndust" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Actualites Industriel</a>
-                        <ul class="collapse list-unstyled" id="pageIndust">
-                            <li>
-                                <a href="/Accueil/Acces-Partenaire/Actualites-Industriels">Groupe Managem</a>
-                            </li>
-                            <li>
-                                <a href="#">Centre Reminex</a>
-                            </li>
-                            <li><a href="#">Fondation Mascir</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                         <a href="#pageAcadem" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Actualites Academique</a>
-                        <ul class="collapse list-unstyled" id="pageAcadem">
-                            <li>
-                                <a href="#">UCA</a>
-                            </li>
-                            <li>
-                                <a href="#">ENIM</a>
-                            </li>
-                            <li><a href="#">ENSIAS</a></li>
-                            <li><a href="#">CNRST</a></li>
-                        </ul>
+                        <a href="/Accueil/Acces-Partenaire/Actualites">Actualites</a>
                     </li>
                     <li>
                         <a href="/Accueil/Acces-Partenaire/Evenements">Evenements</a>
                     </li>
                     <li>
-                        <a href="#pageresearch" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Recherche Scientifique</a>
-                        <ul class="collapse list-unstyled" id="pageresearch">
-                            <li>
-                                <a href="#">Publications</a>
-                            </li>
-                            <li>
-                                <a href="#">Brevets</a>
-                            </li>
-                        </ul>
+                        <a href="#pageresearch">Recherche Scientifique</a>
                     </li>
                 </ul>
 
