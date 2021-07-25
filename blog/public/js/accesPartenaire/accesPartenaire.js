@@ -63,19 +63,33 @@ var compteur=0;
 var nbreEnregist=-1;
 function UserLogout(){
     var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge+"&compteur="+compteur+"&nbreEnregist="+nbreEnregist;
-    SendToServer(url,callback,'user_logout');
+    SendToServer(url,callback2,'user_logout');
     compteur =1;
+    if(is_recharge =="non")
+     document.getElementById('nbrEnr').click();
     is_recharge='non';
-    // if(nbreEnregist !=-1)
-     // document.getElementById('nbrEnr').click();
     // console.log('La fonctions setInterval a chaque cinq secondes');
 }
 //Get le nombre d'enregistrement 
-// function getNombreEnregistrem(nbr){
-//     nbreEnregist=nbr;
+function getNbreEnregtActivite(nbr){
+    nbreEnregistActivite = nbr;
+}
+function getNombreEnregistrem(nbr){
+    nbreEnregist=nbr;
     // alert("nbre"+nbr);
-// }
+}
+//Recharger les personnes les nouvelles personnes qui se sont recemment deconnecter
+function RechargerUserLogout(){
+    is_recharge='oui';
+    compteur =1;
+     var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge+"&compteur="+compteur+"&nbreEnregist="+nbreEnregist;
+    SendToServer(url,callback,'user_logout');
+    is_recharge='non';
+    if(is_recharge=="non")
+        document.getElementById('nbrEnr').click();
+     document.getElementById('is_recharge').style.display="none";
 
+}
 
 //Implementation de la fonction pagination
 function pagination(id,page,nbreId) {
@@ -90,8 +104,6 @@ function pagination(id,page,nbreId) {
         }
     }
     document.getElementById(id).style.display="block";
-    if(id != 1)
-        clearInterval(setIntervalUserLogout);
     if(id == 1)
         setIntervalUserLogout = setInterval(UserLogout, 15000);
     // $("#"+id).fadeIn();
@@ -100,11 +112,18 @@ function pagination(id,page,nbreId) {
 
 
 //Implementation de la fonction des activites recentes Pour charger des donnees depuis BD
-var setIntervalActivite = setInterval(getActiviteRecente,40000);
+var setIntervalActivite = setInterval(getActiviteRecente,5000);
+var is_rechargeActivite="oui";
+var nbreEnregistActivite=-1;
 function getActiviteRecente(){
-    var url ="/Accueil/Acces-Partenaire/getActiviteRecente";
-    SendToServer(url,callback,'activite');
+    var url ="/Accueil/Acces-Partenaire/getActiviteRecente?is_recharge="+is_rechargeActivite+"&nbreEnregist="+nbreEnregistActivite;
+    SendToServer(url,callback3,'activite');
+    if(is_rechargeActivite=="non")
+        document.getElementById('nbrEnrActivite').click();
+    is_rechargeActivite='non';
+
 }
+
 //Implementation de la fonction des activites recentes Pour charger des donnees depuis BD
 function paginationActivite(id,page,nbreId){
     var index=1;
@@ -122,18 +141,9 @@ function paginationActivite(id,page,nbreId){
         setIntervalUserLogout = setInterval(UserLogout, 15000);
 }
 
-//Recharger les personnes les nouvelles personnes qui se sont recemment deconnecter
-function RechargerUserLogout(){
-    is_recharge='oui';
-    compteur =1;
-     var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge+"&compteur="+compteur+"&nbreEnregist="+nbreEnregist;
-    SendToServer(url,callback,'user_logout');
-    is_recharge='non';
-    // document.getElementById('nbrEnr').click();
-
-}
 function HideButtonCharge() {
     document.getElementById('is_recharge').style.display="none";
+    setIntervalUserLogout = setInterval(UserLogout,15000);
 }
 // Requete Ajax
 function  SendToServer(url,callback,id) {
@@ -149,20 +159,39 @@ function  SendToServer(url,callback,id) {
 var hideButtonCharge="";
 const callback = function(response,id){
     if(id){
-        if(response =='estConfirme'){
-            document.getElementById('is_recharge').style.display="block";
-            document.getElementById('is_recharge').style.color="#E0FFFF";
-            hideButtonCharge = setTimeout(HideButtonCharge,20000);
-        }else if(response=='rien_a_charger'){
-            console.log(response);
-        }else{
          document.getElementById(id).innerHTML=response;
          // console.log(response);
         // alert(response);
-        }
      }
-     else
-        alert(response);
+     // else
+        // alert(response);
+};
+
+const callback2 = function(response,id){
+    if(response =='sup'){
+        document.getElementById('is_recharge').style.display="block";
+        document.getElementById('is_recharge').style.color="#E0FFFF";
+        clearInterval(setIntervalUserLogout);
+        hideButtonCharge = setTimeout(HideButtonCharge,80000);
+    }else if(response=='inf'){
+        RechargerUserLogout();
+    }else if(response=="egaux"){
+        console.log(response);
+    }else{
+        var res = response;
+        document.getElementById(id).innerHTML=res;
+    }
+};
+const callback3 = function(response,id){
+    if(response=="egaux"){
+        console.log(response);
+    }else if(response=="sup" || response =="inf"){
+        is_rechargeActivite="oui";
+        getActiviteRecente();
+    }else{
+        var res = response;
+        document.getElementById(id).innerHTML=res;
+    }
 };
 
  UserOnline();

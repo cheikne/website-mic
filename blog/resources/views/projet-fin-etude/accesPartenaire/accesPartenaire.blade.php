@@ -42,7 +42,7 @@
             </div>
             <div style="  background:#2E4053;">
                 <ul class="list-unstyled">
-                    <p>Acces Partenaire</p>
+                    <a href="/Accueil/"><p><i class="fa fa-home" style="font-size:28px;"></i>&nbsp;&nbsp;Accueil</p></a>
                     <li>
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Realisations</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu" style="background-color: grey;">
@@ -187,7 +187,7 @@
                             <div class="col-lg-6">
                                 <div class="card-box">
                                     <h4 class="text-dark header-title">Personne deconnectee recemment </h4>
-                                    <p class="text-muted m-b-30 font-13" id="is_recharge" style="display:none;">quelqu'un vient de se deconnecter  <button type="button" class="btn btn-primary" onclick="RechargerUserLogout()">Charger</button></p>
+                                    <p class="text-muted m-b-30 font-13" id="is_recharge" style="display:none;">quelqu'un vient de se deconnecter  <button type="button" class="btn btn-primary" onclick="RechargerUserLogout()">Actualiser</button></p>
                                      <div id="user_logout"></div>
                                     </div>
                             </div>
@@ -195,7 +195,7 @@
                              <div class="col-lg-6">
                                 <div class="card-box">
                                     <h4 class="text-dark header-title">Activites recentes</h4>
-                                    <!-- <p class="text-muted m-b-30 font-13">Your awesome text goes here. Your awesome text goes here.</p> -->
+                                    <p class="text-muted m-b-30 font-13" id="is_rechargeActivite" style="display:none;"> Nouvelle Modification :Actualiser<button type="button" class="btn btn-primary" onclick="RechargerActivite()">Actualiser</button></p>
                                     <div id="activite"></div>
                                     
                                     

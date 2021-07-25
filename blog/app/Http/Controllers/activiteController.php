@@ -9,10 +9,22 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 class activiteController extends Controller
 {
-    public function getActiviteRecente(){
-        $i=1;$j=1;$compteNbrli=1;$pagination=1;$k=1;$compteNbrPaginat=0;$check=true;
+    public function getActiviteRecente(Request $req){
+        $i=1;$j=1;$compteNbrli=0;$pagination=1;$k=1;$compteNbrPaginat=0;$check=true;
         $privilege = Auth::user()->profil;
+        $is_recharge = $req->input('is_recharge');
         $user = User::get();
+        if($is_recharge =="non"){
+             if($req->input('nbreEnregist') !=-1){
+                if($req->input('nbreEnregist') == count($user)){
+                    return "egaux";
+                }else if($req->input('nbreEnregist') < count($user)){
+                    return "sup";
+                }else return "inf";
+             }
+         }
+          $compte =count($user);
+
         echo "<ul class='sortable-list taskList list-unstyled ui-sortable' id='upcoming'>";
         foreach($user as $response){
             $data = activite_recentes::where('id_user',$response->id)->get();
@@ -77,7 +89,7 @@ class activiteController extends Controller
             //      echo "<br><br><br><br><br><br>";
             // }
             if($compteNbrli ==1)
-             echo "<br><br><br><br><br><br><br>";
+             echo "<br><br><br><br><br><br><br><br>";
             echo "</div>";
         }else if($compteNbrPaginat-1==2){
             $k--;
@@ -91,5 +103,7 @@ class activiteController extends Controller
             }
             echo "</ul><br>";
         }
+        $compte =count($user);
+        echo "<div id ='nbrEnrActivite' onclick='getNbreEnregtActivite({$compte})'></div>";
     }
 }
