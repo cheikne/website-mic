@@ -87,7 +87,7 @@ Route::get('/Accueil/Acces-Partenaire/insertNewRech','App\Http\Controllers\EditR
 Route::get('/Accueil/Acces-Partenaire/getOneRech','App\Http\Controllers\EditRecheController@getOneRech');
 Route::get('/Accueil/Acces-Partenaire/UpdateOneRech','App\Http\Controllers\EditRecheController@UpdateOneRech');
 Route::get('/Accueil/Acces-Partenaire/displayAllRech','App\Http\Controllers\EditRecheController@displayAllRech');
-Route::view('/Accueil/Acces-Partenaire/Recherche','projet-fin-etude.accesPartenaire.editEvents');
+Route::view('/Accueil/Acces-Partenaire/Recherche','projet-fin-etude.accesPartenaire.editRecherche');
 ////////////////////////////////////Partie Recherche Scientfique////////////////////
 
 

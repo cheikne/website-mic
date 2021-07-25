@@ -6,7 +6,7 @@
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+        <p class="w3-text-red" id="err"></p>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -46,7 +46,7 @@
             <!-- Profil de user -->
             <div class="mt-4" style="display:flex;">
                 <div>
-                  <x-label for="profil" :value="__('Profil d\'utilisateur')" />
+                  <x-label for="profil" :value="__('Profil d\'utilisateur')" required/>
                   <select class="form-control" id="sel1">
                     <option selected disabled>choix</option>
                     <option value="doctorant">doctorant</option>
@@ -56,9 +56,9 @@
                </div>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <div>
-                  <x-label for="institut" :value="__('Institut de l\'utilisateur')" />
+                  <x-label for="institut" :value="__('Institut de l\'utilisateur')" required/>
                   <select class="form-control" id="sel2">
-                    <option selected disabled>choix</option>
+                    <option selected disabled value="choix">choix</option>
                     <option value="Managem">Managem</option>
                     <option value="Mascir">Mascir</option>
                     <option value="ENIM">ENIM</option>
@@ -157,6 +157,10 @@
         var choix="";
         var selectProfif = document.getElementById('sel1');
         var valueProfil = selectProfif.options[selectProfif.selectedIndex].value;
+        if(selectProfif=="choix"){
+            document.getElementById('err').innerHTML="Vous devez choisir le profil de l'utilisateur";
+            return;
+        }
         var selectInstitut = document.getElementById('sel2');
         var valueInstitut = selectInstitut.options[selectInstitut.selectedIndex].value;
         document.getElementById('profil').value = valueProfil;

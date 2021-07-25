@@ -17,8 +17,25 @@ class UserLogoutController extends Controller
         $is_recharge = $req->input('is_recharge');
         $tablelogut = new user_deconnecter();
          $this->user  = $tablelogut->join('users','users.id','=','user_deconnecters.id_user')->where('bool',1)->get();
+                // echo "3 nmbre gggggg".$req->input('nbreEnregist')."<br>";
+                // echo "3 nmbre gggggg".$is_recharge."<br>";
          $ephemere = $this->user;
-
+         if($is_recharge =="non"){
+             if($req->input('nbreEnregist') !=-1){
+                // echo "1 nmbre gggggg".$req->input('nbreEnregist');
+                if($req->input('nbreEnregist') == count($this->user)){
+                // echo "egal nmbre gggggg".$req->input('nbreEnregist')."<br>";
+                    return "egaux";
+                }
+                else if($req->input('nbreEnregist') < count($this->user)){
+                // echo "sup nmbre gggggg".$req->input('nbreEnregist')."<br>";
+                    return "sup";
+                }
+                else
+                    return "inf";
+             }
+         }
+          $compte =count($this->user);
         // foreach($ephemere as $value){
         //     $index1++;
         // }
@@ -114,6 +131,7 @@ class UserLogoutController extends Controller
              $j =1;
              $compteNbrli=0;
              $compteNbrPaginat=0;
+             // echo "Le nombre d;element est :".count($this->user);s
              echo "<div id='replaceContent'></div>";
              echo " <ul class='sortable-list taskList list-unstyled ui-sortable' id='upcoming'>";
                 $heureCurrent = Carbon::now();
@@ -181,8 +199,8 @@ class UserLogoutController extends Controller
                 }
                 echo "</ul>";
             }
-            echo "<div id='nbrEnr' onclick='getNombreEnregistrem({$index2})'></div>";
-            $this->ancienData = clone($this->user);
+            $compte =count($this->user);
+            echo "<div id='nbrEnr' onclick='getNombreEnregistrem({$compte})'></div>";
             // echo "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh".$index1."djdjddjd".$index2;
     // }
 
