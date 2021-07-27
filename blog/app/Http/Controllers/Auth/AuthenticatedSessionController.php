@@ -35,7 +35,6 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
         $table_user = new User();
         $table_userOnline =new OnlineUser();
         $tablethese = new includes();

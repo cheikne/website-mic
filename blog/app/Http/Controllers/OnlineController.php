@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\includes;
 use App\Models\activite_recentes;
 use App\Models\OnlineUser;
+use App\Models\nombreUserOnline;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,9 +48,20 @@ class OnlineController extends Controller
             ->with('these7',$these7);
     }
 
-    public function AllUserOnline(){
+    public function AllUserOnline(Request $req){
         $data =  OnlineUser::where('bool',1)->get();
         // $user = User::where('id',$data->id_user)->first();
+        // $nmbre = nombreUserOnline::where('id',1)->first();
+        // $str = $nmbre->nbre;
+        // $compte =count($data);
+        // nombreUserOnline::where('id',1)->update(['nbre' => $compte]);
+        // if($req->input('is_recharge')=='non'){
+        //     if($str == count($data))
+        //         return 'egaux';
+        //     else if($str < count($data))
+        //         return 'inf';
+        //     else return 'sup';
+        // }
         foreach($data as $response){
             $user = User::where('id',$response->id_user)->first();
             echo "

@@ -18,11 +18,11 @@ function addNewEvents(){
         <!-- Message input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="resumer">Resumer</label>
-          <textarea class="form-control" id="form4Example3" rows="10" required></textarea>
+          <textarea class="form-control" id="resumer" rows="10" required></textarea>
         </div>
 
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4" onClick='InsererNewEvent()'>
+        <button type="button" class="btn btn-primary btn-block mb-4" onclick='InsererNewEvent(event)'>
           Enregistrer
         </button>
       </fieldset>
@@ -53,7 +53,7 @@ function displaydeleteOneEvent(delet){
      <div class="chat-search-box w3-right" id="contentSearch">
         <label>Entrer la date de de l'evenement a supprimer</label>
         <div class="input-group">
-            <input type="Search" class="form-control" id='delete_serach' placeholder="aaaa-mm-jjj" required>
+            <input type="date" class="form-control" id='delete_serach' placeholder="aaaa-mm-jjj" required>
             <div class="input-group-btn">
                 <button type="button" class="btn btn-info w3-light-blue" onclick="getOneEvents('${delet}')">
                     <i class="fa fa-search"></i>
@@ -85,11 +85,12 @@ function DisplayChampedit(id,id_hiden,id_disp){
   document.getElementById(id).style.display="none";
   
 }
-function InsererNewEvent(){
+function InsererNewEvent(event){
+  event.preventDefault();
   var dte = document.getElementById('dte').value;
   var titre = document.getElementById('titre').value;
   var resumer = document.getElementById('resumer').value;
-  var url = "/Accueil/Acces-Partenaire/insertNewEvent?dte="+date+"&resumer="+resumer+"&titre="+titre;
+  var url = "/Accueil/Acces-Partenaire/insertNewEvent?dte="+dte+"&resumer="+resumer+"&titre="+titre;
   SendToServer(url,callback,false);
 }
 
@@ -149,17 +150,21 @@ function  SendToServer(url,callback,id) {
 }
 var hideButtonCharge="";
 const callback = function(response,id){
-  if(id)
+  if(id){
+     document.getElementById('aucun_donnee').style.display="none";
+    document.getElementById(id).style.display="block";
     document.getElementById(id).innerHTML=response;
+  }
   // else
   //   alert(response);
 };
 const callback2 = function(response,id){
   if(response =="aucun_donnee"){
     document.getElementById('aucun_donnee').style.display="block";
-  }else{
-  if(id)
+    document.getElementById(id).style.display="none";
+  }else if(id){
     document.getElementById('aucun_donnee').style.display="none";
+    document.getElementById(id).style.display="block";
     document.getElementById(id).innerHTML=response;
   // else
   //   alert(response);

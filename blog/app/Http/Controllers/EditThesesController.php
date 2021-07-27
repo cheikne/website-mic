@@ -27,7 +27,7 @@ class EditThesesController extends Controller
     public function AffichierThese2Modifie(){
         $tableThese = new theses();
         $id_user = Auth::user()->id;
-        $couleur = BackgroundColors::where('id',1)->first();
+        $couleur = BackgroundColors::where('id',2)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',2)->first();
         $lien = $tablesInclude->where('id_these',2)->get('id_user');
@@ -39,7 +39,7 @@ class EditThesesController extends Controller
     public function AffichierThese3Modifie(){
          $tableThese = new theses();
         $id_user = Auth::user()->id;
-        $couleur = BackgroundColors::where('id',1)->first();
+        $couleur = BackgroundColors::where('id',3)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',3)->first();
         $lien = $tablesInclude->where('id_these',3)->get('id_user');
@@ -51,7 +51,7 @@ class EditThesesController extends Controller
     public function AffichierThese4Modifie(){
          $tableThese = new theses();
         $id_user = Auth::user()->id;
-        $couleur = BackgroundColors::where('id',1)->first();
+        $couleur = BackgroundColors::where('id',4)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',4)->first();
         $lien = $tablesInclude->where('id_these',4)->get('id_user');
@@ -63,7 +63,7 @@ class EditThesesController extends Controller
     public function AffichierThese5Modifie(){
          $tableThese = new theses();
         $id_user = Auth::user()->id;
-        $couleur = BackgroundColors::where('id',1)->first();
+        $couleur = BackgroundColors::where('id',5)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',5)->first();
         $lien = $tablesInclude->where('id_these',5)->get('id_user');
@@ -75,7 +75,7 @@ class EditThesesController extends Controller
     public function AffichierThese6Modifie(){
          $tableThese = new theses();
         $id_user = Auth::user()->id;
-        $couleur = BackgroundColors::where('id',1)->first();
+        $couleur = BackgroundColors::where('id',6)->first();
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',6)->first();
         $lien = $tablesInclude->where('id_these',6)->get('id_user');
@@ -86,7 +86,7 @@ class EditThesesController extends Controller
     }
     public function AffichierThese7Modifie(){
          $tableThese = new theses();
-        $couleur = BackgroundColors::where('id',1)->first();
+        $couleur = BackgroundColors::where('id',7)->first();
         $id_user = Auth::user()->id;
         $tablesInclude = new includes();
         $data = $tableThese->where('id_these',7)->first();
@@ -135,47 +135,69 @@ class EditThesesController extends Controller
         $color = '#E0FFFF';
         $attribut = $req->input('attribut');
         $text = $req->input('text');
+        $id_user = $req->input('id_user');
+        $id_these = $req->input('id');
+        $new_heure = $req->input('new_heure');
+        $delai = $req->input('delai');
+        $checkExistAlready = activite_recentes::where('id_user',$id_user)->where('id_these',$id_these)->first();
         if($attribut=='resultats'){
          theses::where('id_these',$req->input('id'))->update(['resultats' => $text]);
-         BackgroundColors::where('id',1)->update(['clor_res' => $color]);
+         BackgroundColors::where('id',$id_these)->update(['clor_res' => $color]);
         }
         else if($attribut=='objectif'){
          theses::where('id_these',$req->input('id'))->update(['objectif' => $text]);
-          BackgroundColors::where('id',1)->update(['clor_obj'=>  $color]);
+          BackgroundColors::where('id',$id_these)->update(['clor_obj'=>  $color]);
         }
         else if($attribut=='valeur_ajoutee'){
          theses::where('id_these',$req->input('id'))->update(['valeur_ajoute' => $text]);
-          BackgroundColors::where('id',1)->update(['clor_va'=>  $color]);
+          BackgroundColors::where('id',$id_these)->update(['clor_va'=>  $color]);
         }
         else if($attribut=='Problematique'){
          theses::where('id_these',$req->input('id'))->update(['problematique' => $text]);
-          BackgroundColors::where('id',1)->update(['clor_pro'=>  $color]);
+          BackgroundColors::where('id',$id_these)->update(['clor_pro'=>  $color]);
         }
         //Insertions des modifications de users dans la table activitee recente
-        if($req->input('is_insert') =='oui'){
+        if(empty($checkExistAlready)){
             $tableActivit = new activite_recentes();
             $tableActivit->titre = 'Realisation'.$req->input('id');
-            $tableActivit->heure =  $req->input('heure');
+            $tableActivit->heure =  $new_heure;
             $tableActivit->id_user = $req->input('id_user');
+            $tableActivit->id_these = $id_these;
+            $tableActivit->delai = $delai;
             $tableActivit->bool = 1;
             $tableActivit->url = '/Accueil/Acces-Partenaire/These'.$req->input('id');
             $tableActivit->save();
+            return "insertion";
+        }else{
+            // $ancien_heure = $req->input('ancien_heure');
+            activite_recentes::where('id_user',$id_user)->where('id_these',$id_these)->update(['heure' => $new_heure,'delai' => $delai]);
+            return "update";
         }
         return $req->input('attribut');
     }
     public function DeleteTheseInTableActivite(Request $req){
         $color = 'lightgrey';
-        $id_user = $req->input('id');
+        // $id_user = $req->input('id_user');
+        // $id_these = $req->input('id_these');
         $heure = $req->input('heure');
-        activite_recentes::where('id_user',$id_user)->where('heure',$heure)->delete();
-        BackgroundColors::where('id',1)->update(['clor_res' => $color,'clor_obj' => $color,'clor_va' => $color,'clor_pro' => $color]);
+        $alldata = activite_recentes::get();
+        if(count($alldata)!=0){
+            foreach($alldata as $value){
+                echo "heure courante ".$heure."<br>";
+                echo "heure deali ".$value->delai."<br>";
+                if($heure == $value->delai){
+                    activite_recentes::where('id_user',$value->id_user)->where('id_these',$value->id_these)->where('heure',$value->heure)->delete();
+                     BackgroundColors::where('id',$value->id_these)->update(['clor_res' => $color,'clor_obj' => $color,'clor_va' => $color,'clor_pro' => $color]);
+                }
+            }
+        }
 
     }
     public function UpdateTheseInTableActivite(Request $req){
         $id_user = $req->input('id');
         $ancien_heure = $req->input('ancien_heure');
         $new_heure = $req->input('new_heure');
-        activite_recentes::where('id_user',$id_user)->where('heure',$ancien_heure)->update(['heure' => $new_heure]);
+        activite_recentes::where('id_user',$id_user)->where('id_these',$id_these)->where('heure',$ancien_heure)->update(['heure' => $new_heure]);
         return $ancien_heure;
 
     }

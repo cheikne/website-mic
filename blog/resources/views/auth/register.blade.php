@@ -46,17 +46,17 @@
             <!-- Profil de user -->
             <div class="mt-4" style="display:flex;">
                 <div>
-                  <x-label for="profil" :value="__('Profil d\'utilisateur')" required/>
+                  <x-label for="profil" :value="__('Profil d\'utilisateur')" />
                   <select class="form-control" id="sel1">
-                    <option selected disabled>choix</option>
+                    <option selected disabled value="choix">choix</option>
                     <option value="doctorant">doctorant</option>
                     <option value="encandrant">encandrant</option>
                     <option value="admin">admin</option>
                   </select>
                </div>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <div>
-                  <x-label for="institut" :value="__('Institut de l\'utilisateur')" required/>
+                  <x-label for="institut" :value="__('Institut de l\'utilisateur')"/>
                   <select class="form-control" id="sel2">
                     <option selected disabled value="choix">choix</option>
                     <option value="Managem">Managem</option>
@@ -73,37 +73,37 @@
                 <div class="mt-4" style="display:flex;">
                     <div class="form-check-inline">
                       <label class="form-check-label" for="check1">
-                        <input type="checkbox" class="form-check-input realisat" value="1">R1
+                        <input type="checkbox" class="form-check-input realisat" value="1">&nbsp;&nbsp;R1
                       </label>
                     </div>
                      &nbsp;&nbsp;<div class="form-check-inline">
                       <label class="form-check-label" for="check2">
-                        <input type="checkbox" class="form-check-input realisat" value="2">R2
+                        <input type="checkbox" class="form-check-input realisat" value="2">&nbsp;&nbsp;R2
                       </label>
                     </div>
                     &nbsp;&nbsp;<div class="form-check-inline">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input realisat" value="3">R3
+                        <input type="checkbox" class="form-check-input realisat" value="3">&nbsp;&nbsp;R3
                       </label>
                     </div>
                    &nbsp;&nbsp;<div class="form-check-inline">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input realisat" value="4">R4
+                        <input type="checkbox" class="form-check-input realisat" value="4">&nbsp;&nbsp;R4
                       </label>
                     </div>
                     &nbsp;&nbsp;<div class="form-check-inline">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input realisat" value="5">R5
+                        <input type="checkbox" class="form-check-input realisat" value="5">&nbsp;&nbsp;R5
                       </label>
                     </div>
                     &nbsp;&nbsp;<div class="form-check-inline">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input realisat" value="6">R6
+                        <input type="checkbox" class="form-check-input realisat" value="6">&nbsp;&nbsp;R6
                       </label>
                     </div>
                     &nbsp;&nbsp;<div class="form-check-inline">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input realisat" value="7">R7
+                        <input type="checkbox" class="form-check-input realisat" value="7">&nbsp;&nbsp;R7
                       </label>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
 
                 <x-input id="profil" class="block mt-1 w-full"
                                 type="text"
-                                name="profil" />
+                                name="profil" required/>
             </div>
             <!-- Institut user -->
              <div class="mt-4" style="display:none;">
@@ -121,7 +121,7 @@
 
                 <x-input id="institut" class="block mt-1 w-full"
                                 type="text"
-                                name="institut" />
+                                name="institut" required/>
             </div>
             <!-- <Les Realisations  -->
              <div class="mt-4" style="display:none;">
@@ -157,14 +157,24 @@
         var choix="";
         var selectProfif = document.getElementById('sel1');
         var valueProfil = selectProfif.options[selectProfif.selectedIndex].value;
-        if(selectProfif=="choix"){
-            document.getElementById('err').innerHTML="Vous devez choisir le profil de l'utilisateur";
-            return;
-        }
+        // if(selectProfif=="choix"){
+        //     document.getElementById('err').innerHTML="Vous devez choisir le profil de l'utilisateur";
+        //     return;
+        // }
         var selectInstitut = document.getElementById('sel2');
         var valueInstitut = selectInstitut.options[selectInstitut.selectedIndex].value;
-        document.getElementById('profil').value = valueProfil;
-        document.getElementById('institut').value = valueInstitut;
+        if(valueProfil !='choix'){
+             document.getElementById('sel1').style.border = "1px solid black";
+            document.getElementById('profil').value = valueProfil;
+        }
+        else
+            document.getElementById('sel1').style.border = "1px solid red";
+        if(valueInstitut !='choix'){
+             document.getElementById('sel2').style.border = "1px solid black";
+            document.getElementById('institut').value = valueInstitut;
+        }
+         else
+            document.getElementById('sel2').style.border = "1px solid red";
         var checkboxes = document.getElementsByClassName("realisat");
         var i=0;
         for (i=0; i<checkboxes.length;i++) {

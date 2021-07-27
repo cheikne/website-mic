@@ -8,10 +8,12 @@ use App\Models\actualites;
 class CrudEventController extends Controller
 {
     public function insertNewEvent(Request $req){
-        $eventv= new Evenemts();
+        $event= new actualites();
         $event->titre = $req->input('titre');
         $event->resumer = $req->input('resumer');
-        $event->dte = $req->input('dte');
+        $event->date = $req->input('dte');
+        $event->id_inst = 1;
+        $event->urlImg = "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
         $event->save();
     }
 
@@ -72,10 +74,10 @@ class CrudEventController extends Controller
         $a = -1000;
         $b =-1001;
         $event = actualites::get();
-        echo "<div class='w3-content'>";
+        echo "<div class='content'>";
         foreach($event as $response){
             echo "
-                <div class='w3-row w3-margin' id='{$response->id_actu}'>
+        <div class='w3-row w3-margin' id='{$response->id_actu}'>
                     <div id='success' style='padding:10px;font-size:1.2em;' class='w3-text-light-green'></div>
                     <div class='w3-third'>
                       <img src='{$response->urlImg}' style='width:100%;min-height:400px'>
@@ -91,7 +93,7 @@ class CrudEventController extends Controller
                       <textarea  class='form-control' rows='4' id='titreT{$response->id_actu}'>{$response->titre}</textarea ><br>
                       <p>Resumer</p>
                       <textarea  class='form-control' rows='14' id='resumerT{$response->id_actu}'>{$response->resumer}</textarea>
-                        <button class='btn btn-primary w3-right' onclick='UpdateEvent({$response->id_actu},{$a})'>Modifier</button>
+                        <button class='btn btn-primary w3-right' onclick='UpdateEvent({$response->id_actu},{$a})'>Enregistrer</button>
                     </div>
                     <div class='w3-right' id='a{$response->id_actu}'>
                         <button class='btn btn-primary' id='a{$response->id_actu}' onclick='DisplayChampedit(this.id,{$a},{$b})'>Modifier</button>

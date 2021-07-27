@@ -5,44 +5,48 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\user_deconnecter;
+use App\Models\nombreUserLogout;
+use App\Models\User;
 use \Carbon\Carbon;
 class UserLogoutController extends Controller
 {   
-    public $ancienData='val_initial';
-    public $user;
     // public $compteur=0;
     public function UserLogoutRecent(Request $req){
         $index1=0;$index2=0;
         $compteur = $req->input('compteur');
         $is_recharge = $req->input('is_recharge');
         $tablelogut = new user_deconnecter();
-         $this->user  = $tablelogut->join('users','users.id','=','user_deconnecters.id_user')->where('bool',1)->get();
+         $user  = $tablelogut->where('bool',1)->get();
+         // $nbreEnregist = nombreUserLogout::where('id',1)->first();
+         $str = $req->input('nbreEnregist');
+         // echo "L'heure courante est :". Carbon::now()."<br>";
                 // echo "3 nmbre gggggg".$req->input('nbreEnregist')."<br>";
                 // echo "3 nmbre gggggg".$is_recharge."<br>";
-         $ephemere = $this->user;
+         $ephemere = $user;
+          $compte =count($user);
+           // nombreUserLogout::where('id',1)->update(['nombreUser' => $compte]);
+                // echo "egal nmbre gggggg".$str."<br>";
+                // echo "egal nmbre gggggg".$compte."<br>";
          if($is_recharge =="non"){
-             if($req->input('nbreEnregist') !=-1){
-                // echo "1 nmbre gggggg".$req->input('nbreEnregist');
-                if($req->input('nbreEnregist') == count($this->user)){
-                // echo "egal nmbre gggggg".$req->input('nbreEnregist')."<br>";
+                // echo "1 nmbre gggggg".$nbreEnregist;
+                if($str == count($user)){
                     return "egaux";
                 }
-                else if($req->input('nbreEnregist') < count($this->user)){
-                // echo "sup nmbre gggggg".$req->input('nbreEnregist')."<br>";
+                else if($str < count($user)){
+                // echo "sup nmbre gggggg".$str."<br>";
                     return "sup";
                 }
                 else
                     return "inf";
-             }
          }
-          $compte =count($this->user);
+          // nombreUserLogout::where('id',1)->update(['nombreUser' => $compte]);
         // foreach($ephemere as $value){
         //     $index1++;
         // }
 
 
 
-        // if($index1 ==  $req->input('nbreEnregist') and $compteur !=0){
+        // if($index1 ==  $str and $compteur !=0){
         //     return "rien_a_charger";
         // }
         // else if($index1 != $req->input('nbreEnregist') and $compteur !=0){
@@ -59,7 +63,7 @@ class UserLogoutController extends Controller
         //             $heureCurrent = Carbon::now();
         //             $getheureCur = explode(" ",$heureCurrent);
         //             $getOnlyheure = explode(":",$getheureCur[1]);
-        //             $ephemere = $this->user;
+        //             $ephemere = $user;
         //         foreach($ephemere as $response){
         //             $getheurebd = explode(":",$response->heure);
         //             if($getOnlyheure[0] - $getheurebd[0] ==-1){
@@ -123,7 +127,7 @@ class UserLogoutController extends Controller
         //             echo "<br><br><br><br><br><br><br><br><br>";
         //          echo "<div id='nbrEnr' onclick='getNombreEnregistrem({$index2})'></div>";
         // }
-        // $this->ancienData = clone($this->user);
+        // $this->ancienData = clone($user);
          // echo "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh".$this->ancienData;
     // }
     // else{
@@ -131,16 +135,21 @@ class UserLogoutController extends Controller
              $j =1;
              $compteNbrli=0;
              $compteNbrPaginat=0;
-             // echo "Le nombre d;element est :".count($this->user);s
+             // echo "Le nombre d;element est :".count($user);s
              echo "<div id='replaceContent'></div>";
              echo " <ul class='sortable-list taskList list-unstyled ui-sortable' id='upcoming'>";
-                $heureCurrent = Carbon::now();
-                $getheureCur = explode(" ",$heureCurrent);
-                $getOnlyheure = explode(":",$getheureCur[1]);
-                $ephemere =$this->user;
+                // $heureCurrent = Carbon::now();
+                // $getheureCur = explode(" ",$heureCurrent);
+                // $getOnlyheure = explode(":",$getheureCur[1]);
+             $time = $req->input('time');
+                $ephemere =$user;
+                $bool = 'oui';
             foreach($ephemere as $response){
-                $getheurebd = explode(":",$response->heure);
-                if($getOnlyheure[0] - $getheurebd[0] ==-1){
+                $user_name = User::where('id',$response->id_user)->first();
+                // $getheurebd = explode(":",$response->heure);
+                if($time ==$response->heure){
+                    user_deconnecter::where('id_user',$response->id_user)->update(['is_finish' => $bool]);
+                }else if($response->is_finish =='non'){
                     if($pagination==1 and $j>1){
                          echo "<div id='{$j}' style='display:none;'>";
                     }
@@ -155,27 +164,27 @@ class UserLogoutController extends Controller
                                     {$response->heure}</button>
                                 </p>
                                 <p class='mb-0'>
-                                    <a href=' class='text-muted'><img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='task-user' class='thumb-sm rounded-circle mr-2'> <span class='font-bold font-secondary'>{$response->name}</span></a>
+                                    <a href=' class='text-muted'><img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='task-user' class='thumb-sm rounded-circle mr-2'> <span class='font-bold font-secondary'>{$user_name->name}</span></a>
                                 </p>
                             </div>
                         </li><br>
                     ";
                     $compteNbrli++;
                     $compteNbrPaginat = $pagination;
-                    if($pagination==3){
+                    if($pagination==6){
                         echo "</div>";
                         $j++;
                         $compteNbrli=0;
                     }
                     ++$pagination;
-                    if($pagination==4){
+                    if($pagination==7){
                         $compteNbrPaginat=$pagination;
                         $pagination=1;
                     }
                 }
                 $index2++;
             }
-             if($compteNbrPaginat-1 !=3){
+             if($compteNbrPaginat-1 !=6){
                 // if($compteNbrPaginat==2){
                 //      echo "<br><br><br><br><br><br>";
                 // }else if($compteNbrPaginat==1){
@@ -186,7 +195,7 @@ class UserLogoutController extends Controller
                 if($compteNbrli==1)
                 echo "<br><br><br><br><br><br><br><br><br><br><br>";
                 echo "</div>";
-            }else if($compteNbrPaginat-1==3){
+            }else if($compteNbrPaginat-1==6){
                 $j--;
                 echo "<br><br>";
             }
@@ -199,7 +208,7 @@ class UserLogoutController extends Controller
                 }
                 echo "</ul>";
             }
-            $compte =count($this->user);
+            // $compte =count($user);
             echo "<div id='nbrEnr' onclick='getNombreEnregistrem({$compte})'></div>";
             // echo "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh".$index1."djdjddjd".$index2;
     // }

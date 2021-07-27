@@ -12,15 +12,11 @@
 body {font-family: "Roboto", sans-serif}
 .w3-bar-block .w3-bar-item {
   padding: 16px;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
-#content {
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-    transition: all 0.3s;
+button{
+  color: white;
 }
-
 /*Barre de recherche****************************************/
 
 chat-search-box {
@@ -56,17 +52,11 @@ input[type=Search]:{
     line-height: 100%;
     vertical-align: middle;
 }
-
-/*@media (max-width: 767px) {
-    .chat-search-box {
-        display: none;
-    }
-}*/
 </style>
 <body>
 
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-  <div class="sidebar-header">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;background-color:#1e4356;" id="mySidebar">
+  <div class="sidebar-header" style=" background: rgb(128, 128, 128);margin-top: 1;">
       <div class="imgcontainer">
           <ul class="users">
               <li class="person" data-chat="person1">
@@ -74,39 +64,39 @@ input[type=Search]:{
                       <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
                       <span class="status userCuurent"></span>
                   </div><br>
-                  <p class="name-time">
-                      <span class="name">{{ Auth::user()->name }}</span>
+                  <p class="name-time"><br><br>
+                      <span class="name w3-text-white">{{ Auth::user()->name }}</span>
                   </p>
-              </li>
+              </li><br><br>
           </ul>
       </div>
   </div>
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <button class="w3-bar-item w3-button w3-blue" >Acces-Partenaire</button>
-  <button class="w3-bar-item w3-button" id="event" onclick="editEvents(this.id)">Modifier Evenenement</button>
-  <button class="w3-bar-item w3-button" onclick="addNewEvents()">Ajouter Evenenement</button>
-  <button class="w3-bar-item w3-button" id="delete" onclick="displaydeleteOneEvent(this.id)">Supprimer Evenenement</button>
-  <button class="w3-bar-item w3-button" onclick="displayAllEvents()">Afficher tout</button>
+  <a class="w3-bar-item w3-a w3-text-white" href="/Accueil/Acces-Partenaire"  style="background-color:#1e4356;">Acces-Partenaire</a>
+  <button class="w3-bar-item w3-button w3-text-white" id="event" onclick="editEvents(this.id)">Modifier Evenenement</button>
+  <button class="w3-bar-item w3-button w3-text-white" onclick="addNewEvents()">Ajouter Evenenement</button>
+  <button class="w3-bar-item w3-button w3-text-white" id="delete" onclick="displaydeleteOneEvent(this.id)">Supprimer Evenenement</button>
+  <button class="w3-bar-item w3-button w3-text-white" onclick="displayAllEvents()">Afficher tout</button>
 </nav>
 
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
 
 <div class="w3-main" style="margin-left:250px;">
 
-<div id="myTop" class="w3-container w3-top w3-theme w3-large w3-blue">
-  <p><i class="fa fa-bars w3-button w3-blue w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+<div id="myTop"  style="background-color:#5D6D7E;" class="w3-container w3-top w3-theme w3-large">
+  <p><i class="fa fa-bars w3-button w3-hide-large w3-xlarge" onclick="w3_open()"></i>
   <span id="myIntro" class="w3-hide">Evenenement:Visites et Conferences</span></p>
 </div>
 
-<header class="w3-container w3-theme w3-blue" style="padding:64px 32px;">
-  <h1 class="w3-xxxlarge">Evenenement:Visites et Conferences</h1>
+<header class="w3-container" style="padding:64px 32px;background-color: #5D6D7E;">
+  <h1 class="w3-xxxlarge">Evenenement</h1>
 </header>
 <div class="w3-container" style="padding:32px">
   <div id="ContentEvent">
     <div class="chat-search-box w3-right" id="contentSearch">
         <label>Entrer la date de de l'evenement</label>
         <div class="input-group">
-            <input type="Search"  id='dte_serach' class="form-control" placeholder="aaaa-mm-jjj">
+            <input type="date"  id='dte_serach' class="form-control" placeholder="aaaa-mm-jjj">
             <div class="input-group-btn">
                <button type="button" class="btn btn-info w3-light-blue" id= "event" onclick="getOneEvents(this.id)">
                     <i class="fa fa-search"></i>
@@ -119,6 +109,8 @@ input[type=Search]:{
 
   <div class="w3-text-red" style="display: none;padding: 10px;font-size:2em;" id="aucun_donnee">Aucun donnees trouves avec cette date</div>
   </div>
+
+
 
 </div> 
 </body>
