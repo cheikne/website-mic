@@ -14,16 +14,17 @@ class activiteController extends Controller
         $privilege = Auth::user()->profil;
         $is_recharge = $req->input('is_recharge');
         $user = User::get();
+        $temp = activite_recentes::get();
         if($is_recharge =="non"){
              if($req->input('nbreEnregist') !=-1){
-                if($req->input('nbreEnregist') == count($user)){
+                if($req->input('nbreEnregist') == count($temp)){
                     return "egaux";
-                }else if($req->input('nbreEnregist') < count($user)){
+                }else if($req->input('nbreEnregist') < count($temp)){
                     return "sup";
                 }else return "inf";
              }
          }
-          $compte =count($user);
+          $compte =count($temp);
 
         echo "<ul class='sortable-list taskList list-unstyled ui-sortable' id='upcoming'>";
         foreach($user as $response){
@@ -71,27 +72,27 @@ class activiteController extends Controller
             $check=true;
             $compteNbrli++;
             $compteNbrPaginat = $pagination;
-            if($pagination==2){
+            if($pagination==5){
                 echo "</div>";
                 $k++;
                 $compteNbrli=0;
             }
             ++$pagination;
-            if($pagination==3){
+            if($pagination==6){
                 $compteNbrPaginat=$pagination;
                 $pagination=1;
             }
         }
     }
 
-         if($compteNbrPaginat-1 !=2){
+         if($compteNbrPaginat-1 !=5){
             // if($compteNbrPaginat==1){
             //      echo "<br><br><br><br><br><br>";
             // }
             if($compteNbrli ==1)
              echo "<br><br><br><br><br><br><br><br>";
             echo "</div>";
-        }else if($compteNbrPaginat-1==2){
+        }else if($compteNbrPaginat-1==5){
             $k--;
         }
         echo "</ul><br>";
@@ -103,7 +104,7 @@ class activiteController extends Controller
             }
             echo "</ul><br>";
         }
-        $compte =count($user);
+        $compte =count($temp);
         echo "<div id ='nbrEnrActivite' onclick='getNbreEnregtActivite({$compte})'></div>";
     }
 }

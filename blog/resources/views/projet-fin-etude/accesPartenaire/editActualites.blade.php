@@ -6,7 +6,7 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="{{asset('js/accesPartenaire/editActualite.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/accesPartenaire/editEvenement.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/accesPartenaire/accesPartenaire.css')}}">
 <style>
 body {font-family: "Roboto", sans-serif}

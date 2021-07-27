@@ -43,32 +43,56 @@ function LogoutUser(id_user){
     var minu = date.getMinutes();
     var heure = date.getHours();
     var time  = heure+ ':'+minu;
-    var url = "/Accueil/updateTableLog?id="+id_user+"&heure="+time;
+    var x=0,delai=0;
+    if(minu+30>=60){
+        x = (minu+30)-60;
+        delai = heure+1+":"+x;
+    }else{
+        delai = heure+":"+minu+30;
+    }
+    var url = "/Accueil/updateTableLog?id="+id_user+"&heure="+time+"&delai="+delai;
     SendToServer(url,callback,false);
 }
 
-setInterval(UserOnline, 5000);
+setInterval(UserOnline, 7000);
 //Pour les users qui sont en ligne
+var is_rechargeOnline="oui";
 function UserOnline(){
-    var url = "/Accueil/AllUserOnline";
+    var url = "/Accueil/AllUserOnline?is_recharge="+is_rechargeOnline;
     var id ='userOnline';
-    SendToServer(url,callback,id);
-    // console.log('La fonctions setInterval a chaque cinq secondes');
+    SendToServer(url,callback4,id);
+    is_rechargeOnline="non";
+    console.log('La fonctions setInterval a chaque cinq secondes online');
 
 }
+
+////////////////////////////////////////////////////////////////////
+function RechargeUserOnline(){
+    var x="oui";
+    var url = "/Accueil/AllUserOnline?is_recharge="+x;
+    var id ='userOnline';
+    SendToServer(url,callback,id);
+    // console.log('La fonctions re- setInterval a chaque cinq secondes');
+
+}
+////////////////////////////////////////////////////////////////////
 //Pour les users qui se sont deconnectes recemment
-var setIntervalUserLogout = setInterval(UserLogout, 15000);
+var setIntervalUserLogout = setInterval(UserLogout, 5000);
 var is_recharge="oui";
 var compteur=0;
 var nbreEnregist=-1;
 function UserLogout(){
-    var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge+"&compteur="+compteur+"&nbreEnregist="+nbreEnregist;
+    var date = new Date();
+    var minu = date.getMinutes();
+    var heure = date.getHours();
+    var time  = heure+ ':'+minu;
+    var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge+"&compteur="+compteur+"&nbreEnregist="+nbreEnregist+"&time="+time;
     SendToServer(url,callback2,'user_logout');
     compteur =1;
     if(is_recharge =="non")
      document.getElementById('nbrEnr').click();
     is_recharge='non';
-    // console.log('La fonctions setInterval a chaque cinq secondes');
+    console.log('La fonctions setInterval pour logout  a chaque cinq secondes');
 }
 //Get le nombre d'enregistrement 
 function getNbreEnregtActivite(nbr){
@@ -78,16 +102,16 @@ function getNombreEnregistrem(nbr){
     nbreEnregist=nbr;
     // alert("nbre"+nbr);
 }
-//Recharger les personnes les nouvelles personnes qui se sont recemment deconnecter
+// Recharger les personnes les nouvelles personnes qui se sont recemment deconnecter
 function RechargerUserLogout(){
-    is_recharge='oui';
+    var x='oui';
     compteur =1;
-     var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge+"&compteur="+compteur+"&nbreEnregist="+nbreEnregist;
+     var url ="/Accueil/UserLogoutRecent?is_recharge="+x+"&compteur="+compteur+"&nbreEnregist="+nbreEnregist;
     SendToServer(url,callback,'user_logout');
-    is_recharge='non';
-    if(is_recharge=="non")
-        document.getElementById('nbrEnr').click();
-     document.getElementById('is_recharge').style.display="none";
+    // if(is_recharge=="non")
+    //     document.getElementById('nbrEnr').click();
+    //  document.getElementById('is_recharge').style.display="none";
+    console.log('La fonctions RechargerUserLogout');
 
 }
 
@@ -104,8 +128,6 @@ function pagination(id,page,nbreId) {
         }
     }
     document.getElementById(id).style.display="block";
-    if(id == 1)
-        setIntervalUserLogout = setInterval(UserLogout, 15000);
     // $("#"+id).fadeIn();
 });
 }
@@ -121,7 +143,6 @@ function getActiviteRecente(){
     if(is_rechargeActivite=="non")
         document.getElementById('nbrEnrActivite').click();
     is_rechargeActivite='non';
-
 }
 
 //Implementation de la fonction des activites recentes Pour charger des donnees depuis BD
@@ -135,16 +156,12 @@ function paginationActivite(id,page,nbreId){
         }
     }
     document.getElementById("pag"+id).style.display="block";
-     if(id != 'pag1')
-        clearInterval(setIntervalUserLogout);
-    if(id == 'pag1')
-        setIntervalUserLogout = setInterval(UserLogout, 15000);
 }
 
-function HideButtonCharge() {
-    document.getElementById('is_recharge').style.display="none";
-    setIntervalUserLogout = setInterval(UserLogout,15000);
-}
+// function HideButtonCharge() {
+//     document.getElementById('is_recharge').style.display="none";
+//     setIntervalUserLogout = setInterval(UserLogout,15000);
+// }
 // Requete Ajax
 function  SendToServer(url,callback,id) {
   var xhttp = new XMLHttpRequest();
@@ -159,7 +176,20 @@ function  SendToServer(url,callback,id) {
 var hideButtonCharge="";
 const callback = function(response,id){
     if(id){
-         document.getElementById(id).innerHTML=response;
+          document.getElementById(id).innerHTML=response;
+         // console.log(response);
+        // alert(response);
+     }
+     // else
+        // alert(response);
+};
+////////////////////////////////////////////////
+const callback4 = function(response,id){
+    if(id){
+        // if(response=="sup" || response=="inf"){
+        //     RechargeUserOnline();
+        // }else if(response !="egaux")
+          document.getElementById(id).innerHTML=response;
          // console.log(response);
         // alert(response);
      }
@@ -168,24 +198,21 @@ const callback = function(response,id){
 };
 
 const callback2 = function(response,id){
-    if(response =='sup'){
-        document.getElementById('is_recharge').style.display="block";
-        document.getElementById('is_recharge').style.color="#E0FFFF";
-        clearInterval(setIntervalUserLogout);
-        hideButtonCharge = setTimeout(HideButtonCharge,80000);
-    }else if(response=='inf'){
-        RechargerUserLogout();
-    }else if(response=="egaux"){
+    if(response =='egaux'){
+        // document.getElementById('is_recharge').style.display="block";
+        // document.getElementById('is_recharge').style.color="#E0FFFF";
+        // clearInterval(setIntervalUserLogout);
+        // hideButtonCharge = setTimeout(HideButtonCharge,80000);
         console.log(response);
     }else{
-        var res = response;
-        document.getElementById(id).innerHTML=res;
+       RechargerUserLogout();
     }
 };
 const callback3 = function(response,id){
     if(response=="egaux"){
         console.log(response);
     }else if(response=="sup" || response =="inf"){
+        document.getElementById('nbrEnrActivite').click();
         is_rechargeActivite="oui";
         getActiviteRecente();
     }else{
@@ -197,3 +224,14 @@ const callback3 = function(response,id){
  UserOnline();
  UserLogout();
  getActiviteRecente();
+
+ deleteThese = setInterval(function(){DeleteTheseInTableActivite();},5000);
+function DeleteTheseInTableActivite(){
+    var date = new Date();
+    var minu = date.getMinutes();
+    var time = date.getHours();
+    var heure  = time+ ':'+minu+":"+"00";
+    var url = "/Accueil/Acces-Partenaire/DeleteTheseInTableActivite?heure="+heure;
+    SendToServer(url,callback,false);
+    // alert("ffffffffffffffffffffff"+id);
+}

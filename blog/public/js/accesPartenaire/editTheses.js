@@ -40,8 +40,8 @@ var updateThese="";
 var deleteThese="";
 var ancien_heure="";
 var new_heure="";
-var id="";
-var id_th=0;
+var id_u=-1;
+var id_th=-1;
 var is_insert="";
 function UpdateThese(id,content,annuler,id_edit,id_these,id_user){
 		$(document).ready(function(){
@@ -54,38 +54,46 @@ function UpdateThese(id,content,annuler,id_edit,id_these,id_user){
 		document.getElementById(annuler).style.display="none";
 		var date = new Date();
 	    var minu = date.getMinutes();
-	    var heure = date.getHours();
-	    var heure  = heure+ ':'+minu;
-	    id  = id_user;
-	    new_heure = heure;
-	    if(id_th == id_these){
-	    	is_insert = "non";
-	    }else{
-	    	is_insert ="oui";
+	    var time = date.getHours();
+	    var heure  = time+ ':'+minu;
+	    var x=0,delai=0;
+	    if(minu+2 >=60){
+	    	x = (minu+1) -60;
+	    	delai = time+2+":"+x;
+	    }else if(minu+1<60){
+	    	var a = minu+2;
+	    	delai = time +":"+a;
 	    }
-		var url = "/Accueil/Acces-Partenaire/updateThese?id="+id_these+"&text="+innerText+"&attribut="+content+"&id_user="+id_user+"&heure="+heure+"&is_insert="+is_insert;
-		SendToServer(url,callback,false);
-		if(id_th == id_these){
-			UpdateTheseInTableActivite(id,ancien_heure,new_heure);
-			clearTimeout(deleteThese);
-			deleteThese = setTimeout(function(){DeleteTheseInTableActivite(id,new_heure);},80000);
-			console.log("juste pour faire update");
-		}
-		else{
-			deleteThese = setTimeout(function(){DeleteTheseInTableActivite(id,new_heure);},80000);
-			console.log("juste pour faire supprimer");
-		}
-		id_th = id_these;
-		ancien_heure = heure;
+	    id_u  = id_user;
+	    new_heure = heure;
+	    id_th = id_these;
+		var url = "/Accueil/Acces-Partenaire/updateThese?id="+id_these+"&text="+innerText+"&attribut="+content+"&id_user="+id_user+"&new_heure="+new_heure+"&delai="+delai;
+		SendToServer(url,callbackUpdateThese,false);
+		// if(id_th == id_these){
+		// 	UpdateTheseInTableActivite(id,ancien_heure,new_heure);
+		// 	clearTimeout(deleteThese);
+		// 	deleteThese = setTimeout(function(){DeleteTheseInTableActivite(id,new_heure);},80000);
+		// 	console.log("juste pour faire update");
+		// }
+		// else{
+			
+			// console.log("juste pour faire supprimer");
+		// }
+		// ancien_heure = heure;
 	});
 }
 
 
 //Aller supprimer la modification une fois que le delai est termine
-function DeleteTheseInTableActivite(id,heure){
-	var url = "/Accueil/Acces-Partenaire/DeleteTheseInTableActivite?id="+id+"&heure="+heure;
+deleteThese = setInterval(function(){DeleteTheseInTableActivite();},5000);
+function DeleteTheseInTableActivite(){
+	var date = new Date();
+    var minu = date.getMinutes();
+    var time = date.getHours();
+    var heure  = time+ ':'+minu+":"+"00";
+	var url = "/Accueil/Acces-Partenaire/DeleteTheseInTableActivite?heure="+heure;
 	SendToServer(url,callback,false);
-	alert("ffffffffffffffffffffff"+id);
+	// alert("ffffffffffffffffffffff"+id);
 }
 function UpdateTheseInTableActivite(id,ancien_heure,new_heure){
 	var url = "/Accueil/Acces-Partenaire/UpdateTheseInTableActivite?id="+id+"&ancien_heure="+ancien_heure+"&new_heure="+new_heure;
@@ -143,6 +151,14 @@ const callback = function(response,id){
          document.getElementById(id).innerHTML=response;
          // alert(response);
      }
+};
+const callbackUpdateThese = function(response,id){
+    if(response=="update"){
+    	
+        console.log(response);
+        // document.getElementById(id).innerHTML=response;
+         // alert(response);
+     }
      else
-        alert(response);
+        console.log(response);
 };

@@ -14,7 +14,9 @@ class updateTableLogController extends Controller
         $tablelogout = new user_deconnecter();
         $id_user = $req->input('id');
         $time = $req->input('heure');
-       $tablelogout->where('id_user',$id_user)->update(['bool' => 1,'heure' => $time]);
+        $delai = $req->input('delai');
+        $check = 'non';
+       $tablelogout->where('id_user',$id_user)->update(['bool' => 1,'heure' => $time,'delai' => $delai,'is_finish' => $check]);
        $tableOnline->where('id_user',$id_user)->update(['bool' => 0,'heure' => $time]);
        return response()->json($req);
     }
