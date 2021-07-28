@@ -1,4 +1,4 @@
-
+var check=0;
 function addNewEvents(){
   document.getElementById('ContentEvent').innerHTML=`
      <form>
@@ -29,25 +29,25 @@ function addNewEvents(){
     </form>
   `;
 }
-
-function editEvents(events){
-  // alert(events);
-  document.getElementById('ContentEvent').innerHTML=`
-     <div class="chat-search-box w3-right" id="contentSearch">
-        <label>Entrer la date de de l'evenement</label>
-        <div class="input-group">
-            <input type="Search" class="form-control" id='dte_serach' placeholder="aaaa-mm-jjj" required>
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-info w3-light-blue" onclick="getOneEvents('${events}')">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </div>
-    </div><br><br><br><br><br>
-    <div id='resultat'></div>
-  `;
-
-}
+addNewEvents()
+// function editEvents(events){
+//   // alert(events);
+//   document.getElementById('ContentEvent').innerHTML=`
+//      <div class="chat-search-box w3-right" id="contentSearch">
+//         <label>Entrer la date de de l'evenement</label>
+//         <div class="input-group">
+//             <input type="date" class="form-control" id='dte_serach' placeholder="aaaa-mm-jjj" required>
+//             <div class="input-group-btn">
+//                 <button type="button" class="btn btn-info w3-light-blue" onclick="getOneEvents('${events}')">
+//                     <i class="fa fa-search"></i>
+//                 </button>
+//             </div>
+//         </div>
+//     </div><br><br><br><br><br>
+//     <div id='resultat'></div>
+//   `;
+//   check =1;
+// }
 function displaydeleteOneEvent(delet){
    document.getElementById('ContentEvent').innerHTML=`
      <div class="chat-search-box w3-right" id="contentSearch">
@@ -63,8 +63,89 @@ function displaydeleteOneEvent(delet){
     </div><br><br><br><br><br>
     <div id='resultat_delete'></div>
   `;
+  check =2;
+}
+// document.getElementById('with_keyword').addEventListener("click",()=>{
+//    document.getElementById('aucun_donnee').style.display="none";
+//     document.getElementById('ContentEvent').innerHTML=`
+//      <div class="chat-search-box w3-right" id="contentSearch">
+//         <label>Entrer la date de de l'evenement</label>
+//         <div class="input-group">
+//             <input type="Search" class="form-control" id='dte_serachKeyWord' onkeyup="ChercherEVentWihtTitre()" placeholder="Rechercher ....." required>
+//             <div class="input-group-btn">
+//                 <button type="button" class="btn btn-info w3-light-blue" onclick="getOneEventsWithKeyWord()">
+//                     <i class="fa fa-search"></i>
+//                 </button>
+//             </div>
+//             <ul class="list-group" id ='resKeyword'>r</ul><br><br><br>
+//         </div>
+//     </div><br><br><br><br><br>
+//     <div id='resultat'></div>
+//   `;
+//   document.getElementById('with_keyword').style.display="none";
+//   document.getElementById('with_date').style.display="block";
+
+// });
+// document.getElementById('with_keyword').addEventListener("focus",()=>{
+//   document.getElementById('resKeyword').style.display="block";
+// });
+// document.getElementById('with_keyword').addEventListener("focusout",()=>{
+//   document.getElementById('resKeyword').style.display="none";
+// });
+// document.getElementById('with_date').addEventListener("click",()=>{
+//    document.getElementById('aucun_donnee').style.display="none";
+//   document.getElementById('with_date').style.display="none";
+//   document.getElementById('with_keyword').style.display="block";
+//   if(check==1) editEvents('event');
+//   if(check==2) displaydeleteOneEvent('delete');
+//   if(check==0) {
+//     document.getElementById('ContentEvent').innerHTML=`
+//     <div class="chat-search-box w3-right" id="contentSearch">
+//         <label>Entrer la date de de l'evenement</label>
+//         <div class="input-group">
+//             <input type="date"  id='dte_serach' class="form-control" placeholder="aaaa-mm-jjj">
+//             <div class="input-group-btn">
+//                <button type="button" class="btn btn-info w3-light-blue" id= "event" onclick="getOneEvents(this.id)">
+//                     <i class="fa fa-search"></i>
+//                 </button>
+//             </div>
+//         </div>
+//     </div><br><br><br><br><br>
+//     `;
+//   check=0;
+//   }
+// });
+
+//Recherche avec le mot cle
+function ChercherEVentWihtTitre(id){
+  $(document).ready(function(){
+    var value = $("#"+id).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+});
+  });
+  // }
+  // document.getElementById('resKeyword').style.display="block";
+  // var keyword = document.getElementById('dte_serachKeyWord').value;
+  // var url = "/Accueil/Acces-Partenaire/Research_WithKeyWord?keyword="+keyword;
+  // SendToServer(url,callback3,'resKeyword');
+  // alert("ddddddddddddddddddddd");
+}
+//Fermer la boite de dialogue
+function closeModal(id){
+  document.getElementById(id).style.display='none';
+}
+function getOneEventsWithKeyWord(){
+  ChercherEVentWihtTitre(); 
 }
 
+//Quand L'utilisateur click sur l'une des titres affiches
+function AfficherEventsTrouverAvecKeyword(id){
+   // dte_serach = document.getElementById('dte_serach').value;
+  var url = "/Accueil/Acces-Partenaire/SendEventsTrouverAvecKeyword?id="+id+"&check="+check;
+    SendToServer(url,callback2,'resultat');
+    document.getElementById('resKeyword').style.display="none";
+}
 function DeleteOneEvents(id,check){
   var url = "/Accueil/Acces-Partenaire/DeleteOneEvents?id="+id;
   if(check==-2){
@@ -73,16 +154,17 @@ function DeleteOneEvents(id,check){
     document.getElementById('hide_actu').style.display="none";
   }else if(check==-1){
     SendToServer(url,callback,false);
-    document.getElementById(id).style.display="none";
-  }else
-  alert(check);
+    displayAllEvents();
+    // document.getElementById(id).style.display="none";
+  }
+  // alert(check);
 }
 
 function DisplayChampedit(id,id_hiden,id_disp){
-  alert(id_disp);
-  document.getElementById(id_disp).style.display="none";
+  // alert(id_disp);
+  // document.getElementById(id_disp).style.display="none";
   document.getElementById(id_hiden).style.display="block";
-  document.getElementById(id).style.display="none";
+  // document.getElementById(id).style.display="none";
   
 }
 function InsererNewEvent(event){
@@ -126,11 +208,14 @@ function UpdateEvent(id,check){
      var dteT = document.getElementById('dteT'+id).value;
     var url = "/Accueil/Acces-Partenaire/UpdateOneEvents?id="+id+"&titreT="+titreT+"&resumerT="+resumerT+"&dte="+dteT;
     SendToServer(url,callback,false);
-    document.getElementById('success').innerHTML="Mise en Jours faite avec Success";
+    // document.getElementById('success').innerHTML="Mise en Jours faite avec Success";
+    document.getElementById(check).style.display="none";
+    toastr.success('Hi! I am success message.');
   }
 }
 
 function displayAllEvents(){
+  // document.getElementById('box').style.display="none";
    var url = "/Accueil/Acces-Partenaire/displayAllEvents";
     SendToServer(url,callback,"ContentEvent");
 }
@@ -170,7 +255,11 @@ const callback2 = function(response,id){
   //   alert(response);
   }
 };
-
+const callback3 = function(response,id){
+  if(id){
+     document.getElementById(id).innerHTML=response;
+  }
+};
 
 // Open and close the sidebar on medium and small screens
 function w3_open() {

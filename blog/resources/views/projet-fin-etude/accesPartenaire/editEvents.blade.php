@@ -6,7 +6,9 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="{{asset('js/accesPartenaire/editEvenement.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/accesPartenaire/accesPartenaire.css')}}">
 <style>
 body {font-family: "Roboto", sans-serif}
@@ -73,9 +75,9 @@ input[type=Search]:{
   </div>
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
   <a class="w3-bar-item w3-a w3-text-white" href="/Accueil/Acces-Partenaire"  style="background-color:#1e4356;">Acces-Partenaire</a>
-  <button class="w3-bar-item w3-button w3-text-white" id="event" onclick="editEvents(this.id)">Modifier Evenenement</button>
+  <!-- <button class="w3-bar-item w3-button w3-text-white" id="event" onclick="editEvents(this.id)">Modifier Evenenement</button> -->
   <button class="w3-bar-item w3-button w3-text-white" onclick="addNewEvents()">Ajouter Evenenement</button>
-  <button class="w3-bar-item w3-button w3-text-white" id="delete" onclick="displaydeleteOneEvent(this.id)">Supprimer Evenenement</button>
+  <!-- <button class="w3-bar-item w3-button w3-text-white" id="delete" onclick="displaydeleteOneEvent(this.id)">Supprimer Evenenement</button> -->
   <button class="w3-bar-item w3-button w3-text-white" onclick="displayAllEvents()">Afficher tout</button>
 </nav>
 
@@ -92,6 +94,10 @@ input[type=Search]:{
   <h1 class="w3-xxxlarge">Evenenement</h1>
 </header>
 <div class="w3-container" style="padding:32px">
+  <div id="box">
+    <!-- <a href="#" style="text-decoration: none;" class="w3-text-blue" id="with_keyword">Faire la recherche avec des mots clés</a> -->
+    <!-- <a href="#" style="text-decoration: none;display: none;" class="w3-text-blue" id="with_date">Faire la recherche avec la date</a> -->
+  </div>
   <div id="ContentEvent">
     <div class="chat-search-box w3-right" id="contentSearch">
         <label>Entrer la date de de l'evenement</label>
@@ -113,5 +119,7 @@ input[type=Search]:{
 
 
 </div> 
+<script type="text/javascript" src="{{asset('js/accesPartenaire/editEvenement.js')}}"></script>
 </body>
 </html> 
+            

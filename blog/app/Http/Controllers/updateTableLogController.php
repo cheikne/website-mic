@@ -18,6 +18,7 @@ class updateTableLogController extends Controller
         $check = 'non';
        $tablelogout->where('id_user',$id_user)->update(['bool' => 1,'heure' => $time,'delai' => $delai,'is_finish' => $check]);
        $tableOnline->where('id_user',$id_user)->update(['bool' => 0,'heure' => $time]);
+       echo "<script>alert('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh')</script>";
        return response()->json($req);
     }
 }

@@ -60,7 +60,7 @@ Route::view('/Accueil/Acces-Partenaire/Evenements','projet-fin-etude.accesParten
 Route::get('/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
 Route::get('/{path}/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
 // Route::get('/Accueil/Partenaire-Projet/CheckLoginUser','App\Http\Controllers\CheckLoginUserController@CheckLoginUser');
-// Route::get('modificationThese','App\Http\Controllers\EditThesesController@modificationThese');
+Route::get('/Accueil/Acces-Partenaire/These-Modifiée/{id}','App\Http\Controllers\EditThesesController@AfficherViewTheseModifiee');
 
 Route::get('/Accueil/updateTableLog','App\Http\Controllers\updateTableLogController@updateTableLog');
 Route::get('/Accueil/AllUserOnline','App\Http\Controllers\OnlineController@AllUserOnline');
@@ -74,6 +74,9 @@ Route::get('/Accueil/Acces-Partenaire/getOneEvents','App\Http\Controllers\CrudEv
 Route::get('/Accueil/Acces-Partenaire/UpdateOneEvents','App\Http\Controllers\CrudEventController@UpdateOneEvents');
 Route::get('/Accueil/Acces-Partenaire/displayAllEvents','App\Http\Controllers\CrudEventController@displayAllEvents');
 Route::get('/Accueil/Acces-Partenaire/DeleteOneEvents','App\Http\Controllers\CrudEventController@DeleteOneEvents');
+Route::get('/Accueil/Acces-Partenaire/Research_WithKeyWord','App\Http\Controllers\CrudEventController@Research_WithKeyWord');
+Route::get('/Accueil/Acces-Partenaire/Research_WithKeyWord','App\Http\Controllers\CrudEventController@Research_WithKeyWord');
+Route::get('/Accueil/Acces-Partenaire/SendEventsTrouverAvecKeyword','App\Http\Controllers\CrudEventController@SendEventsTrouverAvecKeyword');
 
 
 ////////////////////////////////////Partie Actalite////////////////////
@@ -88,7 +91,7 @@ Route::get('/Accueil/Acces-Partenaire/getOneRech','App\Http\Controllers\EditRech
 Route::get('/Accueil/Acces-Partenaire/UpdateOneRech','App\Http\Controllers\EditRecheController@UpdateOneRech');
 Route::get('/Accueil/Acces-Partenaire/displayAllRech','App\Http\Controllers\EditRecheController@displayAllRech');
 Route::view('/Accueil/Acces-Partenaire/Recherche','projet-fin-etude.accesPartenaire.editRecherche');
-Route::post('/Accueil/Acces-Partenaire/insertNewActu','App\Http\Controllers\EditActualiteController@insertNewActu')->('addimage');
+// Route::post('/Accueil/Acces-Partenaire/insertNewActu','App\Http\Controllers\EditActualiteController@insertNewActu')->('addimage');
 ////////////////////////////////////Partie Recherche Scientfique////////////////////
 
 
