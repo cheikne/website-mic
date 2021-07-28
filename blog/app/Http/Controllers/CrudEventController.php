@@ -96,7 +96,7 @@ class CrudEventController extends Controller
                 <th>Titre</th>
                 <th>Description</th>
                 <th>Date</th>
-                <th>Action</th>
+                <th class='w3-right'>Action</th>
               </tr>
             </thead>";
         foreach($event as $response){
@@ -134,7 +134,7 @@ class CrudEventController extends Controller
                 <td>{$response->date}</td>
                 <td>
                 <td> <button class='btn btn-primary' id='a{$response->id_actu}' onclick='DisplayChampedit(this.id,{$a},{$b})'>Modifier</button></td>
-                <td><button class='btn btn-danger' onclick='DeleteOneEvents({$response->id_actu},{$check})'>Supprimer</button></td>
+                <td><button class='btn btn-danger' data-toggle='modal' data-target='#myModal{$response->id_actu}'>Supprimer</button></td>
                 </td>
               </tr>
             </tbody>  
@@ -159,13 +159,43 @@ class CrudEventController extends Controller
               </form>
 
               <div class='w3-container w3-border-top w3-padding-16 w3-light-grey'><br><br>
-                <button  onclick='UpdateEvent({$response->id_actu},{$a})' type='button' class='w3-button w3-blue'>Enregistrer</button>
+                <button  onclick='UpdateEvent({$response->id_actu},{$a})' type='button' class='btn btn-success'>Enregistrer</button>
               </div>
             </div>
           </div>
         ";
             $a++;
             $b--;
+
+
+
+
+            echo "
+            <div class='modal' id='myModal{$response->id_actu}'>
+                <div class='modal-dialog'>
+                  <div class='modal-content'>
+                  
+                    <!-- Modal Header -->
+                    <div class='modal-header'>
+                      <h4 class='modal-title'>Etesvous sur de vouloir supprimer ?</h4>
+                      <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class='modal-body'>
+                    Si vous le supprimer il sera supprimé pour toujours !!
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class='modal-footer'>
+                      <button type='button' class='btn btn-primary' data-dismiss='modal'>Annuler</button>
+                       <button type='button' class='btn btn-danger' data-dismiss='modal' onclick='DeleteOneEvents({$response->id_actu},{$check})'>Supprimer</button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            ";
         }
         // echo "</div>";
     }

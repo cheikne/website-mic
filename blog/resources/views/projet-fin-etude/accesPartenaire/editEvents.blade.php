@@ -95,8 +95,8 @@ input[type=Search]:{
 </header>
 <div class="w3-container" style="padding:32px">
   <div id="box">
-    <a href="#" style="text-decoration: none;" class="w3-text-blue" id="with_keyword">Faire la recherche avec des mots clés</a>
-    <a href="#" style="text-decoration: none;display: none;" class="w3-text-blue" id="with_date">Faire la recherche avec la date</a>
+    <!-- <a href="#" style="text-decoration: none;" class="w3-text-blue" id="with_keyword">Faire la recherche avec des mots clés</a> -->
+    <!-- <a href="#" style="text-decoration: none;display: none;" class="w3-text-blue" id="with_date">Faire la recherche avec la date</a> -->
   </div>
   <div id="ContentEvent">
     <div class="chat-search-box w3-right" id="contentSearch">

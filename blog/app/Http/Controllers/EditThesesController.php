@@ -153,7 +153,7 @@ class EditThesesController extends Controller
         $tableStockModif->id_activite =$res->id_activite;
         $tableStockModif->save();
         $url = '/Accueil/Acces-Partenaire/These-Modifiée/'.$res->id_activite;
-        activite_recentes::where('id_activite',$res->id_activite)->update(['url'=> $user]);
+        activite_recentes::where('id_activite',$res->id_activite)->update(['url'=> $url]);
     }
 
     public function updateThese(Request $req){
