@@ -48,7 +48,7 @@ function UpdateThese(id,content,annuler,id_edit,id_these,id_user){
 		const innerText = document.getElementById(content+"1").value;
 		// alert(innerText);
 		document.getElementById(content).innerHTML=innerText;
-		document.getElementById(id_edit+"1").style.backgroundColor="#E0FFFF";
+		// document.getElementById(id_edit+"1").style.backgroundColor="#E0FFFF";
 		document.getElementById(id_edit).style.display="block";
 		document.getElementById(id).style.display="none";
 		document.getElementById(annuler).style.display="none";
@@ -56,18 +56,23 @@ function UpdateThese(id,content,annuler,id_edit,id_these,id_user){
 	    var minu = date.getMinutes();
 	    var time = date.getHours();
 	    var heure  = time+ ':'+minu;
-	    var x=0,delai=0;
-	    if(minu+2 >=60){
-	    	x = (minu+1) -60;
-	    	delai = time+2+":"+x;
-	    }else if(minu+1<60){
-	    	var a = minu+2;
-	    	delai = time +":"+a;
-	    }
+		var day = date.getDate()
+		var month = date.getMonth() + 1
+		var year = date.getFullYear()
+		var fulldate = year +"-"+month+ "-"+day;
+	    // var x=0,delai=0;
+	    // if(minu+2 >=60){
+	    // 	x = (minu+1) -60;
+	    // 	delai = time+2+":"+x;
+	    // }else if(minu+1<60){
+	    // 	var a = minu+2;
+	    // 	delai = time +":"+a;
+	    // }
+
 	    id_u  = id_user;
 	    new_heure = heure;
 	    id_th = id_these;
-		var url = "/Accueil/Acces-Partenaire/updateThese?id="+id_these+"&text="+innerText+"&attribut="+content+"&id_user="+id_user+"&new_heure="+new_heure+"&delai="+delai;
+		var url = "/Accueil/Acces-Partenaire/updateThese?id="+id_these+"&text="+innerText+"&attribut="+content+"&id_user="+id_user+"&new_heure="+new_heure+"&date="+fulldate;
 		SendToServer(url,callbackUpdateThese,false);
 		// if(id_th == id_these){
 		// 	UpdateTheseInTableActivite(id,ancien_heure,new_heure);

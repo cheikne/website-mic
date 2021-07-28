@@ -44,14 +44,18 @@ function LogoutUser(id_user){
     var heure = date.getHours();
     var time  = heure+ ':'+minu;
     var x=0,delai=0;
-    if(minu+30>=60){
-        x = (minu+30)-60;
-        delai = heure+1+":"+x;
+    if(minu+1>=60){
+        x = (minu+1)-60;
+        var b= heure+1;
+        delai = b+":"+x;
     }else{
-        delai = heure+":"+minu+30;
+        var a = minu+1;
+        delai = heure+":"+a+":"+"00";
     }
     var url = "/Accueil/updateTableLog?id="+id_user+"&heure="+time+"&delai="+delai;
     SendToServer(url,callback,false);
+    alert(delai);
+   
 }
 
 setInterval(UserOnline, 7000);
@@ -85,14 +89,15 @@ function UserLogout(){
     var date = new Date();
     var minu = date.getMinutes();
     var heure = date.getHours();
-    var time  = heure+ ':'+minu;
+    var time  = "0"+heure+":"+minu+":"+"00";
+     // alert("je suis dans le user logout"+time);
     var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge+"&compteur="+compteur+"&nbreEnregist="+nbreEnregist+"&time="+time;
     SendToServer(url,callback2,'user_logout');
     compteur =1;
     if(is_recharge =="non")
      document.getElementById('nbrEnr').click();
     is_recharge='non';
-    console.log('La fonctions setInterval pour logout  a chaque cinq secondes');
+    // console.log('La fonctions setInterval pour logout  a chaque cinq secondes');
 }
 //Get le nombre d'enregistrement 
 function getNbreEnregtActivite(nbr){

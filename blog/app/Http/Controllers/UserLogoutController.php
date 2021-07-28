@@ -145,11 +145,13 @@ class UserLogoutController extends Controller
                 $ephemere =$user;
                 $bool = 'oui';
             foreach($ephemere as $response){
+                    // echo "delai terminer ".$time;
+                    // echo "delai terminer ".$response->delai;
                 $user_name = User::where('id',$response->id_user)->first();
                 // $getheurebd = explode(":",$response->heure);
-                if($time ==$response->heure){
+                if($time ==$response->delai){
                     user_deconnecter::where('id_user',$response->id_user)->update(['is_finish' => $bool]);
-                }else if($response->is_finish =='non'){
+                }if($response->is_finish =='non'){
                     if($pagination==1 and $j>1){
                          echo "<div id='{$j}' style='display:none;'>";
                     }

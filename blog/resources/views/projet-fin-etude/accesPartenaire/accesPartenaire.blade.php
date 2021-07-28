@@ -126,7 +126,7 @@
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                     <div class="chat-search-box" id="contentSearch">
+                     <div class="chat-search-box RechercheBar" id="contentSearch">
                         <div class="input-group">
                             <input class="form-control" placeholder="Search">
                             <div class="input-group-btn">

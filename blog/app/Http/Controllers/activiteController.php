@@ -13,22 +13,23 @@ class activiteController extends Controller
         $i=1;$j=1;$compteNbrli=0;$pagination=1;$k=1;$compteNbrPaginat=0;$check=true;
         $privilege = Auth::user()->profil;
         $is_recharge = $req->input('is_recharge');
-        $user = User::get();
-        $temp = activite_recentes::get();
-        if($is_recharge =="non"){
-             if($req->input('nbreEnregist') !=-1){
-                if($req->input('nbreEnregist') == count($temp)){
-                    return "egaux";
-                }else if($req->input('nbreEnregist') < count($temp)){
-                    return "sup";
-                }else return "inf";
-             }
-         }
-          $compte =count($temp);
+        $allActivite = activite_recentes::orderByDesc('date')->limit(25)->get();
+        // $temp = activite_recentes::get();
+        // if($is_recharge =="non"){
+        //      if($req->input('nbreEnregist') !=-1){
+        //         if($req->input('nbreEnregist') == count($temp)){
+        //             return "egaux";
+        //         }else if($req->input('nbreEnregist') < count($temp)){
+        //             return "sup";
+        //         }else return "inf";
+        //      }
+        //  }
+        $compte =0;
 
         echo "<ul class='sortable-list taskList list-unstyled ui-sortable' id='upcoming'>";
-        foreach($user as $response){
-            $data = activite_recentes::where('id_user',$response->id)->get();
+        foreach($allActivite as $response){
+            $user = User::where('id',$response->id_user)->first();
+            $data = activite_recentes::where('id_user',$response->id_user)->where('date',$response->date)->get();
               if($pagination==1 and $k>1 and $check){
                      echo "<div id='pag{$k}' style='display:none;'>";
                      $check = false;
@@ -42,11 +43,11 @@ class activiteController extends Controller
                     <div class='clearfix'></div>
                     <div class='mt-3'>
                         <p class='float-right mb-0 mt-2'>
-                            <button type='button' class='btn btn-success btn-sm waves-effect waves-light'>A Modifé {$textEditer->heure}</button>
+                            <button type='button' class='btn btn-success btn-sm waves-effect waves-light'>A Modifé {$textEditer->date}</button>
                     </p>
                 <p class='mb-0'>
                     <a href='#'
-                     class='text-muted'><img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='task-user' class='thumb-sm rounded-circle mr-2'> <span class='font-bold font-secondary'>{$response->name}</span></a>
+                     class='text-muted'><img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='task-user' class='thumb-sm rounded-circle mr-2'> <span class='font-bold font-secondary'>{$user->name}</span></a>
                 </p><br>";
                 echo "<div class='d-flex flex-wrap align-content-start bg-light'>";
                 $j=0;
@@ -104,7 +105,7 @@ class activiteController extends Controller
             }
             echo "</ul><br>";
         }
-        $compte =count($temp);
+        $compte =0;
         echo "<div id ='nbrEnrActivite' onclick='getNbreEnregtActivite({$compte})'></div>";
     }
 }
