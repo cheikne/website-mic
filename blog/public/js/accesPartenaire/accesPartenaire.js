@@ -44,17 +44,17 @@ function LogoutUser(id_user){
     var heure = date.getHours();
     var time  = heure+ ':'+minu;
     var x=0,delai=0;
-    if(minu+1>=60){
-        x = (minu+1)-60;
-        var b= heure+1;
+    if(minu+30>=60){
+        x = (minu+30)-60;
+        var b= heure+30;
         delai = b+":"+x;
     }else{
-        var a = minu+1;
+        var a = minu+30;
         delai = heure+":"+a+":"+"00";
     }
     var url = "/Accueil/updateTableLog?id="+id_user+"&heure="+time+"&delai="+delai;
     SendToServer(url,callback,false);
-    alert(delai);
+    // alert(delai);
    
 }
 
@@ -88,10 +88,10 @@ var nbreEnregist=-1;
 function UserLogout(){
     var date = new Date();
     var minu = date.getMinutes();
-    var heure = date.getHours();
-    var time  = "0"+heure+":"+minu+":"+"00";
+    var time = date.getHours();
+    var heure  = time+ ':'+minu+":"+"00";
      // alert("je suis dans le user logout"+time);
-    var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge+"&compteur="+compteur+"&nbreEnregist="+nbreEnregist+"&time="+time;
+    var url ="/Accueil/UserLogoutRecent?is_recharge="+is_recharge+"&compteur="+compteur+"&heure="+heure+"&nbreEnregist="+nbreEnregist;
     SendToServer(url,callback2,'user_logout');
     compteur =1;
     if(is_recharge =="non")
@@ -145,8 +145,8 @@ var nbreEnregistActivite=-1;
 function getActiviteRecente(){
     var url ="/Accueil/Acces-Partenaire/getActiviteRecente?is_recharge="+is_rechargeActivite+"&nbreEnregist="+nbreEnregistActivite;
     SendToServer(url,callback3,'activite');
-    if(is_rechargeActivite=="non")
-        document.getElementById('nbrEnrActivite').click();
+    // if(is_rechargeActivite=="non")
+    //     document.getElementById('nbrEnrActivite').click();
     is_rechargeActivite='non';
 }
 
@@ -214,15 +214,14 @@ const callback2 = function(response,id){
     }
 };
 const callback3 = function(response,id){
-    if(response=="egaux"){
-        console.log(response);
-    }else if(response=="sup" || response =="inf"){
-        document.getElementById('nbrEnrActivite').click();
+    if(response >nbreEnregist || response < nbreEnregist){
+        nbreEnregist = response;
         is_rechargeActivite="oui";
         getActiviteRecente();
-    }else{
+    }else if(response != nbreEnregist){
         var res = response;
         document.getElementById(id).innerHTML=res;
+        document.getElementById('nbrEnrActivite').click();
     }
 };
 
