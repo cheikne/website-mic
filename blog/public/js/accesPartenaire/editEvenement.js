@@ -1,4 +1,4 @@
-var check=0;
+ var check=0;
 function addNewEvents(){
   document.getElementById('ContentEvent').innerHTML=`
      <form>
