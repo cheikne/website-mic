@@ -132,15 +132,15 @@ input[type=Search]:{
             <textarea class="form-control" id="resumer" rows="10" required></textarea>
           </div>
           <div class="row px-4">
-            @php($a=1)
-           @foreach($id_theses as $id_these) 
+          <!--    @php($a=1) -->
+         
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDisabled" id="these" >
             <label class="form-check-label" for="flexRadioDisabled">
-                R.{$a}
+                R <!--.{$a}-->
             </label>
           </div>
-        @endforeach
+      
          </div><br>
           <!-- Submit button -->
           <button type="button" class="btn btn-primary btn-block mb-4" onClick='InsererNewRecherche(event)'>

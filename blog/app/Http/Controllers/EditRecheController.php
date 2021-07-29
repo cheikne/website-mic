@@ -20,7 +20,7 @@ class EditRecheController extends Controller
       $id_these=includes::where('id_user',$id)->get('id_these');
       return view('projet-fin-etude/accesPartenaire/editRecherche')
              ->with('idtheses',$id_these->id_these); */
-             if( (Auth::user()->profil)=='admin'){
+            /* if( (Auth::user()->profil)=='admin'){
                 $id_these = recherche_scientifiques::get('id_these');     
                  }
               else{
@@ -33,7 +33,7 @@ class EditRecheController extends Controller
             } 
             return view('projet-fin-etude/accesPartenaire/editRecherche')
                   ->with('id_theses',$id_theses);
-               
+          */     
      }
     public function insertNewRech(Request $req){
         $rech= new recherche_scientifiques();
@@ -112,6 +112,7 @@ class EditRecheController extends Controller
         $id= Auth::user()->id ;
         $id_these=includes::where('id_user',$id)->get('id_these');
         $i=count($id_these);
+       
         for($k=0;$k<($i/2);$k++){
            $rech = recherche_scientifiques::where('id_these',$id_these[$k]->id_these)
                                         ->get();
@@ -134,7 +135,7 @@ class EditRecheController extends Controller
             echo " <table class='table table-dark table-hover'>
                 <thead>
                 <tr>
-                    <th>Lien {$i}</th>
+                    <th>Lien</th>
                     <th>Description</th>
                     <th>Date</th>
                     <th class='w3-right'>Action</th>
