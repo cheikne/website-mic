@@ -103,11 +103,13 @@ function DeleteOneActualite(id,check){
     document.getElementById('success').innerHTML="Sppression avec Success";
     SendToServer(url,callback,false);
     document.getElementById('hide_actu').style.display="none";
+    displayAllActualite();
   }else if(check==-1){
     SendToServer(url,callback,false);
-    document.getElementById(id).style.display="none";
-  }else
-  alert(check);
+    // document.getElementById(id).style.display="none";
+    displayAllActualite();
+  }
+  // alert(check);
 }
 
 function DisplayChampedit(id,id_hiden,id_disp){

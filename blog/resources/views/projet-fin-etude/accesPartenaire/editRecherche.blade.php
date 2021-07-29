@@ -6,13 +6,14 @@
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link href='https://css.gg/arrow-left.css' rel='stylesheet'>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="{{asset('js/accesPartenaire/editRecherche.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/accesPartenaire/accesPartenaire.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body {font-family: "Roboto", sans-serif}
 .w3-bar-block .w3-bar-item {
@@ -74,23 +75,23 @@ input[type=Search]:{
   <div class="sidebar-header"  style=" background: rgb(128, 128, 128); margin-top: 1;">
       <div class="imgcontainer">
       <div class="px-4">
-       <a href="/Accueil/Acces-Partenaire" ><i class="gg-arrow-left w3-text-white"></i></a>  
+         
       </div> 
           <ul class="users">
               <li class="person" data-chat="person1">
                   <div class="user">
                       <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
                       <span class="status userCuurent"></span>
-                  </div><br>
+                  </div><br><br>
                   <p class="name-time">
                       <span class="name w3-text-white">{{ Auth::user()->name }}</span>
                   </p>
-              </li>
+              </li><br><br><br>
           </ul>
       </div>
   </div>
   <a class="w3-bar-item w3-button w3-hide-large w3-text-white w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-a w3-blue w3-text-white" href="/Accueil/Acces-Partenaire" style="background-color:#1e4356; " >Acces-Partenaire</a>
+  <a class="w3-bar-item w3-a  w3-text-white" href="/Accueil/Acces-Partenaire" style="background-color:#1e4356; " >Acces-Partenaire</a>
   <!--button class="w3-bar-item w3-button" id="event" onclick="editRecherche(this.id)">Modifier Publication</button-->
   <a class="w3-bar-item w3-button w3-text-white" href="/Accueil/Acces-Partenaire/Recherche">Ajouter Publication</a>
   <!--button class="w3-bar-item w3-button" id="delete" onclick="displaydeleteOneRecherche(this.id)">Supprimer Publication</button-->
@@ -121,6 +122,10 @@ input[type=Search]:{
               <label class="form-label" for="form4Example1">Date</label>
               <input type="date" id="dte" class="form-control" required/>
           </div>
+           <div class="form-outline mb-4">
+              <label class="form-label" for="form4Example1">Titre</label>
+              <input type="text" id="titre" class="form-control" required/>
+          </div>
             <label class="form-label" for="form4Example2">lien du site de la Recherche</label>
           <div class="form-outline mb-4">
             <input type="text" id="lien" class="form-control" required/>
@@ -135,15 +140,16 @@ input[type=Search]:{
             @php($a=1)
            @foreach($id_theses as $id_these) 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDisabled" id="these" >
+            <input class="form-check-input radios" type="radio" name="flexRadioDisabled"  value="{{$id_these}}">
             <label class="form-check-label" for="flexRadioDisabled">
-                R.{$a}
-            </label>
+                R{{$id_these->id_these}}
+            </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </div>
+             @php($a++)
         @endforeach
          </div><br>
           <!-- Submit button -->
-          <button type="button" class="btn btn-primary btn-block mb-4" onClick='InsererNewRecherche(event)'>
+          <button type="button" class="btn btn-primary btn-block mb-4" onClick='InsererNewRecherche()'>
             Enregistrer
           </button>
         </fieldset>
@@ -156,5 +162,6 @@ input[type=Search]:{
   </div>
 
 </div> 
+<script type="text/javascript" src="{{asset('js/accesPartenaire/editRecherche.js')}}"></script>
 </body>
 </html> 

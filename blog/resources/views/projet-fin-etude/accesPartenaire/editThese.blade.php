@@ -37,7 +37,7 @@
 <div class="w3-row-padding w3-content" style="max-width:1400px">
   <div>
     <!-- <img src="{{asset('image/lancemntprojet.jpeg')}}" alt="Notebook" style="width:100%"> -->
-     <div class="w3-justify container"id="editp1" style="background-color: {{$couleur->clor_pro}};">
+     <div class="w3-justify container w3-light-grey"id="editp1" >
       <h2>Problematique de la these</h2>
        <div class="w3-justify container" id="Problematique">{{$response->problematique}}</div><br>
         <button class="btn btn-primary" id="editp"    onclick="ModificationThese('editp','Problematique','RecordingProb')">Modifier</button>
@@ -47,7 +47,7 @@
    </div>
     </div>
 
-     <div class="w3-justify container id="edito1" style="background-color:{{$couleur->clor_obj}}">
+     <div class="w3-justify container w3-light-grey" id="edito1">
       <h2>Obectifs</h2>
       <div class="w3-justify container"  id="objectif">{{$response->objectif}}</div> <br>
          <button class="btn btn-primary" id="edito" onclick="ModificationThese('edito','objectif','RecordingObj')">Modifier</button>
@@ -58,7 +58,7 @@
      </div>
 
 
-    <div class="w3-justify container" id="editv1" style="background-color: {{ $couleur->clor_va }}">
+    <div class="w3-justify container w3-light-grey" id="editv1" >
     <h2>Valeur ajoutée</h2>
       <div id="valeur_ajoutee">{{$response->valeur_ajoute}}</div><br>
       <button class="btn btn-primary" id="editv" onclick="ModificationThese('editv','valeur_ajoutee','RecordingVA')">Modifier</button>
@@ -68,8 +68,8 @@
       <p></p>
       </div>
    </div>
-   <div class="w3-justify container " id="editr1" style="background-color: {{$couleur->clor_res}};">
-   <h2>Resulatat</h2>
+   <div class="w3-justify container w3-light-grey" id="editr1">
+   <h2>Resultats</h2>
       <div id ="resultats">{{$response->resultats}}</div><br>
       <button class="btn btn-primary" id="editr" onclick="ModificationThese('editr','resultats','RecordingRes')">Modifier</button>
       <div style="display: flex;">
@@ -78,7 +78,7 @@
         </div>
     </div>
     <br>
-    <div class="container w3-justify" style="background-color: {{$couleur->clor_nameT}}">
+    <div class="container w3-justify w3-light-grey">
       <h2>Nom des Thsard</h2>
       <div class="w3-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati.</div>
     </div>
@@ -93,7 +93,7 @@
 <div class="w3-row-padding w3-content" style="max-width:1400px">
   <div>
     <!-- <img src="{{asset('image/lancemntprojet.jpeg')}}" alt="Notebook" style="width:100%"> -->
-     <div class="w3-justify container"id="editp1" style="background-color: {{$couleur->clor_pro}};">
+     <div class="w3-justify container w3-light-grey"id="editp1" >
       <h2>Problematique de la these</h2>
        <div class="w3-justify container" id="Problematique">{{$response->problematique}}</div><br>
         <button class="btn btn-primary" id="editp"    onclick="ModificationThese('editp','Problematique','RecordingProb')" disabled>Modifier</button>
@@ -103,7 +103,7 @@
    </div>
     </div>
 
-     <div class="w3-justify container id="edito1" style="background-color:{{$couleur->clor_obj}}">
+     <div class="w3-justify container w3-light-grey" id="edito1">
       <h2>Obectifs</h2>
       <div class="w3-justify container"  id="objectif">{{$response->objectif}}</div> <br>
          <button class="btn btn-primary" id="edito" onclick="ModificationThese('edito','objectif','RecordingObj')" disabled>Modifier</button>
@@ -114,7 +114,7 @@
      </div>
 
 
-    <div class="w3-justify container" id="editv1" style="background-color: {{ $couleur->clor_va }}">
+    <div class="w3-justify container w3-light-grey" id="editv1" >
     <h2>Valeur ajoutée</h2>
       <div id="valeur_ajoutee">{{$response->valeur_ajoute}}</div><br>
       <button class="btn btn-primary" id="editv" onclick="ModificationThese('editv','valeur_ajoutee','RecordingVA')" disabled>Modifier</button>
@@ -124,8 +124,8 @@
       <p></p>
       </div>
    </div>
-   <div class="w3-justify container " id="editr1" style="background-color: {{$couleur->clor_res}};">
-   <h2>Resulatat</h2>
+   <div class="w3-justify container w3-light-grey" id="editr1">
+   <h2>Resultats</h2>
       <div id ="resultats">{{$response->resultats}}</div><br>
       <button class="btn btn-primary" id="editr" onclick="ModificationThese('editr','resultats','RecordingRes')" disabled>Modifier</button>
       <div style="display: flex;">
@@ -134,7 +134,7 @@
         </div>
     </div>
     <br>
-    <div class="container w3-justify" style="background-color: {{$couleur->clor_nameT}}">
+    <div class="container w3-justify w3-light-grey">
       <h2>Nom des Thsard</h2>
       <div class="w3-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati.</div>
     </div>

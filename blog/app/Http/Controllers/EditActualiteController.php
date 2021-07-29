@@ -17,16 +17,17 @@ class EditActualiteController extends Controller
         $name= Auth::user()->institut ;
         $id_inst=instituts::where('name',$name)->first('id_inst');
         $actu= new actualites();
+        $str = substr($req->input('titre'),0, 20);
         $actu->titre = $req->input('titre');
         $actu->resumer = $req->input('resumer');
         $actu->date = $req->input('dte');
         $actu->id_inst= $id_inst->id_inst;
-       // $actu->image=$req->input('image');
+       $actu->urlImg="url_image";
      if($req->hasfile('image')){
           $file=$req->file('image');
           //$file=$req->image;
           $extension=$file->getClientOriginalExtension();
-          $filname=time().'.'.$extension;
+          $filname=$str .'.'.$extension;
           $file->move('uploads/actu/',$filname);
           $actu->image=$filname;
         }
@@ -105,15 +106,7 @@ class EditActualiteController extends Controller
         $check=-1;
         $a = -1000;
         $b =-1001;
-        if( (Auth::user()->profil)=='admin'){
-          $actu=actualites::all();
-        }
-        else{
-        $name= Auth::user()->institut ;
-        $id_inst=instituts::where('name',$name)->first('id_inst');
-        $actu = actualites::where('id_inst',$id_inst->id_inst)->get();
-      }
-      echo "
+           echo "
        <div class='chat-search-box w3-right' id='contentSearch'>
         <label>Entrer la date de l'actualité</label>
         <div class='input-group'>
@@ -128,6 +121,95 @@ class EditActualiteController extends Controller
         </div><br><br><br><br><br>
         <div id='resultat'></div>
         ";
+
+        if( (Auth::user()->profil)=='admin'){
+          $actu=actualites::all();
+                  echo " <table class='table table-dark table-hover'>
+                    <thead>
+                      <tr>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th class='w3-right'>Action</th>
+                      </tr>
+                    </thead>";
+         foreach($actu as $response){
+         $str =  substr($response->resumer,0,100);
+         echo "
+             <tbody id='myTable'>
+               <tr>
+                 <td>{$response->titre}</td>
+                 <td>{$str}............</td>
+                 <td>{$response->date}</td>
+                 <td>
+                 <td> <button class='btn btn-primary' id='a{$response->id_actu}' onclick='DisplayChampedit(this.id,{$a},{$b})'>Modifier</button></td>
+                 <td><button class='btn btn-danger' data-toggle='modal' data-target='#myModal{$response->id_actu}'>Supprimer</button></td>
+                 </td>
+               </tr>
+             </tbody>  
+             ";
+         
+         echo "
+             <div id='{$a}' class='w3-modal'>
+             <div class='w3-modal-content w3-card-4 w3-animate-zoom' style='max-width:700px;'>
+           
+               <div class='w3-center'><br>
+                 <span onclick='closeModal({$a})' class='w3-button w3-xlarge w3-transparent w3-display-topright' title='Close Modal'>×</span>
+               </div>
+
+               <form class='w3-container' >
+                 <div class='w3-section'>
+                      <div class='container'>
+                          <input type='date' id='dteT{$response->id_actu}' value='{$response->date}'>&nbsp;&nbsp;<label>Date</label>
+                    <p>Titre</p>
+                      <textarea  class='form-control' rows='4' id='titreT{$response->id_actu}'>{$response->titre}</textarea ><br>              <p>Resumer</p>              <textarea  class='form-control' rows='14' id='resumerT{$response->id_actu}'>{$response->resumer}</textarea>   
+             </div>
+                 </div>
+               </form>
+
+               <div class='w3-container w3-border-top w3-padding-16 w3-light-grey'><br><br>
+                 <button  onclick='UpdateActualite({$response->id_actu},{$a})' type='button' class='btn btn-success'>Enregistrer</button>
+               </div>
+             </div>
+           </div>
+         ";
+             $a++;
+             $b--;
+
+
+            
+             echo "
+             <div class='modal' id='myModal{$response->id_actu}'>
+                 <div class='modal-dialog'>
+                   <div class='modal-content'>
+                   
+                     <!-- Modal Header -->
+                     <div class='modal-header'>
+                       <h4 class='modal-title'>Etes-vous sur de vouloir supprimer ?</h4>
+                       <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                     </div>
+                     
+                     <!-- Modal body -->
+                     <div class='modal-body'>
+                     Si vous le supprimez il sera supprimé pour toujours !!
+                     </div>
+                     
+                     <!-- Modal footer -->
+                     <div class='modal-footer'>
+                       <button type='button' class='btn btn-primary' data-dismiss='modal'>Annuler</button>
+                        <button type='button' class='btn btn-danger' data-dismiss='modal' onclick='DeleteOneActualite({$response->id_actu},{$check})'>Supprimer</button>
+                     </div>
+                     
+                   </div>
+                 </div>
+               </div>
+             ";
+             }
+        }
+        else{
+        $name= Auth::user()->institut;
+        $id_inst=instituts::where('name',$name)->first('id_inst');
+        $actu = actualites::where('id_inst',$id_inst->id_inst)->get();
         echo " <table class='table table-dark table-hover'>
             <thead>
               <tr>
@@ -137,78 +219,79 @@ class EditActualiteController extends Controller
                 <th class='w3-right'>Action</th>
               </tr>
             </thead>";
- foreach($actu as $response){
- $str =  substr($response->resumer,0,100);
- echo "
-     <tbody id='myTable'>
-       <tr>
-         <td>{$response->titre}</td>
-         <td>{$str}............</td>
-         <td>{$response->date}</td>
-         <td>
-         <td> <button class='btn btn-primary' id='a{$response->id_actu}' onclick='DisplayChampedit(this.id,{$a},{$b})'>Modifier</button></td>
-         <td><button class='btn btn-danger' data-toggle='modal' data-target='#myModal{$response->id_actu}'>Supprimer</button></td>
-         </td>
-       </tr>
-     </tbody>  
-     ";
- 
- echo "
-     <div id='{$a}' class='w3-modal'>
-     <div class='w3-modal-content w3-card-4 w3-animate-zoom' style='max-width:700px;'>
-   
-       <div class='w3-center'><br>
-         <span onclick='closeModal({$a})' class='w3-button w3-xlarge w3-transparent w3-display-topright' title='Close Modal'>×</span>
-       </div>
-
-       <form class='w3-container' >
-         <div class='w3-section'>
-              <div class='container'>
-                  <input type='date' id='dteT{$response->id_actu}' value='{$response->date}'>&nbsp;&nbsp;<label>Date</label>
-            <p>Titre</p>
-              <textarea  class='form-control' rows='4' id='titreT{$response->id_actu}'>{$response->titre}</textarea ><br>              <p>Resumer</p>              <textarea  class='form-control' rows='14' id='resumerT{$response->id_actu}'>{$response->resumer}</textarea>   
-     </div>
-         </div>
-       </form>
-
-       <div class='w3-container w3-border-top w3-padding-16 w3-light-grey'><br><br>
-         <button  onclick='UpdateActualite({$response->id_actu},{$a})' type='button' class='btn btn-success'>Enregistrer</button>
-       </div>
-     </div>
-   </div>
- ";
-     $a++;
-     $b--;
-
-
-    
+     foreach($actu as $response){
+     $str =  substr($response->resumer,0,100);
      echo "
-     <div class='modal' id='myModal{$response->id_actu}'>
-         <div class='modal-dialog'>
-           <div class='modal-content'>
-           
-             <!-- Modal Header -->
-             <div class='modal-header'>
-               <h4 class='modal-title'>Etesvous sur de vouloir supprimer ?</h4>
-               <button type='button' class='close' data-dismiss='modal'>&times;</button>
+         <tbody id='myTable'>
+           <tr>
+             <td>{$response->titre}</td>
+             <td>{$str}............</td>
+             <td>{$response->date}</td>
+             <td>
+             <td> <button class='btn btn-primary' id='a{$response->id_actu}' onclick='DisplayChampedit(this.id,{$a},{$b})'>Modifier</button></td>
+             <td><button class='btn btn-danger' data-toggle='modal' data-target='#myModal{$response->id_actu}'>Supprimer</button></td>
+             </td>
+           </tr>
+         </tbody>  
+         ";
+     
+     echo "
+         <div id='{$a}' class='w3-modal'>
+         <div class='w3-modal-content w3-card-4 w3-animate-zoom' style='max-width:700px;'>
+       
+           <div class='w3-center'><br>
+             <span onclick='closeModal({$a})' class='w3-button w3-xlarge w3-transparent w3-display-topright' title='Close Modal'>×</span>
+           </div>
+
+           <form class='w3-container' >
+             <div class='w3-section'>
+                  <div class='container'>
+                      <input type='date' id='dteT{$response->id_actu}' value='{$response->date}'>&nbsp;&nbsp;<label>Date</label>
+                <p>Titre</p>
+                  <textarea  class='form-control' rows='4' id='titreT{$response->id_actu}'>{$response->titre}</textarea ><br>              <p>Resumer</p>              <textarea  class='form-control' rows='14' id='resumerT{$response->id_actu}'>{$response->resumer}</textarea>   
+         </div>
              </div>
-             
-             <!-- Modal body -->
-             <div class='modal-body'>
-             Si vous le supprimer il sera supprimé pour toujours !!
-             </div>
-             
-             <!-- Modal footer -->
-             <div class='modal-footer'>
-               <button type='button' class='btn btn-primary' data-dismiss='modal'>Annuler</button>
-                <button type='button' class='btn btn-danger' data-dismiss='modal' onclick='DeleteOneEvents({$response->id_actu},{$check})'>Supprimer</button>
-             </div>
-             
+           </form>
+
+           <div class='w3-container w3-border-top w3-padding-16 w3-light-grey'><br><br>
+             <button  onclick='UpdateActualite({$response->id_actu},{$a})' type='button' class='btn btn-success'>Enregistrer</button>
            </div>
          </div>
        </div>
      ";
-     }
+         $a++;
+         $b--;
+
+
+        
+         echo "
+         <div class='modal' id='myModal{$response->id_actu}'>
+             <div class='modal-dialog'>
+               <div class='modal-content'>
+               
+                 <!-- Modal Header -->
+                 <div class='modal-header'>
+                   <h4 class='modal-title'>Etesvous sur de vouloir supprimer ?</h4>
+                   <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                 </div>
+                 
+                 <!-- Modal body -->
+                 <div class='modal-body'>
+                 Si vous le supprimer il sera supprimé pour toujours !!
+                 </div>
+                 
+                 <!-- Modal footer -->
+                 <div class='modal-footer'>
+                   <button type='button' class='btn btn-primary' data-dismiss='modal'>Annuler</button>
+                    <button type='button' class='btn btn-danger' data-dismiss='modal' onclick='DeleteOneActualite({$response->id_actu},{$check})'>Supprimer</button>
+                 </div>
+                 
+               </div>
+             </div>
+           </div>
+         ";
+         }
+       }
  } 
     public function DeleteOneActu(Request $req){
       $id = $req->input('id');

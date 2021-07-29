@@ -186,7 +186,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="card-box">
-                                    <h4 class="text-dark header-title">Personne deconnectee recemment </h4><br>
+                                    <h4 class="text-dark header-title">Personne deconnectée recemment </h4><br>
                                     <p class="text-muted m-b-30 font-13" id="is_recharge" style="display:none;">quelqu'un vient de se deconnecter  <button type="button" class="btn btn-primary" onclick="RechargerUserLogout()">Actualiser</button></p>
                                      <div id="user_logout"></div>
                                     </div>
@@ -194,7 +194,7 @@
                                 <!-- Les activites Recentes  -->
                              <div class="col-lg-6">
                                 <div class="card-box">
-                                    <h4 class="text-dark header-title">Activites recentes</h4>
+                                    <h4 class="text-dark header-title">Activités recentes</h4>
                                     <p class="text-muted m-b-30 font-13" id="is_rechargeActivite" style="display:none;"> Nouvelle Modification :Actualiser<button type="button" class="btn btn-primary" onclick="RechargerActivite()">Actualiser</button></p>
                                     <div id="activite"></div>
                                     

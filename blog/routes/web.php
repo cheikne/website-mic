@@ -92,8 +92,8 @@ Route::get('/Accueil/Acces-Partenaire/insertNewRech','App\Http\Controllers\EditR
 Route::get('/Accueil/Acces-Partenaire/getOneRech','App\Http\Controllers\EditRecheController@getOneRech');
 Route::get('/Accueil/Acces-Partenaire/UpdateOneRech','App\Http\Controllers\EditRecheController@UpdateOneRech');
 Route::get('/Accueil/Acces-Partenaire/displayAllRech','App\Http\Controllers\EditRecheController@displayAllRech');
-Route::view('/Accueil/Acces-Partenaire/Recherche','projet-fin-etude.accesPartenaire.editRecherche');
-Route::view('/Accueil/Acces-Partenaire/Recherche','projet-fin-etude.accesPartenaire.editRecherche');
+Route::get('/Accueil/Acces-Partenaire/Recherche','App\Http\Controllers\EditRecheController@vericationdesthesedeUsr');
+// Route::view('/Accueil/Acces-Partenaire/Recherche','projet-fin-etude.accesPartenaire.editRecherche');
 // Route::post('/Accueil/Acces-Partenaire/insertNewActu','App\Http\Controllers\EditActualiteController@insertNewActu')->('addimage');
 ////////////////////////////////////Fin de la Recherche Scientfique////////////////////
 

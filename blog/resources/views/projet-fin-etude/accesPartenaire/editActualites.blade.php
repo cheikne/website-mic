@@ -4,13 +4,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-  <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href='https://css.gg/arrow-left.css' rel='stylesheet'>
   <script type="text/javascript" src="{{asset('js/accesPartenaire/editActualite.js')}}"></script>
@@ -74,10 +73,7 @@ input[type=Search]:{
 
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;background-color:#1e4356;" id="mySidebar">
   <div class="sidebar-header" style=" background: rgb(128, 128, 128);margin-top: 1;">
-      <div class="imgcontainer">
-      <div class="px-4">
-       <a href="/Accueil/Acces-Partenaire" ><i class="gg-arrow-left w3-text-white"></i></a>  
-      </div>       
+      <div class="imgcontainer">     
       <ul class="users">
               <li class="person" data-chat="person1">
                   <div class="user">
@@ -92,7 +88,7 @@ input[type=Search]:{
       </div>
   </div>
   <a class="w3-bar-item w3-button w3-hide-large w3-text-white w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-a w3-blue w3-text-white" href="/Accueil/Acces-Partenaire"  style="background-color:#1e4356;" >Acces-Partenaire</a>
+  <a class="w3-bar-item w3-a  w3-text-white" href="/Accueil/Acces-Partenaire"  style="background-color:#1e4356;" >Acces-Partenaire</a>
   <!--button class="w3-bar-item w3-button" id="event" onclick="editActualite(this.id)">Modifier Actualité</button-->
   <a class="w3-bar-item w3-button w3-text-white" href="/Accueil/Acces-Partenaire/Actualites">Ajouter Actualité</a>
   <!--button class="w3-bar-item w3-button" id="delete" onclick="displaydeleteOneActualite(this.id)">Supprimer Actualité</button-->
@@ -143,7 +139,7 @@ input[type=Search]:{
           </div>
           <div class="custom-file">
               <input type="file" class="custom-file-input" name="image">
-              <label class="custom-file-label" for="form4Example4">Select image</label>
+              <label class="custom-file-label" for="form4Example4">Selectionner  l'image</label>
          </div> <br><br>
          
           <button type="submit" name="submit" class="btn btn-primary btn-block mb-4">

@@ -110,8 +110,9 @@ function DeleteOneRecherche(id,check){
   }else if(check==-1){
     SendToServer(url,callback,false);
     document.getElementById(id).style.display="none";
-  }else
-  alert(check);
+    displayAllRecherche();
+  }
+  // alert(check);
 }
 
 function DisplayChampedit(id,id_hiden,id_disp){
@@ -125,7 +126,18 @@ function InsererNewRecherche(){
   var date = document.getElementById('dte').value
   var lien = document.getElementById('lien').value;
   var resumer = document.getElementById('resumer').value;
-  var url = "/Accueil/Acces-Partenaire/insertNewRech?resumer="+resumer+"&lien="+lien+"&dte="+date;
+  var titre = document.getElementById('titre').value;
+  var id="";
+  radio = document.getElementsByClassName("radios");
+  var i=0;
+  for (i=0; i<radio.length;i++) {
+      if(radio[i].checked ==true){
+          id = radio[i].value;
+        break; 
+      }
+    }
+  // alert(id);
+  var url = "/Accueil/Acces-Partenaire/insertNewRech?resumer="+resumer+"&lien="+lien+"&dte="+date+"&titre="+titre+"&these="+id;
   SendToServer(url,callback,false);
 }
 
@@ -148,7 +160,7 @@ function getOneRecherche(check){
 
 
 
-function UpdateRecherche(id,check){
+function UpdateRech(id,check){
 
   if(check==0){
     var lienT = document.getElementById('lienT').value;
@@ -161,9 +173,12 @@ function UpdateRecherche(id,check){
      var lienT = document.getElementById('lienT'+id).value;
     var resumerT = document.getElementById('resumerT'+id).value;
     var dteT = document.getElementById('dteT'+id).value;
-   var url = "/Accueil/Acces-Partenaire/UpdateOneRech?id="+id+"&lienT="+lienT+"&resumerT="+resumerT+"&dte="+dteT;
+    var titreT = document.getElementById('titreT'+id).value;
+    alert(titreT);
+   var url = "/Accueil/Acces-Partenaire/UpdateOneRech?id="+id+"&lienT="+lienT+"&resumerT="+resumerT+"&dte="+dteT+"&titreT="+titreT;
    SendToServer(url,callback,false);
-   document.getElementById('success').innerHTML="Mise en Jours faite avec Success";
+   document.getElementById(check).style.display="none";
+   // document.getElementById('success').innerHTML="Mise en Jours faite avec Success";
  }
 }
 

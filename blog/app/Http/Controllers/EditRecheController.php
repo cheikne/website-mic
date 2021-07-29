@@ -15,32 +15,35 @@ class EditRecheController extends Controller
 {
      public function vericationdesthesedeUsr()
      {
-        $id_theses=array();
+        // $id_theses=0;
       /*$id= Auth::user()->id ;
       $id_these=includes::where('id_user',$id)->get('id_these');
       return view('projet-fin-etude/accesPartenaire/editRecherche')
              ->with('idtheses',$id_these->id_these); */
              if( (Auth::user()->profil)=='admin'){
-                $id_these = recherche_scientifiques::get('id_these');     
+                $id_these = recherche_scientifiques::get('id_these'); 
+                 return view('projet-fin-etude/accesPartenaire/editRecherche')
+                  ->with('id_theses',$id_these);    
                  }
               else{
-              $id= Auth::user()->id ;
+              $id= Auth::user()->id;
               $id_these=includes::where('id_user',$id)->get('id_these');
               $i=count($id_these);
-              for($k=0;$k<($i/2);$k++){
-                            $id_theses[$k]=$id_these[$k]->id_these;
-                           }                              
+            //   for($k=0;$k<($i/2);$k++){
+            //                 $id_theses[$k]=$id_these[$k]->id_these;
+            //                } 
+             return view('projet-fin-etude/accesPartenaire/editRecherche')
+                  ->with('id_theses',$id_these);                             
             } 
-            return view('projet-fin-etude/accesPartenaire/editRecherche')
-                  ->with('id_theses',$id_theses);
                
-     }
+ }
     public function insertNewRech(Request $req){
         $rech= new recherche_scientifiques();
         $rech->lien = $req->input('lien');
+        $rech->titre = $req->input('titre');
         $rech->date = $req->input('dte');
-        $rech->resumer = $req->input('resumer');
-        $rech->id_these= 1;//$req->input('these');
+        $rech->resume = $req->input('resumer');
+        $rech->id_these= $req->input('these');
         $rech->save();
     }
     
@@ -95,29 +98,19 @@ class EditRecheController extends Controller
     public function UpdateOneRech(Request $req){
         $id = $req->input('id');
         $dte = $req->input('dte');
+        $titre = $req->input('titreT');
         $lienT = $req->input('lienT');
         $resumerT = $req->input('resumerT');
-         recherche_scientifiques::where('id_rech',$id)->update(['lien' => $lienT, 'resumer' => $resumerT,'date' => $dte]);
+         recherche_scientifiques::where('id_rech',$id)->update(['lien' => $lienT, 'resume' => $resumerT,'date' => $dte,'titre' => $titre]);
     }
     public function displayAllRech(){
         $check=-1;
         $a = -1000;
         $b =-1001;
         $i=0;
-        $id_these=0;
-        if( (Auth::user()->profil)=='admin'){
-          $rech = recherche_scientifiques::all();     
-           }
-        else{
-        $id= Auth::user()->id ;
-        $id_these=includes::where('id_user',$id)->get('id_these');
-        $i=count($id_these);
-        for($k=0;$k<($i/2);$k++){
-           $rech = recherche_scientifiques::where('id_these',$id_these[$k]->id_these)
-                                        ->get();
-                     }                              
-      } 
-      echo "
+        // $id_these=0;
+
+         echo "
       <div class='chat-search-box w3-right' id='contentSearch'>
             <div class='input-group'>
                 <input type='Search' class='form-control' id='dte_serachKeyWord' onkeyup='ChercherRechWihtTitre(this.id)' placeholder='Rechercher .....' required>
@@ -131,22 +124,27 @@ class EditRecheController extends Controller
             </div><br><br><br><br><br>
             <div id='resultat'></div>
             ";
-            echo " <table class='table table-dark table-hover'>
+
+        if( (Auth::user()->profil)=='admin'){
+          $rech = recherche_scientifiques::all(); 
+                   echo " <table class='table table-dark table-hover'>
                 <thead>
                 <tr>
-                    <th>Lien {$i}</th>
+                     <th>Titre</th>
                     <th>Description</th>
+                    <th>Lien</th>
                     <th>Date</th>
                     <th class='w3-right'>Action</th>
                 </tr>
                 </thead>";
             foreach($rech as $response){
-            $str =  substr($response->resumer,0,100);
+            $str =  substr($response->resume,0,100);
             echo "
             <tbody id='myTable'>
                 <tr>
-                    <td><a herf='asset({$response->lien})'>{$response->lien}</a></td>
+                    <td>{$response->titre}</td>
                     <td>{$str}............</td>
+                    <td><a herf='{$response->lien}'>{$response->lien}</a></td>
                     <td>{$response->date}</td>
                     <td>
                     <td> <button class='btn btn-primary' id='a{$response->id_rech}' onclick='DisplayChampedit(this.id,{$a},{$b})'>Modifier</button></td>
@@ -167,9 +165,101 @@ class EditRecheController extends Controller
             <form class='w3-container' >
             <div class='w3-section'>
                 <div class='container'>
-                    <input type='date' id='dteT{$response->id_rech}' value='{$response->date}'>&nbsp;&nbsp;<label>Date</label>
+                    <input type='date' id='dteT{$response->id_rech}' value='{$response->date}'>&nbsp;&nbsp;<label>Date</label><br>
+                <p class='w3-text-black'><strong>Lien</strong></p>
+                <textarea  class='form-control' rows='2' id='lienT{$response->id_rech}'>{$response->lien}</textarea ><br> 
                 <p>Titre</p>
-                <textarea  class='form-control' rows='4' id='titreT{$response->id_rech}'>{$response->titre}</textarea ><br>              <p>Resumer</p>              <textarea  class='form-control' rows='14' id='resumerT{$response->id_actu}'>{$response->resumer}</textarea>   
+                <textarea  class='form-control' rows='4' id='titreT{$response->id_rech}'>{$response->titre}</textarea ><br>              <p>Resumer</p>              <textarea  class='form-control' rows='14' id='resumerT{$response->id_rech}'>{$response->resume}</textarea>   
+            </div>
+            </div>
+            </form>
+
+            <div class='w3-container w3-border-top w3-padding-16 w3-light-grey'><br><br>
+               <button  onclick='UpdateRech({$response->id_rech},{$a})' type='button' class='btn btn-success'>Enregistrer</button>
+            </div>
+            </div>
+            </div>
+            ";
+            $a++;
+            $b--;
+
+            echo "
+           <div class='modal' id='myModal{$response->id_rech}'>
+                <div class='modal-dialog'>
+                  <div class='modal-content'>
+                  
+                    <!-- Modal Header -->
+                    <div class='modal-header'>
+                      <h4 class='modal-title'>Etes-vous sur de vouloir supprimer ?</h4>
+                      <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class='modal-body'>
+                    Si vous le supprimez il sera supprimé pour toujours !!
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class='modal-footer'>
+                      <button type='button' class='btn btn-primary' data-dismiss='modal'>Annuler</button>
+                       <button type='button' class='btn btn-danger' data-dismiss='modal' onclick='DeleteOneRecherche({$response->id_rech},{$check})'>Supprimer</button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            ";
+     }
+        }
+        else{
+        $id= Auth::user()->id ;
+        $id_these=includes::where('id_user',$id)->get('id_these');
+     
+            echo " <table class='table table-dark table-hover'>
+                <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Lien</th>
+                    <th>Date</th>
+                    <th class='w3-right'>Action</th>
+                </tr>
+                </thead>";
+            foreach($id_these as $value){
+                $response = recherche_scientifiques::where('id_these',$value->id_these)->first();
+            $str =  substr($response->resume,0,100);
+            echo "
+            <tbody id='myTable'>
+                <tr>
+                    <td>{$response->titre}</td>
+                    <td>{$str}............</td>
+                    <td><a herf='{$response->lien}'>{$response->lien}</a></td>
+                    <td>{$response->date}</td>
+                    <td>
+                    <td> <button class='btn btn-primary' id='a{$response->id_rech}' onclick='DisplayChampedit(this.id,{$a},{$b})'>Modifier</button></td>
+                    <td><button class='btn btn-danger' data-toggle='modal' data-target='#myModal{$response->id_rech}'>Supprimer</button></td>
+                    </td>
+                </tr>
+            </tbody>  
+            ";
+
+            echo "
+            <div id='{$a}' class='w3-modal'>
+            <div class='w3-modal-content w3-card-4 w3-animate-zoom' style='max-width:700px;'>
+
+            <div class='w3-center'><br>
+            <span onclick='closeModal({$a})' class='w3-button w3-xlarge w3-transparent w3-display-topright' title='Close Modal'>×</span>
+            </div>
+
+            <form class='w3-container' >
+            <div class='w3-section'>
+                <div class='container'>
+                    <input type='date' id='dteT{$response->id_rech}' value='{$response->date}'>&nbsp;&nbsp;<label>Date</label><br>
+                <p class='w3-text-black'><strong>Lien</strong></p>
+                <textarea  class='form-control' rows='2' id='lienT{$response->id_rech}'>{$response->lien}</textarea ><br>           
+                <p>Titre</p>
+                <textarea  class='form-control' rows='4' id='titreT{$response->id_rech}'>{$response->titre}</textarea ><br>           
+                <p>Resumer</p>              <textarea  class='form-control' rows='14' id='resumerT{$response->id_rech}'>{$response->resume}</textarea>   
             </div>
             </div>
             </form>
@@ -185,30 +275,31 @@ class EditRecheController extends Controller
 
             echo "
             <div class='modal' id='myModal{$response->id_rech}'>
-            <div class='modal-dialog'>
-            <div class='modal-content'>
-            
-                <!-- Modal Header -->
-                <div class='modal-header'>
-                <h4 class='modal-title'>Etesvous sur de vouloir supprimer ?</h4>
-                <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                <div class='modal-dialog'>
+                  <div class='modal-content'>
+                  
+                    <!-- Modal Header -->
+                    <div class='modal-header'>
+                      <h4 class='modal-title'>Etes-vous sur de vouloir supprimer ?</h4>
+                      <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class='modal-body'>
+                    Si vous le supprimez il sera supprimé pour toujours !!
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class='modal-footer'>
+                      <button type='button' class='btn btn-primary' data-dismiss='modal'>Annuler</button>
+                       <button type='button' class='btn btn-danger' data-dismiss='modal' onclick='DeleteOneRecherche({$response->id_rech},{$check})'>Supprimer</button>
+                    </div>
+                    
+                  </div>
                 </div>
-                
-                <!-- Modal body -->
-                <div class='modal-body'>
-                   Si vous le supprimer il sera supprimé pour toujours !!
-                </div>
-                
-                <!-- Modal footer -->
-                <div class='modal-footer'>
-                <button type='button' class='btn btn-primary' data-dismiss='modal'>Annuler</button>
-                    <button type='button' class='btn btn-danger' data-dismiss='modal' onclick='DeleteOneRecherche({$response->id_rech},{$check})'>Supprimer</button>
-                </div>
-                
-            </div>
-            </div>
-            </div>
+              </div>
             ";
+        }
      }
 
     }
@@ -247,7 +338,7 @@ class EditRecheController extends Controller
                     </div>
 
                 </div>";
-               echo "<button class='btn btn-primary w3-right' onclick='DeleteOneEvents({$response->id_rech},{$verify})'>Supprimer</button>";
+               echo "<button class='btn btn-primary w3-right' onclick='DeleteOneRecherche({$response->id_rech},{$verify})'>Supprimer</button>";
             }
 
         else{

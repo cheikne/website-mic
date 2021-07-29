@@ -177,13 +177,13 @@ class CrudEventController extends Controller
                   
                     <!-- Modal Header -->
                     <div class='modal-header'>
-                      <h4 class='modal-title'>Etesvous sur de vouloir supprimer ?</h4>
+                      <h4 class='modal-title'>Etes-vous sur de vouloir supprimer ?</h4>
                       <button type='button' class='close' data-dismiss='modal'>&times;</button>
                     </div>
                     
                     <!-- Modal body -->
                     <div class='modal-body'>
-                    Si vous le supprimer il sera supprimé pour toujours !!
+                    Si vous le supprimez il sera supprimé pour toujours !!
                     </div>
                     
                     <!-- Modal footer -->
