@@ -16,6 +16,7 @@ class UserLogoutController extends Controller
         $compteur = $req->input('compteur');
         $is_recharge = $req->input('is_recharge');
         $tablelogut = new user_deconnecter();
+        // $heure = 90;
          $user  = $tablelogut->where('bool',1)->get();
          // $nbreEnregist = nombreUserLogout::where('id',1)->first();
          $str = $req->input('nbreEnregist');
@@ -23,6 +24,18 @@ class UserLogoutController extends Controller
                 // echo "3 nmbre gggggg".$req->input('nbreEnregist')."<br>";
                 // echo "3 nmbre gggggg".$is_recharge."<br>";
          $ephemere = $user;
+          $bool = 'oui';
+          $heureCurrent = Carbon::now();
+          $getheureCur = explode(" ",$heureCurrent);
+          $getOnlyheure = explode(":",$getheureCur[1]);
+          $time = $getOnlyheure[0]+1 .":". $getOnlyheure[1] .":"."00";
+          // echo "Heure courante est :".$time."<br>";
+         foreach($ephemere as $response){
+            if($time ==$response->delai and $response->is_finish=="non"){
+                user_deconnecter::where('id_user',$response->id_user)->update(['is_finish' => $bool]);
+                $is_recharge ="oui";
+            }
+         }
           $compte =count($user);
            // nombreUserLogout::where('id',1)->update(['nombreUser' => $compte]);
                 // echo "egal nmbre gggggg".$str."<br>";
@@ -138,20 +151,14 @@ class UserLogoutController extends Controller
              // echo "Le nombre d;element est :".count($user);s
              echo "<div id='replaceContent'></div>";
              echo " <ul class='sortable-list taskList list-unstyled ui-sortable' id='upcoming'>";
-                // $heureCurrent = Carbon::now();
-                // $getheureCur = explode(" ",$heureCurrent);
-                // $getOnlyheure = explode(":",$getheureCur[1]);
-             $time = $req->input('time');
                 $ephemere =$user;
-                $bool = 'oui';
+                 // echo "Heure courante est :".$time."<br>";
             foreach($ephemere as $response){
                     // echo "delai terminer ".$time;
                     // echo "delai terminer ".$response->delai;
                 $user_name = User::where('id',$response->id_user)->first();
                 // $getheurebd = explode(":",$response->heure);
-                if($time ==$response->delai){
-                    user_deconnecter::where('id_user',$response->id_user)->update(['is_finish' => $bool]);
-                }if($response->is_finish =='non'){
+                if($response->is_finish =='non'){
                     if($pagination==1 and $j>1){
                          echo "<div id='{$j}' style='display:none;'>";
                     }
@@ -192,10 +199,16 @@ class UserLogoutController extends Controller
                 // }else if($compteNbrPaginat==1){
                 //      echo "<br><br><br>";
                 // }
-                 if($compteNbrli ==2)
-                echo "<br><br><br><br><br><br>";
-                if($compteNbrli==1)
-                echo "<br><br><br><br><br><br><br><br><br><br><br>";
+                 if($compteNbrli ==5)
+                     echo "<br><br><br><br><br><br><br><br><br><br><br><br><br>";
+                 else if($compteNbrli ==4)
+                     echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+                 else if($compteNbrli ==3)
+                        echo "<br><br><br><br><br><br><br><br><br><br><br><br>><br><br><br><br><br><br><br><br><br><br><br>";
+                else if($compteNbrli ==2)
+                    echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+                else if($compteNbrli==1)
+                echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
                 echo "</div>";
             }else if($compteNbrPaginat-1==6){
                 $j--;

@@ -14,17 +14,22 @@ class activiteController extends Controller
         $privilege = Auth::user()->profil;
         $is_recharge = $req->input('is_recharge');
         $allActivite = activite_recentes::orderByDesc('date')->limit(25)->get();
-        // $temp = activite_recentes::get();
-        // if($is_recharge =="non"){
-        //      if($req->input('nbreEnregist') !=-1){
-        //         if($req->input('nbreEnregist') == count($temp)){
-        //             return "egaux";
-        //         }else if($req->input('nbreEnregist') < count($temp)){
-        //             return "sup";
-        //         }else return "inf";
-        //      }
-        //  }
-        $compte =0;
+        $temp = activite_recentes::get();
+        $compte =count($temp);
+        if($is_recharge =="non"){
+             if($req->input('nbreEnregist') !=-1){
+                if($req->input('nbreEnregist') == count($temp)){
+                    // echo "<div id ='nbrEnrActivite' onclick='getNbreEnregtActivite({$compte})'></div>";
+                    return $compte;
+                // }else if($req->input('nbreEnregist') < count($temp)){
+                //     echo "<div id ='nbrEnrActivite' onclick='getNbreEnregtActivite({$compte})'></div>";
+                //     return "sup";
+                // }else {
+                //     echo "<div id ='nbrEnrActivite' onclick='getNbreEnregtActivite({$compte})'></div>";
+                //     return "inf";
+                }
+             }
+         }
 
         echo "<ul class='sortable-list taskList list-unstyled ui-sortable' id='upcoming'>";
         foreach($allActivite as $response){
@@ -90,8 +95,14 @@ class activiteController extends Controller
             // if($compteNbrPaginat==1){
             //      echo "<br><br><br><br><br><br>";
             // }
-            if($compteNbrli ==1)
-             echo "<br><br><br><br><br><br><br><br>";
+            if($compteNbrli ==4)
+                     echo "<br><br><br><br><br><br><br>";
+             else if($compteNbrli ==3)
+                    echo "<br><br><br><br><br><br><br><br><br>";
+            else if($compteNbrli ==2)
+                echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+            else if($compteNbrli==1)
+            echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
             echo "</div>";
         }else if($compteNbrPaginat-1==5){
             $k--;
@@ -104,8 +115,8 @@ class activiteController extends Controller
                     <li class='page-item'><button class='page-link' id='page{$index}'  onclick='paginationActivite({$index},this.id,{$k})'>{$index}</button></li>";
             }
             echo "</ul><br>";
+            echo "<div id ='nbrEnrActivite' onclick='getNbreEnregtActivite({$compte})'></div>";
         }
-        $compte =0;
-        echo "<div id ='nbrEnrActivite' onclick='getNbreEnregtActivite({$compte})'></div>";
+
     }
 }
